@@ -127,9 +127,6 @@
     nav.id = 'side-nav';
     nav.className = 'sn';
     nav.innerHTML = `
-      <button class="sn-toggle" id="sn-toggle" aria-label="Toggle navigation">
-        <span class="material-symbols-outlined" id="sn-toggle-icon">menu</span>
-      </button>
       <div class="sn-body" id="sn-body">
         <a class="sn-home" href="../index.html">
           <span class="material-symbols-outlined">arrow_back</span>
@@ -142,9 +139,19 @@
     `;
     document.body.prepend(nav);
 
+    // Replace the viewer-bar__back link with a menu toggle button
+    const backLink = document.querySelector('.viewer-bar__back');
+    if (backLink) {
+      const menuBtn = document.createElement('button');
+      menuBtn.className = 'viewer-bar__menu';
+      menuBtn.type = 'button';
+      menuBtn.setAttribute('aria-label', 'Toggle navigation');
+      menuBtn.innerHTML = '<span class="material-symbols-outlined" id="sn-toggle-icon">menu</span>';
+      backLink.replaceWith(menuBtn);
+    }
+
     // Collapse/expand
-    const toggle = document.getElementById('sn-toggle');
-    const body = document.getElementById('sn-body');
+    const toggle = document.querySelector('.viewer-bar__menu');
     const icon = document.getElementById('sn-toggle-icon');
     const KEY = 'ks-nav';
     const collapsed = localStorage.getItem(KEY) === '0';
@@ -152,14 +159,18 @@
     if (collapsed) {
       nav.classList.add('is-collapsed');
       icon.textContent = 'menu';
+    } else {
+      icon.textContent = 'close';
     }
 
-    toggle.addEventListener('click', () => {
-      const willCollapse = !nav.classList.contains('is-collapsed');
-      nav.classList.toggle('is-collapsed');
-      icon.textContent = willCollapse ? 'menu' : 'close';
-      localStorage.setItem(KEY, willCollapse ? '0' : '1');
-    });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const willCollapse = !nav.classList.contains('is-collapsed');
+        nav.classList.toggle('is-collapsed');
+        icon.textContent = willCollapse ? 'menu' : 'close';
+        localStorage.setItem(KEY, willCollapse ? '0' : '1');
+      });
+    }
 
     // Scroll active item into view
     const active = nav.querySelector('.sn-item.is-active');

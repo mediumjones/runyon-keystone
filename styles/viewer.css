@@ -196,28 +196,8 @@
   flex-direction: column;
   transition: width 0.2s ease, transform 0.2s ease;
 }
-.sn.is-collapsed { width: 48px; }
+.sn.is-collapsed { width: 0; }
 .sn.is-collapsed .sn-body { opacity: 0; pointer-events: none; }
-
-.sn-toggle {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 3;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--c-white);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--c-ink-600);
-  transition: background 0.15s ease;
-}
-.sn-toggle:hover { background: var(--c-surface-muted); }
-.sn-toggle .material-symbols-outlined { font-size: 18px; }
 
 .sn-body {
   display: flex;
@@ -225,7 +205,7 @@
   height: 100%;
   background: var(--c-white);
   border-right: 1px solid rgba(0,0,0,0.06);
-  padding: 56px 0 24px;
+  padding: 16px 0 24px;
   overflow-y: auto;
   transition: opacity 0.15s ease;
 }
@@ -342,7 +322,7 @@
 .screen-page { padding-left: 260px; transition: padding-left 0.2s ease; }
 .sn.is-collapsed ~ .viewer-bar,
 .sn.is-collapsed ~ .viewer-stage { margin-left: 0; }
-.screen-page:has(.sn.is-collapsed) { padding-left: 48px; }
+.screen-page:has(.sn.is-collapsed) { padding-left: 0; }
 
 /* ---- Screen Page --------------------------------------------- */
 .screen-page {
@@ -382,6 +362,27 @@
   flex-shrink: 0;
 }
 .viewer-bar__back .material-symbols-outlined { font-size: 16px; }
+
+.viewer-bar__menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  color: var(--c-ink-700);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.viewer-bar__menu:hover {
+  background: var(--c-surface-muted);
+  transform: translateY(-1px);
+}
+.viewer-bar__menu:active { transform: translateY(0); }
+.viewer-bar__menu .material-symbols-outlined { font-size: 16px; }
 
 .viewer-bar__info {
   flex: 1 1 0;
