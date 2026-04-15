@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Snapshot · Family (Empty) — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=3" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Family Tab · Empty State</h1>
+      <p class="viewer-bar__desc">Family tab for a new user with no family members added</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s1-report s1-report--new" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar" style="margin-bottom:0">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="report-header">
+        <div class="report-head-row">
+          <a class="report-back" href="s1.html" aria-label="Back" style="text-decoration:none">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </a>
+          <button class="report-share" type="button" aria-label="Share report">
+            <span class="material-symbols-outlined">ios_share</span>
+          </button>
+        </div>
+        <div class="report-head-text">
+          <h1 class="report-title">Your security snapshot</h1>
+          <p class="report-subtitle">A plain&#8209;English look at what we&rsquo;re watching for you.</p>
+          <span class="report-stamp">Just checked &middot; Today 9:41 AM</span>
+        </div>
+      </header>
+
+      <!-- Tab navigation -->
+      <nav class="report-tabs" aria-label="Report tabs">
+        <a class="report-tab" href="s1ra.html">Overview</a>
+        <button class="report-tab report-tab--active" type="button">
+          Family
+          <span class="material-symbols-outlined report-tab__icon">add</span>
+        </button>
+      </nav>
+
+      <!-- Empty state -->
+      <section class="family-empty">
+        <div class="family-empty__silhouettes">
+          <span class="family-empty__sil">
+            <span class="material-symbols-outlined">favorite</span>
+          </span>
+          <span class="family-empty__sil">
+            <span class="material-symbols-outlined">face</span>
+          </span>
+          <span class="family-empty__sil">
+            <span class="material-symbols-outlined">elderly</span>
+          </span>
+        </div>
+        <h2 class="family-empty__title">Your family, in one view</h2>
+        <p class="family-empty__subtitle">Add the people you look after. We&rsquo;ll watch out for everyone together.</p>
+      </section>
+
+      <!-- Primary CTA card -->
+      <div class="family-empty__cta">
+        <span class="family-empty__cta-title">Add your first family member</span>
+        <span class="family-empty__cta-sub">Partner, kid, parent, anyone you want to keep an eye on. They don&rsquo;t need to live with you.</span>
+        <button class="btn-pill btn-pill--dark" type="button" style="align-self:stretch;">Add a family member</button>
+      </div>
+
+      <!-- Informational example cards -->
+      <section class="report-section">
+        <div class="family-examples">
+          <div class="family-example">
+            <span class="icon-chip"><span class="material-symbols-outlined">favorite</span></span>
+            <div class="family-example__body">
+              <span class="family-example__label">For your partner</span>
+              <span class="family-example__desc">Sync their identity and accounts so we watch both of you together.</span>
+            </div>
+          </div>
+          <div class="family-example">
+            <span class="icon-chip"><span class="material-symbols-outlined">face</span></span>
+            <div class="family-example__body">
+              <span class="family-example__label">For your kids</span>
+              <span class="family-example__desc">Monitor their SSNs and social activity. We&rsquo;ll flag anything that looks off.</span>
+            </div>
+          </div>
+          <div class="family-example">
+            <span class="icon-chip"><span class="material-symbols-outlined">elderly</span></span>
+            <div class="family-example__body">
+              <span class="family-example__label">For a parent you help</span>
+              <span class="family-example__desc">Get a heads&#8209;up if something unusual happens on their accounts. You see the alerts; they keep their independence.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="report-footer">
+        <p class="report-footer__note">Family monitoring is included with your plan. No extra cost.</p>
+      </footer>
+
+      <!-- Chat composer (sticky) -->
+      <form class="report-chat" onsubmit="return false;" aria-label="Chat with this report">
+        <div class="report-chat__field">
+          <span class="report-chat__leading material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+          <input class="report-chat__input" type="text" placeholder="Chat with this report&hellip;" aria-label="Chat with this report" />
+          <button class="report-chat__voice report-chat__voice--primary" type="button" aria-label="Open voice mode">
+            <span class="material-symbols-outlined">graphic_eq</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

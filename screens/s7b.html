@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auto-handled Alert · In-app — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Auto-handled Alert · In-app</h1>
+      <p class="viewer-bar__desc">Automatically resolved dark web alert detail</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s7" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <a class="nav-icon-btn" aria-label="Back" href="s6.html" style="text-decoration:none">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="t-title nav-title">Alert</h1>
+      </div>
+
+      <div class="s7-content">
+        <span class="severity-pill severity-pill--resolved">
+          <span class="material-symbols-outlined">verified</span>
+          Resolved &middot; Auto-handled
+        </span>
+
+        <div class="alert-hero">
+          <div class="alert-hero__chip alert-hero__chip--done">
+            <span class="material-symbols-outlined">shield_lock</span>
+          </div>
+          <h2 class="alert-hero__title">We handled a new SSN dark web listing for you</h2>
+          <p class="alert-hero__desc">Your SSN surfaced on BreachForum v3 this morning. Per your safety preferences, Keystone ran all 3 protective steps on your behalf &mdash; no action needed.</p>
+        </div>
+
+        <section class="detail-section">
+          <h3 class="detail-section__title">Detection details</h3>
+          <div class="detail-rows">
+            <div class="detail-row">
+              <span class="detail-label">Detected</span>
+              <span class="detail-value">Today, 9:14&nbsp;AM</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Source</span>
+              <span class="detail-value">BreachForum v3</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Exposed</span>
+              <span class="detail-value">SSN, DOB, full name</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Handled</span>
+              <span class="detail-value">9:14&nbsp;AM</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-section">
+          <h3 class="detail-section__title">Steps auto&#8209;completed</h3>
+          <div class="step-list">
+            <div class="step-row step-row--done">
+              <span class="step-num step-num--done">
+                <span class="material-symbols-outlined">check</span>
+              </span>
+              <div class="label-stack">
+                <span class="label-bold">Credit frozen at all 3 bureaus</span>
+                <span class="label-sub">Equifax, Experian, TransUnion &middot; 9:14 AM</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="step-row step-row--done">
+              <span class="step-num step-num--done">
+                <span class="material-symbols-outlined">check</span>
+              </span>
+              <div class="label-stack">
+                <span class="label-bold">Kill Switch engaged</span>
+                <span class="label-sub">14 linked accounts locked &middot; 9:14 AM</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="step-row step-row--done">
+              <span class="step-num step-num--done">
+                <span class="material-symbols-outlined">check</span>
+              </span>
+              <div class="label-stack">
+                <span class="label-bold">Restoration specialist assigned</span>
+                <span class="label-sub">Case #K&#8209;4821 &middot; Standing by if needed</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-section">
+          <h3 class="detail-section__title">Why this happened automatically</h3>
+          <div class="pref-card">
+            <div class="icon-chip"><span class="material-symbols-outlined">bolt</span></div>
+            <div class="label-stack">
+              <span class="label-bold">Auto&#8209;handle critical SSN alerts</span>
+              <span class="label-sub">On since Mar 14</span>
+            </div>
+            <button class="btn-outline-sm" type="button">Edit</button>
+          </div>
+        </section>
+
+        <button class="btn-pill btn-pill--ghost-s7" type="button">
+          <span class="material-symbols-outlined">receipt_long</span>
+          View full audit log
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

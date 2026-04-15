@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Snapshot · Family (Populated) — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=2" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=3" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Family Tab · Populated</h1>
+      <p class="viewer-bar__desc">Family tab for an established user with household members</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s1-report s1-report--long" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar" style="margin-bottom:0">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="report-header">
+        <div class="report-head-row">
+          <a class="report-back" href="s1b.html" aria-label="Back" style="text-decoration:none">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </a>
+          <button class="report-share" type="button" aria-label="Share report">
+            <span class="material-symbols-outlined">ios_share</span>
+          </button>
+        </div>
+        <div class="report-head-text">
+          <h1 class="report-title">Your security snapshot</h1>
+          <p class="report-subtitle">A plain&#8209;English look at what we&rsquo;re watching for you.</p>
+          <span class="report-stamp">Updated 4 min ago</span>
+        </div>
+      </header>
+
+      <!-- Tab navigation -->
+      <nav class="report-tabs" aria-label="Report tabs">
+        <a class="report-tab" href="s1rb.html">Overview</a>
+        <button class="report-tab report-tab--active" type="button">
+          Family
+          <span class="report-tab__count">4</span>
+        </button>
+      </nav>
+
+      <!-- Family header -->
+      <header style="display:flex;flex-direction:column;gap:4px;">
+        <div style="display:flex;align-items:center;gap:var(--sp-2);">
+          <h2 class="report-title" style="font-size:var(--fs-title);">Your family</h2>
+          <span class="report-status report-status--filled">
+            <span class="material-symbols-outlined">verified</span>
+            All clear
+          </span>
+        </div>
+        <p class="report-subtitle">5 people watched, including you. All quiet this week.</p>
+        <span class="report-stamp">Checked 3 min ago</span>
+      </header>
+
+      <!-- Household roll-up card -->
+      <section class="family-rollup">
+        <span class="report-eyebrow">This week</span>
+        <span class="report-hero__big">412</span>
+        <h3 class="report-hero__headline">checks run across your household</h3>
+        <p class="report-hero__support">We watched 5 profiles, 14 accounts, and 23 saved passwords. Nothing out of place.</p>
+        <span class="report-hero__stat">1 item flagged and resolved with your help</span>
+      </section>
+
+      <!-- People list -->
+      <section class="report-section">
+        <h3 class="report-section__title">Everyone at a glance</h3>
+
+        <div class="family-people">
+          <!-- You -->
+          <div class="family-person">
+            <span class="family-person__avatar">You</span>
+            <div class="family-person__info">
+              <div class="family-person__name-row">
+                <span class="family-person__name">You</span>
+                <span class="report-chip report-chip--filled report-chip--sm">Admin</span>
+                <span class="report-chip report-chip--outline report-chip--sm">Covered</span>
+              </div>
+              <span class="family-person__status">Last scan: all clear</span>
+            </div>
+            <span class="material-symbols-outlined family-person__chev">chevron_right</span>
+          </div>
+
+          <!-- Andre -->
+          <div class="family-person">
+            <span class="family-person__avatar">A</span>
+            <div class="family-person__info">
+              <div class="family-person__name-row">
+                <span class="family-person__name">Andre</span>
+                <span class="report-chip report-chip--outline report-chip--sm">Covered</span>
+              </div>
+              <span class="family-person__status">Last scan: all clear</span>
+            </div>
+            <span class="material-symbols-outlined family-person__chev">chevron_right</span>
+          </div>
+
+          <!-- Camila -->
+          <div class="family-person">
+            <span class="family-person__avatar">C</span>
+            <div class="family-person__info">
+              <div class="family-person__name-row">
+                <span class="family-person__name">Camila</span>
+                <span class="report-chip report-chip--outline report-chip--sm">Covered</span>
+              </div>
+              <span class="family-person__status">Last scan: SSN clean, no social flags</span>
+            </div>
+            <span class="material-symbols-outlined family-person__chev">chevron_right</span>
+          </div>
+
+          <!-- Aiden -->
+          <div class="family-person">
+            <span class="family-person__avatar">A</span>
+            <div class="family-person__info">
+              <div class="family-person__name-row">
+                <span class="family-person__name">Aiden</span>
+                <span class="report-chip report-chip--outline report-chip--sm">Covered</span>
+              </div>
+              <span class="family-person__status">Last scan: SSN clean, no new accounts</span>
+            </div>
+            <span class="material-symbols-outlined family-person__chev">chevron_right</span>
+          </div>
+
+          <!-- Teresa -->
+          <a class="family-person" href="s1rb-teresa.html">
+            <span class="family-person__avatar">T</span>
+            <div class="family-person__info">
+              <div class="family-person__name-row">
+                <span class="family-person__name">Teresa</span>
+                <span class="report-chip report-chip--outline report-chip--sm">Covered</span>
+              </div>
+              <span class="family-person__status">Last scan: one transfer flagged, you dismissed it</span>
+            </div>
+            <span class="material-symbols-outlined family-person__chev">chevron_right</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Add more people -->
+      <section class="family-add">
+        <span class="family-add__title">Anyone else to add?</span>
+        <span class="family-add__helper">Some people add their in&#8209;laws, a sibling they support, or an adult kid in college.</span>
+        <button class="btn-dark-sm" type="button" style="align-self:flex-start;">Add a family member</button>
+      </section>
+
+      <!-- Footer -->
+      <footer class="report-footer">
+        <button class="btn-pill btn-pill--ghost" type="button">
+          <span class="material-symbols-outlined">refresh</span>
+          Run a fresh check now
+        </button>
+        <p class="report-footer__note">Last household scan: today, 9:34 AM. Everyone&rsquo;s accounted for. We&rsquo;ll tell you first if anything changes.</p>
+      </footer>
+
+      <!-- Chat composer (sticky) -->
+      <form class="report-chat" onsubmit="return false;" aria-label="Chat with this report">
+        <div class="report-chat__field">
+          <span class="report-chat__leading material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+          <input class="report-chat__input" type="text" placeholder="Chat with this report&hellip;" aria-label="Chat with this report" />
+          <button class="report-chat__voice report-chat__voice--primary" type="button" aria-label="Open voice mode">
+            <span class="material-symbols-outlined">graphic_eq</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

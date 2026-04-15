@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teresa · Elder Drill-in — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=3" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=3" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Teresa · Elder Drill-in</h1>
+      <p class="viewer-bar__desc">Per-person detail view for an aging parent (trusted advocate pattern)</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s1-report s1-report--long" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar" style="margin-bottom:0">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="report-header">
+        <div class="report-head-row">
+          <a class="report-back" href="s1rb-family.html" aria-label="Back to Family" style="text-decoration:none">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </a>
+          <button class="report-share" type="button" aria-label="Share">
+            <span class="material-symbols-outlined">ios_share</span>
+          </button>
+        </div>
+        <div class="report-head-text">
+          <h1 class="report-title">Teresa</h1>
+          <p class="report-subtitle">Secured since March 2026.</p>
+          <div style="display:flex;gap:6px;margin-top:var(--sp-2);flex-wrap:wrap;">
+            <span class="report-chip report-chip--outline">Covered</span>
+            <span class="report-chip report-chip--filled"><span class="material-symbols-outlined">check</span> Last scanned 3 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Your role card -->
+      <section class="family-role-card">
+        <span class="report-eyebrow">What you can see</span>
+        <h3 class="family-role-card__headline">You get the alerts. They keep their independence.</h3>
+        <p class="family-role-card__body">We watch Teresa&rsquo;s accounts for unusual activity and tell you first. You don&rsquo;t have access to their money or their passwords. You just get a heads&#8209;up if something looks off.</p>
+      </section>
+
+      <!-- What happened this week -->
+      <section class="report-section">
+        <h3 class="report-section__title">What happened this week</h3>
+
+        <ol class="report-timeline">
+          <li class="report-timeline__item">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <span class="report-timeline__title">$2,400 transfer flagged from Teresa&rsquo;s checking</span>
+              <span class="report-timeline__meta">Last Friday, 2:14 PM &middot; To an account we didn&rsquo;t recognize. You reviewed it and confirmed it was their new HVAC deposit. Dismissed.</span>
+            </div>
+          </li>
+          <li class="report-timeline__item">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <span class="report-timeline__title">Email scanned against 11 breach databases</span>
+              <span class="report-timeline__meta">Last Thursday &middot; All clean</span>
+            </div>
+          </li>
+          <li class="report-timeline__item">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <span class="report-timeline__title">Daily credit monitoring</span>
+              <span class="report-timeline__meta">Last Wednesday &middot; No new accounts in their name</span>
+            </div>
+          </li>
+        </ol>
+        <button class="text-btn" type="button">View more activity &rarr;</button>
+      </section>
+
+      <!-- Coverage for Teresa -->
+      <section class="report-section">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <h3 class="report-section__title">Coverage for Teresa</h3>
+          <button class="btn-outline-sm" type="button">Edit</button>
+        </div>
+
+        <div class="family-coverage">
+          <div class="family-coverage__row">
+            <span class="material-symbols-outlined">fingerprint</span>
+            <span class="family-coverage__label">Identity and SSN</span>
+            <span class="family-coverage__status">Monitored</span>
+          </div>
+          <div class="family-coverage__row">
+            <span class="material-symbols-outlined">account_balance</span>
+            <span class="family-coverage__label">3 bank accounts</span>
+            <span class="family-coverage__status">Connected</span>
+          </div>
+          <div class="family-coverage__row">
+            <span class="material-symbols-outlined">mail</span>
+            <span class="family-coverage__label">Email</span>
+            <span class="family-coverage__status">Watched</span>
+          </div>
+          <div class="family-coverage__row">
+            <span class="material-symbols-outlined">credit_score</span>
+            <span class="family-coverage__label">Credit</span>
+            <span class="family-coverage__status">3 bureaus</span>
+          </div>
+        </div>
+
+        <p class="family-helper">You see the activity. They control the accounts.</p>
+      </section>
+
+      <!-- Personal info we monitor -->
+      <section class="report-section">
+        <div class="report-section__head-row" style="display:flex;align-items:center;justify-content:space-between;">
+          <h3 class="report-section__title">Teresa&rsquo;s info on file</h3>
+          <button class="btn-outline-sm" type="button">Edit</button>
+        </div>
+
+        <div class="family-info-card">
+          <div class="family-info__row">
+            <span class="family-info__label">Full name</span>
+            <span class="family-info__value">Teresa Morales</span>
+          </div>
+          <div class="family-info__row">
+            <span class="family-info__label">Email</span>
+            <span class="family-info__value">t.morales@gmail.com</span>
+          </div>
+          <div class="family-info__row">
+            <span class="family-info__label">Phone</span>
+            <span class="family-info__value">(512) 555&#8209;0187</span>
+          </div>
+          <div class="family-info__row">
+            <span class="family-info__label">Address</span>
+            <span class="family-info__value">4210 Elm Creek Dr, Austin, TX 78749</span>
+          </div>
+          <div class="family-info__row">
+            <span class="family-info__label">SSN</span>
+            <span class="family-info__value">&bull;&bull;&bull;&#8209;&bull;&bull;&#8209;4839</span>
+          </div>
+          <div class="family-info__row">
+            <span class="family-info__label">Date of birth</span>
+            <span class="family-info__value">March 14, 1958</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer CTAs -->
+      <footer class="report-footer" style="gap:var(--sp-3);">
+        <button class="btn-pill btn-pill--dark" type="button" style="align-self:stretch;">Manage family members</button>
+        <button class="btn-pill btn-pill--ghost" type="button" style="align-self:stretch;">Manage alerts for Teresa</button>
+      </footer>
+    </div>
+  </div>
+
+</body>
+</html>

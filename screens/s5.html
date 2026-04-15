@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Item Details — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Add Item Details</h1>
+      <p class="viewer-bar__desc">Enter details for a new monitored item</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s5" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <button class="nav-icon-btn" aria-label="Close" type="button">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <h1 class="t-title nav-title">Add item details</h1>
+      </div>
+
+      <div class="s5-attach">
+        <span class="material-symbols-outlined">add</span>
+        <span class="label-bold" style="color: var(--c-ink-700);">Add image or attachment</span>
+      </div>
+
+      <div class="s5-item-head">
+        <div class="icon-chip"><span class="material-symbols-outlined">badge</span></div>
+        <h2 class="t-item">Passport</h2>
+      </div>
+
+      <form class="s5-form" onsubmit="return false;">
+        <div class="field">
+          <label for="s5-item-name">Item name</label>
+          <input id="s5-item-name" type="text" value="Passport" />
+        </div>
+        <div class="field">
+          <label for="s5-name-doc">Name on document</label>
+          <input id="s5-name-doc" type="text" placeholder="Full passport name" />
+        </div>
+        <div class="field">
+          <label for="s5-number">Passport number</label>
+          <input id="s5-number" type="text" placeholder="8 digit number…" />
+        </div>
+        <div class="field">
+          <label for="s5-country">Issuing country</label>
+          <input id="s5-country" type="text" placeholder="Where was the passport issued from?" />
+        </div>
+        <div class="field">
+          <label for="s5-expires">Expiration</label>
+          <input id="s5-expires" type="text" placeholder="When does it expire?" />
+        </div>
+      </form>
+
+      <a class="btn-pill" href="s2.html" style="text-decoration:none">Monitor item</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Snapshot · Long-term — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=3" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Security Snapshot · Long-term</h1>
+      <p class="viewer-bar__desc">Identity protection report for an established user</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s1-report s1-report--long" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar" style="margin-bottom:0">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+      <!-- Header -->
+      <header class="report-header">
+        <div class="report-head-row">
+          <a class="report-back" href="s1b.html" aria-label="Back" style="text-decoration:none">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </a>
+          <button class="report-share" type="button" aria-label="Share report">
+            <span class="material-symbols-outlined">ios_share</span>
+          </button>
+        </div>
+        <div class="report-head-text">
+          <h1 class="report-title">Your security snapshot</h1>
+          <p class="report-subtitle">A plain&#8209;English look at what we&rsquo;re watching for you.</p>
+          <span class="report-stamp">Updated 4 min ago</span>
+        </div>
+      </header>
+
+      <!-- Tab navigation -->
+      <nav class="report-tabs" aria-label="Report tabs">
+        <button class="report-tab report-tab--active" type="button">Overview</button>
+        <a class="report-tab" href="s1rb-family.html">
+          Family
+          <span class="report-tab__count">4</span>
+        </a>
+      </nav>
+
+      <!-- Hero status pill (sits above the hero card) -->
+      <span class="report-status report-status--filled report-status--above">
+        <span class="material-symbols-outlined">verified</span>
+        All clear
+      </span>
+
+      <!-- Hero -->
+      <section class="report-hero">
+        <span class="report-eyebrow">Last 24 hours</span>
+        <h2 class="report-hero__headline">1,847 checks ran quietly in the background.</h2>
+        <p class="report-hero__support">Nothing needs your attention. We chased down 3 tiny blips and cleared them all. Here&rsquo;s the play&#8209;by&#8209;play.</p>
+        <span class="report-hero__stat">0 open issues &middot; 3 auto&#8209;resolved</span>
+      </section>
+
+      <!-- What we checked -->
+      <section class="report-section">
+        <h3 class="report-section__title">Checks in the last 24 hours</h3>
+        <p class="report-section__lede">Everything ran on schedule. Green means no change.</p>
+
+        <ul class="report-checks">
+          <li class="report-check">
+            <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+            <div class="report-check__body">
+              <span class="report-check__title">Dark web &amp; breach lists</span>
+              <span class="report-check__meta">412 sources &middot; No new exposures</span>
+            </div>
+          </li>
+          <li class="report-check">
+            <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+            <div class="report-check__body">
+              <span class="report-check__title">Credit file movement</span>
+              <span class="report-check__meta">3 bureaus &middot; No inquiries, no new accounts</span>
+            </div>
+          </li>
+          <li class="report-check">
+            <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+            <div class="report-check__body">
+              <div class="report-check__title-row">
+                <span class="report-check__title">Bank &amp; card activity</span>
+                <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+              </div>
+              <span class="report-check__meta">14 accounts &middot; 1 charge reviewed &amp; cleared</span>
+            </div>
+          </li>
+          <li class="report-check">
+            <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+            <div class="report-check__body">
+              <span class="report-check__title">Password vault health</span>
+              <span class="report-check__meta">23 items &middot; All strong, none reused</span>
+            </div>
+          </li>
+          <li class="report-check">
+            <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+            <div class="report-check__body">
+              <div class="report-check__title-row">
+                <span class="report-check__title">Scam &amp; phishing signals</span>
+                <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+              </div>
+              <span class="report-check__meta">2 suspicious calls blocked</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Coverage -->
+      <section class="report-section">
+        <h3 class="report-section__title">Your coverage</h3>
+        <p class="report-section__lede">You&rsquo;re in the top 6% of members. A few small gaps left to close.</p>
+
+        <div class="report-coverage">
+          <div class="report-coverage__bar">
+            <div class="report-coverage__fill" style="width:94%"></div>
+          </div>
+          <div class="report-coverage__meta">
+            <span class="report-coverage__pct">94%</span>
+            <span class="report-coverage__note">15 of 16 categories protected</span>
+          </div>
+        </div>
+
+        <ul class="report-coverage-list">
+          <li class="report-coverage-row">
+            <span class="material-symbols-outlined">assignment_ind</span>
+            <span class="report-coverage-row__label">Personal info</span>
+            <span class="report-chip report-chip--filled">5 of 5</span>
+          </li>
+          <li class="report-coverage-row">
+            <span class="material-symbols-outlined">paid</span>
+            <span class="report-coverage-row__label">Finances</span>
+            <span class="report-chip report-chip--filled">4 of 4</span>
+          </li>
+          <li class="report-coverage-row">
+            <span class="material-symbols-outlined">home</span>
+            <span class="report-coverage-row__label">Home &amp; auto</span>
+            <span class="report-chip report-chip--outline">2 of 3</span>
+          </li>
+          <li class="report-coverage-row">
+            <span class="material-symbols-outlined">key</span>
+            <span class="report-coverage-row__label">Passwords</span>
+            <span class="report-chip report-chip--filled">23 of 23</span>
+          </li>
+          <li class="report-coverage-row">
+            <span class="material-symbols-outlined">family_restroom</span>
+            <span class="report-coverage-row__label">Family members</span>
+            <span class="report-chip report-chip--filled">3 of 3</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Recommendations -->
+      <section class="report-section">
+        <h3 class="report-section__title">Recommendations</h3>
+        <p class="report-section__lede">Ordered by impact. Each one reinforces a layer that&rsquo;s already covered or adds a fallback for the next time something surfaces.</p>
+
+        <article class="report-reco">
+          <div class="report-reco__head">
+            <span class="icon-chip"><span class="material-symbols-outlined">person_add</span></span>
+            <div class="label-stack">
+              <span class="label-bold">Name a trusted contact</span>
+              <span class="label-sub">Someone we can loop in if we can&rsquo;t reach you</span>
+            </div>
+          </div>
+          <p class="report-reco__why">Why it matters: if something urgent pops up while you&rsquo;re offline, we&rsquo;ll have a backup to reach.</p>
+          <div class="report-reco__foot">
+            <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>2 min</span>
+            <button class="btn-dark-sm" type="button">Add</button>
+          </div>
+        </article>
+
+        <article class="report-reco">
+          <div class="report-reco__head">
+            <span class="icon-chip"><span class="material-symbols-outlined">phonelink_lock</span></span>
+            <div class="label-stack">
+              <span class="label-bold">Turn on 2&#8209;factor for 1 old login</span>
+              <span class="label-sub">Your email host supports it now</span>
+            </div>
+          </div>
+          <p class="report-reco__why">Why it matters: 2FA blocks 99% of password&#8209;based attacks.</p>
+          <div class="report-reco__foot">
+            <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>3 min</span>
+            <button class="btn-dark-sm" type="button">Set up</button>
+          </div>
+        </article>
+
+        <article class="report-reco">
+          <div class="report-reco__head">
+            <span class="icon-chip"><span class="material-symbols-outlined">family_restroom</span></span>
+            <div class="label-stack">
+              <span class="label-bold">Invite your partner</span>
+              <span class="label-sub">Shared alerts, separate vaults</span>
+            </div>
+          </div>
+          <p class="report-reco__why">Why it matters: identity theft usually hits a household, not a person.</p>
+          <div class="report-reco__foot">
+            <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>1 min</span>
+            <button class="btn-dark-sm" type="button">Invite</button>
+          </div>
+        </article>
+      </section>
+
+      <!-- Recent activity -->
+      <section class="report-section">
+        <h3 class="report-section__title">Recent activity</h3>
+        <p class="report-section__lede">Scans and automated responses from the past 48 hours. Items marked <span class="auto-pill auto-pill--inline"><span class="material-symbols-outlined">bolt</span>Auto</span> were handled without any input required.</p>
+
+        <ol class="report-timeline">
+          <li class="report-timeline__item">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <span class="report-timeline__title">Dark web sweep &mdash; clean</span>
+              <span class="report-timeline__meta">4 min ago</span>
+            </div>
+          </li>
+          <li class="report-timeline__item report-timeline__item--auto">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <div class="report-timeline__title-row">
+                <span class="report-timeline__title">$312 charge reviewed &amp; cleared</span>
+                <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+              </div>
+              <span class="report-timeline__meta">2 hr ago &middot; Chase &middot;&middot;&middot;4821</span>
+            </div>
+          </li>
+          <li class="report-timeline__item report-timeline__item--auto">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <div class="report-timeline__title-row">
+                <span class="report-timeline__title">2 scam calls blocked</span>
+                <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+              </div>
+              <span class="report-timeline__meta">Yesterday</span>
+            </div>
+          </li>
+          <li class="report-timeline__item">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <span class="report-timeline__title">Password vault re&#8209;checked</span>
+              <span class="report-timeline__meta">Yesterday &middot; All 23 strong</span>
+            </div>
+          </li>
+          <li class="report-timeline__item">
+            <span class="report-timeline__dot"></span>
+            <div class="report-timeline__body">
+              <span class="report-timeline__title">Credit bureau pull &mdash; no change</span>
+              <span class="report-timeline__meta">2 days ago</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Footer -->
+      <footer class="report-footer">
+        <button class="btn-pill btn-pill--ghost" type="button">
+          <span class="material-symbols-outlined">refresh</span>
+          Re&#8209;run this check
+        </button>
+        <p class="report-footer__note">Next automatic sweep tonight at 2:00 AM. We&rsquo;ll only nudge you if something changes.</p>
+      </footer>
+
+      <!-- Chat composer (sticky) -->
+      <form class="report-chat" onsubmit="return false;" aria-label="Chat with this report">
+        <div class="report-chat__field">
+          <span class="report-chat__leading material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+          <input class="report-chat__input" type="text" placeholder="Chat with this report&hellip;" aria-label="Chat with this report" />
+          <button class="report-chat__voice report-chat__voice--primary" type="button" aria-label="Open voice mode">
+            <span class="material-symbols-outlined">graphic_eq</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

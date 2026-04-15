@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desktop Browser Extension — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Desktop Browser Extension</h1>
+      <p class="viewer-bar__desc">Keystone autofill popup on a checkout page</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content-desktop" id="screen-content">
+      <div class="desktop-chrome">
+        <div class="desktop-chrome__top">
+          <span class="desktop-dots">
+            <i class="dot dot--r"></i>
+            <i class="dot dot--y"></i>
+            <i class="dot dot--g"></i>
+          </span>
+          <div class="desktop-tabs">
+            <div class="desktop-tab desktop-tab--active">
+              <span class="desktop-tab__fav">V</span>
+              <span class="desktop-tab__title">Checkout &mdash; Verdant Supply Co.</span>
+              <span class="material-symbols-outlined desktop-tab__close">close</span>
+            </div>
+            <div class="desktop-tab desktop-tab--new">+</div>
+          </div>
+        </div>
+        <div class="desktop-chrome__bar desktop-chrome__bar--nav">
+          <span class="desktop-nav">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="material-symbols-outlined is-dim">arrow_forward</span>
+            <span class="material-symbols-outlined">refresh</span>
+          </span>
+          <div class="desktop-urlbar">
+            <span class="material-symbols-outlined">lock</span>
+            <span class="desktop-urlbar__path"><b>verdantsupply.com</b>/checkout</span>
+            <span class="desktop-ext">
+              <span class="desktop-ext__icon">
+                <span class="material-symbols-outlined">extension</span>
+              </span>
+              <span class="desktop-ext__badge">K</span>
+              <span class="desktop-ext__avatar">AM</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="desktop-body">
+        <div class="desktop-site">
+          <div class="site-topbar">
+            <span class="site-brand">Verdant Supply Co.</span>
+            <nav class="site-nav">
+              <span>Shop</span>
+              <span>Journal</span>
+              <span class="is-active">Checkout</span>
+            </nav>
+            <span class="site-cart">Cart &middot; 3</span>
+          </div>
+
+          <div class="checkout-grid">
+            <div>
+              <h1 class="checkout-title">Secure checkout</h1>
+              <p class="checkout-sub">Express delivery &middot; 2&ndash;3 business days</p>
+
+              <section class="checkout-section">
+                <h3 class="checkout-section__title">Shipping address</h3>
+                <div class="field">
+                  <label class="field__label">Full name</label>
+                  <div class="field__input field__input--filled">
+                    <span class="field__input-text">Alex Morgan</span>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label class="field__label">Street</label>
+                    <div class="field__input field__input--filled">
+                      <span class="field__input-text">142 Alder Lane, Apt 3B</span>
+                    </div>
+                  </div>
+                  <div class="field" style="max-width: 140px;">
+                    <label class="field__label">ZIP</label>
+                    <div class="field__input field__input--filled">
+                      <span class="field__input-text">98104</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="checkout-section">
+                <h3 class="checkout-section__title">Payment</h3>
+                <div class="field field--active">
+                  <label class="field__label">Card number</label>
+                  <div class="field__input">
+                    <span class="field__input-text field__input--empty">1234 1234 1234 1234</span>
+                    <span class="field__caret" aria-hidden="true"></span>
+                    <span class="field__ext" aria-label="Keystone autofill">K</span>
+                  </div>
+
+                  <div class="ext-menu" role="menu" aria-label="Keystone autofill suggestions">
+                    <div class="ext-menu__head">
+                      <span class="ext-menu__brand">K</span>
+                      <div class="ext-menu__head-text">
+                        <span class="ext-menu__title">Autofill from your Vault</span>
+                        <span class="ext-menu__sub">Keystone detected a payment form</span>
+                      </div>
+                      <span class="ext-menu__vault">
+                        <span class="material-symbols-outlined">lock</span>
+                        Vault
+                      </span>
+                    </div>
+                    <div class="ext-menu__list">
+                      <button class="ext-menu__item is-focus" type="button">
+                        <span class="ext-menu__card ext-menu__card--visa">VISA</span>
+                        <span class="ext-menu__item-text">
+                          <span class="ext-menu__item-title">Personal card</span>
+                          <span class="ext-menu__item-sub">Visa &bull;&bull;&bull;&bull; 4242 &middot; exp 06/28</span>
+                        </span>
+                        <span class="ext-menu__item-kbd">&#9166;</span>
+                      </button>
+                      <button class="ext-menu__item" type="button">
+                        <span class="ext-menu__card ext-menu__card--amex">AMEX</span>
+                        <span class="ext-menu__item-text">
+                          <span class="ext-menu__item-title">Travel card</span>
+                          <span class="ext-menu__item-sub">Amex &bull;&bull;&bull;&bull; 1005 &middot; exp 11/27</span>
+                        </span>
+                      </button>
+                      <button class="ext-menu__item" type="button">
+                        <span class="ext-menu__card ext-menu__card--mc">MC</span>
+                        <span class="ext-menu__item-text">
+                          <span class="ext-menu__item-title">Household card</span>
+                          <span class="ext-menu__item-sub">Mastercard &bull;&bull;&bull;&bull; 8821 &middot; exp 03/29</span>
+                        </span>
+                      </button>
+                      <div class="ext-menu__divider"></div>
+                      <button class="ext-menu__item ext-menu__item--add" type="button">
+                        <span class="ext-menu__card">
+                          <span class="material-symbols-outlined">add</span>
+                        </span>
+                        <span class="ext-menu__item-text">
+                          <span class="ext-menu__item-title">Save a new card to your Vault</span>
+                          <span class="ext-menu__item-sub">Encrypted &middot; syncs to your Monitoring Vault</span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <aside class="checkout-summary">
+              <div class="checkout-summary__title">Order summary</div>
+              <div class="checkout-summary__row checkout-summary__row--item">
+                <span>Cedar planter</span>
+                <span>$58.00</span>
+              </div>
+              <div class="checkout-summary__row checkout-summary__row--item">
+                <span>Terra clay set</span>
+                <span>$32.00</span>
+              </div>
+              <div class="checkout-summary__row checkout-summary__row--item">
+                <span>Seed kit &times; 2</span>
+                <span>$24.00</span>
+              </div>
+              <div class="checkout-summary__row checkout-summary__row--dim">
+                <span>Shipping</span>
+                <span>$8.00</span>
+              </div>
+              <div class="checkout-summary__row checkout-summary__row--total">
+                <span>Total</span>
+                <span>$122.00</span>
+              </div>
+              <button class="checkout-summary__pay" type="button">Place order</button>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

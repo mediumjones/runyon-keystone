@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Item Sheet — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Add Item Sheet</h1>
+      <p class="viewer-bar__desc">Bottom sheet for adding a new item to monitoring</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s2 s3" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <button class="nav-icon-btn" aria-label="Back" type="button">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 class="t-title nav-title">Personal</h1>
+      </div>
+
+      <div class="s2-stack">
+        <div class="reco-card">
+          <div class="icon-chip"><span class="material-symbols-outlined">fingerprint</span></div>
+          <div class="label-stack">
+            <span class="label-bold">Social security number</span>
+            <span class="label-sub">Protect your identity</span>
+          </div>
+          <button class="btn-dark-sm" type="button">Add</button>
+        </div>
+
+        <div class="reco-card">
+          <div class="icon-chip"><span class="material-symbols-outlined">call</span></div>
+          <div class="label-stack">
+            <span class="label-bold">Phone number</span>
+            <span class="label-sub">Protect your phone number</span>
+          </div>
+          <button class="btn-dark-sm" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="s2-rows">
+        <div class="list-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">mail</span></div>
+          <div class="label-stack list-row__labels">
+            <span class="label-bold">Email address</span>
+            <span class="label-sub">Samantha@zmail.com</span>
+          </div>
+          <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+        </div>
+        <div class="list-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">account_circle</span></div>
+          <div class="label-stack list-row__labels">
+            <span class="label-bold">Legal name</span>
+            <span class="label-sub">Samantha Yu</span>
+          </div>
+          <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+        </div>
+        <div class="list-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">home_work</span></div>
+          <div class="label-stack list-row__labels">
+            <span class="label-bold">Address (home)</span>
+            <span class="label-sub">123 4th Ave W Brooklyn, NY 123456</span>
+          </div>
+          <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+        </div>
+      </div>
+
+      <!-- scrim + sheet -->
+      <div class="scrim"></div>
+      <div class="sheet">
+        <h2 class="t-sheet">Add an item to Identity Monitoring</h2>
+        <div class="sheet-divider"></div>
+
+        <a class="sheet-row" href="s4.html" style="text-decoration:none;color:inherit">
+          <div class="label-stack">
+            <span class="label-bold">Manually</span>
+            <span class="label-sub">Enter your information</span>
+          </div>
+          <div class="icon-chip"><span class="material-symbols-outlined">border_color</span></div>
+        </a>
+
+        <a class="sheet-row" href="s4.html" style="text-decoration:none;color:inherit">
+          <div class="label-stack">
+            <span class="label-bold">From a photo</span>
+            <span class="label-sub">Capture / upload image(s) of an item</span>
+          </div>
+          <div class="icon-chip"><span class="material-symbols-outlined">add_a_photo</span></div>
+        </a>
+
+        <a class="sheet-row" href="s4.html" style="text-decoration:none;color:inherit">
+          <div class="label-stack">
+            <span class="label-bold">From a file</span>
+            <span class="label-sub">Upload a file or document for auto recognition</span>
+          </div>
+          <div class="icon-chip"><span class="material-symbols-outlined">document_scanner</span></div>
+        </a>
+      </div>
+
+      <button class="btn-pill" type="button">
+        <span class="material-symbols-outlined">add</span>Add
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

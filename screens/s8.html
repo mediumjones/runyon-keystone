@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Accounts — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/s8.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Financial Accounts</h1>
+      <p class="viewer-bar__desc">Cross-account AI-powered transaction monitoring with NerdWallet</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s8" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+
+      <!-- Back nav -->
+      <div class="nav-bar">
+        <a class="nav-icon-btn" aria-label="Back to Finances" href="s1b.html" style="text-decoration:none">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="t-title nav-title">Financial Accounts</h1>
+      </div>
+
+      <!-- NerdWallet co-brand bar (centered) -->
+      <div class="s8-cobrand s8-cobrand--center">
+        <span class="s8-cobrand__klogo">K</span>
+        <span class="s8-cobrand__x">&times;</span>
+        <span class="s8-cobrand__nw">NerdWallet</span>
+      </div>
+
+      <!-- Status -->
+      <div class="s8-status">
+        <div class="s8-status-row">
+          <span class="s8-status-dot" aria-hidden="true"></span>
+          <span class="s8-status-text">5 accounts clear, 1 needs review</span>
+        </div>
+        <span class="s8-freshness">Last scanned 4 min ago &middot; 6 accounts connected</span>
+      </div>
+
+      <hr class="s8-divider" />
+
+      <!-- Connected accounts -->
+      <section class="s8-accounts">
+        <div class="s8-section-head">
+          <h3 class="s8-section-title">Connected accounts</h3>
+          <button class="text-btn" type="button">Manage</button>
+        </div>
+
+        <div class="s8-account-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">account_balance</span></div>
+          <div class="s8-account-info">
+            <span class="s8-account-name">Chase</span>
+            <span class="s8-account-type">Checking &middot;&middot;&middot; 4821</span>
+          </div>
+          <div class="s8-account-trail">
+            <span class="s8-check material-symbols-outlined">check_circle</span>
+            <span class="s8-account-time">4m ago</span>
+          </div>
+        </div>
+
+        <div class="s8-account-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">savings</span></div>
+          <div class="s8-account-info">
+            <span class="s8-account-name">Bank of America</span>
+            <span class="s8-account-type">Savings &middot;&middot;&middot; 7733</span>
+          </div>
+          <div class="s8-account-trail">
+            <span class="s8-check material-symbols-outlined">check_circle</span>
+            <span class="s8-account-time">4m ago</span>
+          </div>
+        </div>
+
+        <div class="s8-account-row s8-account-row--attention">
+          <div class="icon-chip"><span class="material-symbols-outlined">trending_up</span></div>
+          <div class="s8-account-info">
+            <span class="s8-account-name">Fidelity</span>
+            <span class="s8-account-type">Investment &middot;&middot;&middot; 0052</span>
+          </div>
+          <div class="s8-account-trail">
+            <span class="s8-attention-badge">1 to review</span>
+          </div>
+        </div>
+
+        <div class="s8-account-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">credit_card</span></div>
+          <div class="s8-account-info">
+            <span class="s8-account-name">Amex</span>
+            <span class="s8-account-type">Credit card &middot;&middot;&middot; 1005</span>
+          </div>
+          <div class="s8-account-trail">
+            <span class="s8-check material-symbols-outlined">check_circle</span>
+            <span class="s8-account-time">4m ago</span>
+          </div>
+        </div>
+
+        <div class="s8-account-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">currency_bitcoin</span></div>
+          <div class="s8-account-info">
+            <span class="s8-account-name">Coinbase</span>
+            <span class="s8-account-type">Crypto wallet</span>
+          </div>
+          <div class="s8-account-trail">
+            <span class="s8-check material-symbols-outlined">check_circle</span>
+            <span class="s8-account-time">12m ago</span>
+          </div>
+        </div>
+
+        <div class="s8-account-row">
+          <div class="icon-chip"><span class="material-symbols-outlined">credit_card</span></div>
+          <div class="s8-account-info">
+            <span class="s8-account-name">Capital One</span>
+            <span class="s8-account-type">Credit card &middot;&middot;&middot; 9140</span>
+          </div>
+          <div class="s8-account-trail">
+            <span class="s8-check material-symbols-outlined">check_circle</span>
+            <span class="s8-account-time">4m ago</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="s8-divider" />
+
+      <!-- AI monitoring activity feed -->
+      <section class="s8-feed">
+        <span class="s8-nw-badge">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Powered by NerdWallet
+        </span>
+        <h3 class="s8-section-title">Financial Account Insights</h3>
+        <p class="s8-feed-lede">NerdWallet already tracks your accounts. Now we protect them too.</p>
+
+        <!-- Item 1: Needs action -->
+        <div class="s8-feed-item s8-feed-item--action">
+          <div class="icon-chip"><span class="material-symbols-outlined">warning</span></div>
+          <div class="s8-feed-item__text">
+            <span class="s8-feed-item__title">Unfamiliar withdrawal: $2,400 from Fidelity</span>
+            <span class="s8-feed-item__meta">Investment &middot;&middot;&middot; 0052 &middot; April 11 &middot; Phoenix, AZ</span>
+          </div>
+          <p class="s8-feed-item__desc">NerdWallet AI flagged this because it doesn&rsquo;t match your usual account activity. This is the first withdrawal over $500 from this account in 90 days, and the location is new.</p>
+          <div class="s8-feed-item__actions">
+            <button class="btn-dark-sm" type="button">Review</button>
+            <button class="btn-outline-sm" type="button">Ignore</button>
+          </div>
+        </div>
+
+        <h4 class="s8-feed-section-title">Account activity</h4>
+
+        <!-- Item 2: Informational -->
+        <div class="s8-feed-item">
+          <div class="s8-feed-item__head">
+            <div class="icon-chip"><span class="material-symbols-outlined">replay</span></div>
+            <div class="s8-feed-item__text">
+              <span class="s8-feed-item__title">New recurring charge detected</span>
+              <span class="s8-feed-item__meta">Amex &middot;&middot;&middot; 1005 &middot; $14.99/mo &middot; CloudVault Storage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Informational -->
+        <div class="s8-feed-item">
+          <div class="s8-feed-item__head">
+            <div class="icon-chip"><span class="material-symbols-outlined">compare_arrows</span></div>
+            <div class="s8-feed-item__text">
+              <span class="s8-feed-item__title">Large transfer between your accounts</span>
+              <span class="s8-feed-item__meta">Chase &rarr; BofA &middot; $3,200 &middot; April 10</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Dismissed -->
+        <div class="s8-feed-item">
+          <div class="s8-feed-item__head">
+            <div class="icon-chip"><span class="material-symbols-outlined">devices</span></div>
+            <div class="s8-feed-item__text">
+              <span class="s8-feed-item__title">New device signed in to Coinbase</span>
+              <span class="s8-feed-item__meta">MacBook Pro &middot; San Francisco, CA &middot; April 9</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Informational -->
+        <div class="s8-feed-item">
+          <div class="s8-feed-item__head">
+            <div class="icon-chip"><span class="material-symbols-outlined">insert_chart</span></div>
+            <div class="s8-feed-item__text">
+              <span class="s8-feed-item__title">Spending is 23% below your norm this week</span>
+              <span class="s8-feed-item__meta">Amex &middot;&middot;&middot; 1005 &middot; vs. 30-day average</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: All clear -->
+        <div class="s8-feed-item">
+          <div class="s8-feed-item__head">
+            <div class="icon-chip"><span class="material-symbols-outlined">check_circle</span></div>
+            <div class="s8-feed-item__text">
+              <span class="s8-feed-item__title">No unusual patterns across your 6 accounts</span>
+              <span class="s8-feed-item__meta">Weekly behavioral scan &middot; April 7</span>
+            </div>
+          </div>
+        </div>
+        <button class="text-btn s8-view-all" type="button">View all financial account activity &rarr;</button>
+      </section>
+
+      <hr class="s8-divider" />
+
+      <!-- Insights / summary -->
+      <section class="s8-insights">
+        <div class="s8-insights__nw-bar">
+          <span class="s8-insights__nw-mark">NerdWallet</span>
+          <span class="s8-insights__nw-label">Financial Protection</span>
+        </div>
+
+        <p class="s8-insights__summary">We checked 847 transactions across your 6 accounts this week. Everything looks right, except one withdrawal on your Fidelity account that&rsquo;s worth a look.</p>
+
+        <div class="s8-insights__stats">
+          <div class="s8-stat">
+            <span class="s8-stat__num">6</span>
+            <span class="s8-stat__label">Accounts monitored</span>
+          </div>
+          <div class="s8-stat">
+            <span class="s8-stat__num">847</span>
+            <span class="s8-stat__label">Transactions scanned</span>
+          </div>
+          <div class="s8-stat">
+            <span class="s8-stat__num">12</span>
+            <span class="s8-stat__label">Days since last flag</span>
+          </div>
+        </div>
+
+        <p class="s8-insights__trust">Your accounts are connected and monitored around the clock. If something looks off, we&rsquo;ll tell you.</p>
+      </section>
+
+      <button class="s8-manage-btn" type="button">
+        <span class="material-symbols-outlined">settings</span>
+        Manage financial accounts
+      </button>
+
+    </div>
+  </div>
+
+</body>
+</html>

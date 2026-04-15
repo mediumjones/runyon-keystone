@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monitoring Landing · Long-term — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Monitoring Landing &middot; Long-term</h1>
+      <p class="viewer-bar__desc">Landing page for a long-term user with established monitoring history</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s1 s1b" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+      <h1 class="t-hero s1-hero">Identity Monitoring</h1>
+      <p class="s1-subtitle">Real-time alerts across dark web, breaches, credit, and account activity</p>
+
+      <!-- View report link (long-term user) -->
+      <a class="report-link report-link--long" href="s1rb.html">
+        <span class="report-link__icon material-symbols-outlined">verified</span>
+        <div class="report-link__text">
+          <span class="report-link__title">View your security snapshot</span>
+          <span class="report-link__meta">All clear &middot; Checked 4 min ago</span>
+        </div>
+        <span class="material-symbols-outlined report-link__chev">chevron_right</span>
+      </a>
+
+      <!-- Monitoring section -->
+      <section class="mon-section">
+        <header class="mon-head">
+          <span class="mon-dot" aria-hidden="true"></span>
+          <h2 class="mon-title">Monitoring 48 items</h2>
+          <button class="text-btn" type="button">
+            <span class="material-symbols-outlined">add</span>Add
+          </button>
+        </header>
+
+        <div class="mon-grid">
+          <a class="mon-card" href="s2.html" style="text-decoration:none;color:inherit">
+            <div class="icon-chip"><span class="material-symbols-outlined">assignment_ind</span></div>
+            <div class="label-stack">
+              <span class="label-bold">Personal</span>
+              <span class="label-sub">8 items</span>
+            </div>
+          </a>
+          <a class="mon-card" href="s8.html" style="text-decoration:none;color:inherit">
+            <div class="icon-chip"><span class="material-symbols-outlined">paid</span></div>
+            <div class="label-stack">
+              <span class="label-bold">Financial</span>
+              <span class="label-sub">12 items</span>
+            </div>
+          </a>
+          <div class="mon-card">
+            <div class="icon-chip"><span class="material-symbols-outlined">home</span></div>
+            <div class="label-stack">
+              <span class="label-bold">Home &amp; auto</span>
+              <span class="label-sub">5 items</span>
+            </div>
+          </div>
+          <div class="mon-card">
+            <div class="icon-chip"><span class="material-symbols-outlined">key</span></div>
+            <div class="label-stack">
+              <span class="label-bold">Passwords</span>
+              <span class="label-sub">23 items</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent activity -->
+      <section class="s1b-activity">
+        <h2 class="t-section">Recent activity</h2>
+
+        <div class="reco-card">
+          <div class="icon-chip"><span class="material-symbols-outlined">shield_person</span></div>
+          <div class="label-stack">
+            <span class="label-bold">Dark web scan complete</span>
+            <span class="label-sub">No new exposures &middot; 4 min ago</span>
+          </div>
+          <span class="material-symbols-outlined reco-card__chev">chevron_right</span>
+        </div>
+
+        <div class="reco-card">
+          <div class="icon-chip"><span class="material-symbols-outlined">credit_card</span></div>
+          <div class="label-stack">
+            <span class="label-bold">$312 charge reviewed</span>
+            <span class="label-sub">Marked legit &middot; 2 hr ago</span>
+          </div>
+          <span class="material-symbols-outlined reco-card__chev">chevron_right</span>
+        </div>
+
+        <div class="reco-card">
+          <div class="icon-chip"><span class="material-symbols-outlined">key</span></div>
+          <div class="label-stack">
+            <span class="label-bold">Passwords re&#8209;checked</span>
+            <span class="label-sub">23 strong &middot; Today 8:02 AM</span>
+          </div>
+          <span class="material-symbols-outlined reco-card__chev">chevron_right</span>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,2408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Identity Monitoring — Prompts for Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/app.css" />
+  <link rel="stylesheet" href="styles/s8.css" />
+</head>
+<body>
+
+  <main>
+
+  <nav class="toc" aria-label="Sections">
+    <div class="toc-label">Sections</div>
+    <ol class="toc-list">
+      <li class="toc-item">
+        <a href="#identity-monitoring">
+          <span class="toc-num">01</span>
+          <span class="toc-text">
+            <span class="toc-title">Identity Monitoring</span>
+            <span class="toc-meta">5 screens</span>
+          </span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#activity-stream">
+          <span class="toc-num">02</span>
+          <span class="toc-text">
+            <span class="toc-title">Activity stream</span>
+            <span class="toc-meta">2 screens</span>
+          </span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#financial-accounts">
+          <span class="toc-num">03</span>
+          <span class="toc-text">
+            <span class="toc-title">Financial Account(s) Monitoring</span>
+            <span class="toc-meta">1 screen</span>
+          </span>
+        </a>
+      </li>
+    </ol>
+  </nav>
+
+  <section class="flow-section" id="identity-monitoring">
+  <header class="section-header">
+    <span class="status-pill">
+      <span class="status-spinner material-symbols-outlined">progress_activity</span>
+      In progress
+    </span>
+    <h1><span class="section-num">01</span>Identity Monitoring</h1>
+    <p>Identity Monitoring is Project Keystone's unified surveillance layer, bundling six previously fragmented protection capabilities into a single, always-on service. It acts as the product's &ldquo;eyes,&rdquo; continuously watching a member's identity, credit, financial accounts, and behavioral patterns for early signs of compromise, fraud, or exploitation.</p>
+
+    <nav class="screen-nav" aria-label="Screens in Identity Monitoring">
+      <button class="screen-nav__chip is-active" type="button" data-view="view-s1" aria-current="page">
+        <span class="screen-nav__num">1</span>
+        <span class="screen-nav__label">Monitoring &middot; New</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s1b">
+        <span class="screen-nav__num">2</span>
+        <span class="screen-nav__label">Monitoring &middot; Long term</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s1ra">
+        <span class="screen-nav__num">3</span>
+        <span class="screen-nav__label">Report &middot; New</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s1rb">
+        <span class="screen-nav__num">4</span>
+        <span class="screen-nav__label">Report &middot; Long term</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s2">
+        <span class="screen-nav__num">5</span>
+        <span class="screen-nav__label">Personal Collection</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s3">
+        <span class="screen-nav__num">6</span>
+        <span class="screen-nav__label">Add Item Sheet</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s4">
+        <span class="screen-nav__num">7</span>
+        <span class="screen-nav__label">Select Item Type</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s5">
+        <span class="screen-nav__num">8</span>
+        <span class="screen-nav__label">Add Item Details</span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="screens">
+
+    <!-- ============================================================
+         SCREEN 1 — Monitoring / Landing
+         ============================================================ -->
+    <figure class="screen-wrap screen-wrap--multi is-active" id="view-s1">
+      <div class="screen-wrap__phones">
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">Mobile</span>
+      <div class="phone s1">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <h1 class="t-hero s1-hero">Identity Monitoring</h1>
+          <p class="s1-subtitle">Real-time alerts across dark web, breaches, credit, and account activity</p>
+
+          <!-- View report link (new user) -->
+          <a class="report-link report-link--new" href="#view-s1ra" data-view="view-s1ra">
+            <span class="report-link__icon material-symbols-outlined">description</span>
+            <div class="report-link__text">
+              <span class="report-link__title">View your security snapshot</span>
+              <span class="report-link__meta">First check ready &middot; 2 things to know</span>
+            </div>
+            <span class="material-symbols-outlined report-link__chev">chevron_right</span>
+          </a>
+
+          <!-- Monitoring section -->
+          <section class="mon-section">
+            <header class="mon-head">
+              <span class="mon-dot" aria-hidden="true"></span>
+              <h2 class="mon-title">Monitoring 4 items</h2>
+              <button class="text-btn" type="button">
+                <span class="material-symbols-outlined">add</span>Add
+              </button>
+            </header>
+
+            <div class="mon-grid">
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">assignment_ind</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Personal</span>
+                  <span class="label-sub">3 items</span>
+                </div>
+              </div>
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">paid</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Finances</span>
+                  <span class="label-sub">0 items</span>
+                </div>
+              </div>
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">home</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Home &amp; auto</span>
+                  <span class="label-sub">0 items</span>
+                </div>
+              </div>
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">key</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Passwords</span>
+                  <span class="label-sub">1 item</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recommendations -->
+          <section class="s1-reco-section">
+            <h2 class="t-section">Recommendations</h2>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">fingerprint</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Add your SSN to monitoring</span>
+                  <span class="label-sub">So we can catch it the moment it surfaces</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: your SSN is the master key thieves go after first.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>1 min</span>
+                <button class="btn-dark-sm" type="button">Add now</button>
+              </div>
+            </article>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">credit_card</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Link your main bank</span>
+                  <span class="label-sub">Read&#8209;only. We only watch, never move money.</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: unusual charges are the earliest sign of fraud.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>2 min</span>
+                <button class="btn-dark-sm" type="button">Link bank</button>
+              </div>
+            </article>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">alternate_email</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Change your Keystone email to an uncompromised address</span>
+                  <span class="label-sub">Your current one surfaced in 3 breaches and 2 dark&#8209;web lists</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: a clean login email keeps attackers from tying old credential leaks to your Keystone account.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>3 min</span>
+                <button class="btn-dark-sm" type="button">Change</button>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">Desktop &middot; Browser extension</span>
+      <div class="desktop">
+        <div class="desktop-chrome">
+          <div class="desktop-chrome__top">
+            <span class="desktop-dots">
+              <i class="dot dot--r"></i>
+              <i class="dot dot--y"></i>
+              <i class="dot dot--g"></i>
+            </span>
+            <div class="desktop-tabs">
+              <div class="desktop-tab desktop-tab--active">
+                <span class="desktop-tab__fav">V</span>
+                <span class="desktop-tab__title">Checkout &mdash; Verdant Supply Co.</span>
+                <span class="material-symbols-outlined desktop-tab__close">close</span>
+              </div>
+              <div class="desktop-tab desktop-tab--new">+</div>
+            </div>
+          </div>
+          <div class="desktop-chrome__bar desktop-chrome__bar--nav">
+            <span class="desktop-nav">
+              <span class="material-symbols-outlined">arrow_back</span>
+              <span class="material-symbols-outlined is-dim">arrow_forward</span>
+              <span class="material-symbols-outlined">refresh</span>
+            </span>
+            <div class="desktop-urlbar">
+              <span class="material-symbols-outlined">lock</span>
+              <span class="desktop-urlbar__path"><b>verdantsupply.com</b>/checkout</span>
+              <span class="desktop-ext">
+                <span class="desktop-ext__icon">
+                  <span class="material-symbols-outlined">extension</span>
+                </span>
+                <span class="desktop-ext__badge">K</span>
+                <span class="desktop-ext__avatar">AM</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="desktop-body">
+          <div class="desktop-site">
+            <div class="site-topbar">
+              <span class="site-brand">Verdant Supply Co.</span>
+              <nav class="site-nav">
+                <span>Shop</span>
+                <span>Journal</span>
+                <span class="is-active">Checkout</span>
+              </nav>
+              <span class="site-cart">Cart &middot; 3</span>
+            </div>
+
+            <div class="checkout-grid">
+              <div>
+                <h1 class="checkout-title">Secure checkout</h1>
+                <p class="checkout-sub">Express delivery &middot; 2&ndash;3 business days</p>
+
+                <section class="checkout-section">
+                  <h3 class="checkout-section__title">Shipping address</h3>
+                  <div class="field">
+                    <label class="field__label">Full name</label>
+                    <div class="field__input field__input--filled">
+                      <span class="field__input-text">Alex Morgan</span>
+                    </div>
+                  </div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label class="field__label">Street</label>
+                      <div class="field__input field__input--filled">
+                        <span class="field__input-text">142 Alder Lane, Apt 3B</span>
+                      </div>
+                    </div>
+                    <div class="field" style="max-width: 140px;">
+                      <label class="field__label">ZIP</label>
+                      <div class="field__input field__input--filled">
+                        <span class="field__input-text">98104</span>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="checkout-section">
+                  <h3 class="checkout-section__title">Payment</h3>
+                  <div class="field field--active">
+                    <label class="field__label">Card number</label>
+                    <div class="field__input">
+                      <span class="field__input-text field__input--empty">1234 1234 1234 1234</span>
+                      <span class="field__caret" aria-hidden="true"></span>
+                      <span class="field__ext" aria-label="Keystone autofill">K</span>
+                    </div>
+
+                    <div class="ext-menu" role="menu" aria-label="Keystone autofill suggestions">
+                      <div class="ext-menu__head">
+                        <span class="ext-menu__brand">K</span>
+                        <div class="ext-menu__head-text">
+                          <span class="ext-menu__title">Autofill from your Vault</span>
+                          <span class="ext-menu__sub">Keystone detected a payment form</span>
+                        </div>
+                        <span class="ext-menu__vault">
+                          <span class="material-symbols-outlined">lock</span>
+                          Vault
+                        </span>
+                      </div>
+                      <div class="ext-menu__list">
+                        <button class="ext-menu__item is-focus" type="button">
+                          <span class="ext-menu__card ext-menu__card--visa">VISA</span>
+                          <span class="ext-menu__item-text">
+                            <span class="ext-menu__item-title">Personal card</span>
+                            <span class="ext-menu__item-sub">Visa &bull;&bull;&bull;&bull; 4242 &middot; exp 06/28</span>
+                          </span>
+                          <span class="ext-menu__item-kbd">&#9166;</span>
+                        </button>
+                        <button class="ext-menu__item" type="button">
+                          <span class="ext-menu__card ext-menu__card--amex">AMEX</span>
+                          <span class="ext-menu__item-text">
+                            <span class="ext-menu__item-title">Travel card</span>
+                            <span class="ext-menu__item-sub">Amex &bull;&bull;&bull;&bull; 1005 &middot; exp 11/27</span>
+                          </span>
+                        </button>
+                        <button class="ext-menu__item" type="button">
+                          <span class="ext-menu__card ext-menu__card--mc">MC</span>
+                          <span class="ext-menu__item-text">
+                            <span class="ext-menu__item-title">Household card</span>
+                            <span class="ext-menu__item-sub">Mastercard &bull;&bull;&bull;&bull; 8821 &middot; exp 03/29</span>
+                          </span>
+                        </button>
+                        <div class="ext-menu__divider"></div>
+                        <button class="ext-menu__item ext-menu__item--add" type="button">
+                          <span class="ext-menu__card">
+                            <span class="material-symbols-outlined">add</span>
+                          </span>
+                          <span class="ext-menu__item-text">
+                            <span class="ext-menu__item-title">Save a new card to your Vault</span>
+                            <span class="ext-menu__item-sub">Encrypted &middot; syncs to your Monitoring Vault</span>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <aside class="checkout-summary">
+                <div class="checkout-summary__title">Order summary</div>
+                <div class="checkout-summary__row checkout-summary__row--item">
+                  <span>Cedar planter</span>
+                  <span>$58.00</span>
+                </div>
+                <div class="checkout-summary__row checkout-summary__row--item">
+                  <span>Terra clay set</span>
+                  <span>$32.00</span>
+                </div>
+                <div class="checkout-summary__row checkout-summary__row--item">
+                  <span>Seed kit &times; 2</span>
+                  <span>$24.00</span>
+                </div>
+                <div class="checkout-summary__row checkout-summary__row--dim">
+                  <span>Shipping</span>
+                  <span>$8.00</span>
+                </div>
+                <div class="checkout-summary__row checkout-summary__row--total">
+                  <span>Total</span>
+                  <span>$122.00</span>
+                </div>
+                <button class="checkout-summary__pay" type="button">Place order</button>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      </div>
+      <figcaption>1 · Monitoring Landing &middot; New user</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 1b — Monitoring / Landing (Long-term user)
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s1b">
+      <div class="phone s1 s1b">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <h1 class="t-hero s1-hero">Identity Monitoring</h1>
+          <p class="s1-subtitle">Real-time alerts across dark web, breaches, credit, and account activity</p>
+
+          <!-- View report link (long-term user) -->
+          <a class="report-link report-link--long" href="#view-s1rb" data-view="view-s1rb">
+            <span class="report-link__icon material-symbols-outlined">verified</span>
+            <div class="report-link__text">
+              <span class="report-link__title">View your security snapshot</span>
+              <span class="report-link__meta">All clear &middot; Checked 4 min ago</span>
+            </div>
+            <span class="material-symbols-outlined report-link__chev">chevron_right</span>
+          </a>
+
+          <!-- Monitoring section -->
+          <section class="mon-section">
+            <header class="mon-head">
+              <span class="mon-dot" aria-hidden="true"></span>
+              <h2 class="mon-title">Monitoring 48 items</h2>
+              <button class="text-btn" type="button">
+                <span class="material-symbols-outlined">add</span>Add
+              </button>
+            </header>
+
+            <div class="mon-grid">
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">assignment_ind</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Personal</span>
+                  <span class="label-sub">8 items</span>
+                </div>
+              </div>
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">paid</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Finances</span>
+                  <span class="label-sub">12 items</span>
+                </div>
+              </div>
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">home</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Home &amp; auto</span>
+                  <span class="label-sub">5 items</span>
+                </div>
+              </div>
+              <div class="mon-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">key</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Passwords</span>
+                  <span class="label-sub">23 items</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recent activity -->
+          <section class="s1b-activity">
+            <h2 class="t-section">Recent activity</h2>
+
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">shield_person</span></div>
+              <div class="label-stack">
+                <span class="label-bold">Dark web scan complete</span>
+                <span class="label-sub">No new exposures &middot; 4 min ago</span>
+              </div>
+              <span class="material-symbols-outlined reco-card__chev">chevron_right</span>
+            </div>
+
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">credit_card</span></div>
+              <div class="label-stack">
+                <span class="label-bold">$312 charge reviewed</span>
+                <span class="label-sub">Marked legit &middot; 2 hr ago</span>
+              </div>
+              <span class="material-symbols-outlined reco-card__chev">chevron_right</span>
+            </div>
+
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">key</span></div>
+              <div class="label-stack">
+                <span class="label-bold">Passwords re&#8209;checked</span>
+                <span class="label-sub">23 strong &middot; Today 8:02 AM</span>
+              </div>
+              <span class="material-symbols-outlined reco-card__chev">chevron_right</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>2 · Monitoring Landing &middot; Long-term user</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 1ra — Security Snapshot Report (New user)
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s1ra">
+      <div class="phone s1-report s1-report--new">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <!-- Header -->
+          <header class="report-header">
+            <div class="report-head-row">
+              <button class="report-back" type="button" aria-label="Back">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </button>
+              <button class="report-share" type="button" aria-label="Share report">
+                <span class="material-symbols-outlined">ios_share</span>
+              </button>
+            </div>
+            <div class="report-head-text">
+              <h1 class="report-title">Your security snapshot</h1>
+              <p class="report-subtitle">A plain&#8209;English look at what we&rsquo;re watching for you.</p>
+              <span class="report-stamp">Just checked &middot; Today 9:41 AM</span>
+            </div>
+          </header>
+
+          <!-- Hero status pill (sits above the hero card) -->
+          <span class="report-status report-status--outline report-status--above">
+            <span class="material-symbols-outlined">search_insights</span>
+            5 findings
+          </span>
+
+          <!-- Hero / callout card -->
+          <section class="report-hero">
+            <span class="report-eyebrow">Initial scan</span>
+            <h2 class="report-hero__headline">Five findings from the initial sweep.</h2>
+            <p class="report-hero__support">Baseline check against breach databases, dark web sources, and public records.</p>
+
+            <ul class="report-findings">
+              <li class="report-finding">
+                <span class="icon-chip"><span class="material-symbols-outlined">mail</span></span>
+                <div class="report-finding__body">
+                  <span class="report-finding__title">Email found in 3 data breaches</span>
+                  <span class="report-finding__meta">LinkedIn &middot; 2021 &nbsp;&middot;&nbsp; Adobe &middot; 2019 &nbsp;&middot;&nbsp; MyFitnessPal &middot; 2018</span>
+                </div>
+              </li>
+              <li class="report-finding">
+                <span class="icon-chip"><span class="material-symbols-outlined">vpn_lock</span></span>
+                <div class="report-finding__body">
+                  <span class="report-finding__title">Email present on 2 dark web lists</span>
+                  <span class="report-finding__meta">Paired with old passwords &middot; Last seen 8 months ago</span>
+                </div>
+              </li>
+              <li class="report-finding">
+                <span class="icon-chip"><span class="material-symbols-outlined">group</span></span>
+                <div class="report-finding__body">
+                  <span class="report-finding__title">5 social profiles match name and address</span>
+                  <span class="report-finding__meta">4 active, 1 dormant &middot; 2 include exact neighborhood</span>
+                </div>
+              </li>
+              <li class="report-finding">
+                <span class="icon-chip"><span class="material-symbols-outlined">travel_explore</span></span>
+                <div class="report-finding__body">
+                  <span class="report-finding__title">Name listed on 14 people&#8209;search sites</span>
+                  <span class="report-finding__meta">Spokeo, Whitepages, BeenVerified &middot; +11 more</span>
+                </div>
+              </li>
+              <li class="report-finding">
+                <span class="icon-chip"><span class="material-symbols-outlined">home_pin</span></span>
+                <div class="report-finding__body">
+                  <span class="report-finding__title">Home address in 6 public records</span>
+                  <span class="report-finding__meta">Property filings &middot; Voter registration &middot; 2 archived directories</span>
+                </div>
+              </li>
+            </ul>
+
+            <button class="btn-pill btn-pill--dark report-hero__cta" type="button">Take action</button>
+          </section>
+
+          <!-- What we checked -->
+          <section class="report-section">
+            <h3 class="report-section__title">What we just checked</h3>
+            <p class="report-section__lede">Think of this as your receipt. Here&rsquo;s every place we looked today.</p>
+
+            <ul class="report-checks">
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--outline material-symbols-outlined">task_alt</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Dark web &amp; breach lists</span>
+                  <span class="report-check__meta">142 sources &middot; 1 old password found</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--outline material-symbols-outlined">task_alt</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Credit file movement</span>
+                  <span class="report-check__meta">3 bureaus &middot; No new activity</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--outline material-symbols-outlined">task_alt</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Public records &amp; court filings</span>
+                  <span class="report-check__meta">Nothing tied to your name</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--outline material-symbols-outlined">task_alt</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Social handles &amp; impersonators</span>
+                  <span class="report-check__meta">4 platforms &middot; All clear</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--outline material-symbols-outlined">task_alt</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Known scam signals</span>
+                  <span class="report-check__meta">No calls, texts, or emails flagged</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Coverage -->
+          <section class="report-section">
+            <h3 class="report-section__title">Your coverage so far</h3>
+            <p class="report-section__lede">The more you add, the more corners we can watch.</p>
+
+            <div class="report-coverage">
+              <div class="report-coverage__bar">
+                <div class="report-coverage__fill" style="width:25%"></div>
+              </div>
+              <div class="report-coverage__meta">
+                <span class="report-coverage__pct">25%</span>
+                <span class="report-coverage__note">4 of 16 categories protected</span>
+              </div>
+            </div>
+
+            <ul class="report-coverage-list">
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">assignment_ind</span>
+                <span class="report-coverage-row__label">Personal info</span>
+                <span class="report-chip report-chip--outline">3 of 5</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">paid</span>
+                <span class="report-coverage-row__label">Finances</span>
+                <span class="report-chip report-chip--outline">0 of 4</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">home</span>
+                <span class="report-coverage-row__label">Home &amp; auto</span>
+                <span class="report-chip report-chip--outline">0 of 3</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">key</span>
+                <span class="report-coverage-row__label">Passwords</span>
+                <span class="report-chip report-chip--outline">1 of 4</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Recommendations -->
+          <section class="report-section">
+            <h3 class="report-section__title">Recommendations</h3>
+            <p class="report-section__lede">Ordered by impact. Each one closes a specific gap flagged in the initial scan and targets a credential thieves exploit most often.</p>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">fingerprint</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Add your SSN to monitoring</span>
+                  <span class="label-sub">So we can catch it the moment it surfaces</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: your SSN is the master key thieves go after first.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>1 min</span>
+                <button class="btn-dark-sm" type="button">Add now</button>
+              </div>
+            </article>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">credit_card</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Link your main bank</span>
+                  <span class="label-sub">Read&#8209;only. We only watch, never move money.</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: unusual charges are the earliest sign of fraud.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>2 min</span>
+                <button class="btn-dark-sm" type="button">Link bank</button>
+              </div>
+            </article>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">alternate_email</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Change your Keystone email to an uncompromised address</span>
+                  <span class="label-sub">Your current one surfaced in 3 breaches and 2 dark&#8209;web lists</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: a clean login email keeps attackers from tying old credential leaks to your Keystone account.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>3 min</span>
+                <button class="btn-dark-sm" type="button">Change</button>
+              </div>
+            </article>
+          </section>
+
+          <!-- Footer -->
+          <footer class="report-footer">
+            <button class="btn-pill btn-pill--ghost" type="button">
+              <span class="material-symbols-outlined">refresh</span>
+              Re&#8209;run this check
+            </button>
+            <p class="report-footer__note">Next automatic sweep in 24 hours. You&rsquo;ll get a nudge if anything changes.</p>
+          </footer>
+
+          <!-- Chat composer (sticky) -->
+          <form class="report-chat" onsubmit="return false;" aria-label="Chat with this report">
+            <div class="report-chat__field">
+              <span class="report-chat__leading material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+              <input class="report-chat__input" type="text" placeholder="Chat with this report&hellip;" aria-label="Chat with this report" />
+              <button class="report-chat__voice report-chat__voice--primary" type="button" aria-label="Open voice mode">
+                <span class="material-symbols-outlined">graphic_eq</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>3 · Security Snapshot &middot; New user</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 1rb — Security Snapshot Report (Long-term user)
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s1rb">
+      <div class="phone s1-report s1-report--long">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <!-- Header -->
+          <header class="report-header">
+            <div class="report-head-row">
+              <button class="report-back" type="button" aria-label="Back">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </button>
+              <button class="report-share" type="button" aria-label="Share report">
+                <span class="material-symbols-outlined">ios_share</span>
+              </button>
+            </div>
+            <div class="report-head-text">
+              <h1 class="report-title">Your security snapshot</h1>
+              <p class="report-subtitle">A plain&#8209;English look at what we&rsquo;re watching for you.</p>
+              <span class="report-stamp">Updated 4 min ago</span>
+            </div>
+          </header>
+
+          <!-- Hero status pill (sits above the hero card) -->
+          <span class="report-status report-status--filled report-status--above">
+            <span class="material-symbols-outlined">verified</span>
+            All clear
+          </span>
+
+          <!-- Hero -->
+          <section class="report-hero">
+            <span class="report-eyebrow">Last 24 hours</span>
+            <h2 class="report-hero__headline">1,847 checks ran quietly in the background.</h2>
+            <p class="report-hero__support">Nothing needs your attention. We chased down 3 tiny blips and cleared them all. Here&rsquo;s the play&#8209;by&#8209;play.</p>
+            <span class="report-hero__stat">0 open issues &middot; 3 auto&#8209;resolved</span>
+          </section>
+
+          <!-- What we checked -->
+          <section class="report-section">
+            <h3 class="report-section__title">Checks in the last 24 hours</h3>
+            <p class="report-section__lede">Everything ran on schedule. Green means no change.</p>
+
+            <ul class="report-checks">
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Dark web &amp; breach lists</span>
+                  <span class="report-check__meta">412 sources &middot; No new exposures</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Credit file movement</span>
+                  <span class="report-check__meta">3 bureaus &middot; No inquiries, no new accounts</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+                <div class="report-check__body">
+                  <div class="report-check__title-row">
+                    <span class="report-check__title">Bank &amp; card activity</span>
+                    <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+                  </div>
+                  <span class="report-check__meta">14 accounts &middot; 1 charge reviewed &amp; cleared</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+                <div class="report-check__body">
+                  <span class="report-check__title">Password vault health</span>
+                  <span class="report-check__meta">23 items &middot; All strong, none reused</span>
+                </div>
+              </li>
+              <li class="report-check">
+                <span class="report-check__icon report-check__icon--filled material-symbols-outlined">check_circle</span>
+                <div class="report-check__body">
+                  <div class="report-check__title-row">
+                    <span class="report-check__title">Scam &amp; phishing signals</span>
+                    <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+                  </div>
+                  <span class="report-check__meta">2 suspicious calls blocked</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Coverage -->
+          <section class="report-section">
+            <h3 class="report-section__title">Your coverage</h3>
+            <p class="report-section__lede">You&rsquo;re in the top 6% of members. A few small gaps left to close.</p>
+
+            <div class="report-coverage">
+              <div class="report-coverage__bar">
+                <div class="report-coverage__fill" style="width:94%"></div>
+              </div>
+              <div class="report-coverage__meta">
+                <span class="report-coverage__pct">94%</span>
+                <span class="report-coverage__note">15 of 16 categories protected</span>
+              </div>
+            </div>
+
+            <ul class="report-coverage-list">
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">assignment_ind</span>
+                <span class="report-coverage-row__label">Personal info</span>
+                <span class="report-chip report-chip--filled">5 of 5</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">paid</span>
+                <span class="report-coverage-row__label">Finances</span>
+                <span class="report-chip report-chip--filled">4 of 4</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">home</span>
+                <span class="report-coverage-row__label">Home &amp; auto</span>
+                <span class="report-chip report-chip--outline">2 of 3</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">key</span>
+                <span class="report-coverage-row__label">Passwords</span>
+                <span class="report-chip report-chip--filled">23 of 23</span>
+              </li>
+              <li class="report-coverage-row">
+                <span class="material-symbols-outlined">family_restroom</span>
+                <span class="report-coverage-row__label">Family members</span>
+                <span class="report-chip report-chip--filled">3 of 3</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Tune-ups -->
+          <section class="report-section">
+            <h3 class="report-section__title">Recommendations</h3>
+            <p class="report-section__lede">Ordered by impact. Each one reinforces a layer that&rsquo;s already covered or adds a fallback for the next time something surfaces.</p>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">person_add</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Name a trusted contact</span>
+                  <span class="label-sub">Someone we can loop in if we can&rsquo;t reach you</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: if something urgent pops up while you&rsquo;re offline, we&rsquo;ll have a backup to reach.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>2 min</span>
+                <button class="btn-dark-sm" type="button">Add</button>
+              </div>
+            </article>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">phonelink_lock</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Turn on 2&#8209;factor for 1 old login</span>
+                  <span class="label-sub">Your email host supports it now</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: 2FA blocks 99% of password&#8209;based attacks.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>3 min</span>
+                <button class="btn-dark-sm" type="button">Set up</button>
+              </div>
+            </article>
+
+            <article class="report-reco">
+              <div class="report-reco__head">
+                <span class="icon-chip"><span class="material-symbols-outlined">family_restroom</span></span>
+                <div class="label-stack">
+                  <span class="label-bold">Invite your partner</span>
+                  <span class="label-sub">Shared alerts, separate vaults</span>
+                </div>
+              </div>
+              <p class="report-reco__why">Why it matters: identity theft usually hits a household, not a person.</p>
+              <div class="report-reco__foot">
+                <span class="report-reco__time"><span class="material-symbols-outlined">schedule</span>1 min</span>
+                <button class="btn-dark-sm" type="button">Invite</button>
+              </div>
+            </article>
+          </section>
+
+          <!-- Recent activity -->
+          <section class="report-section">
+            <h3 class="report-section__title">Recent activity</h3>
+            <p class="report-section__lede">Scans and automated responses from the past 48 hours. Items marked <span class="auto-pill auto-pill--inline"><span class="material-symbols-outlined">bolt</span>Auto</span> were handled without any input required.</p>
+
+            <ol class="report-timeline">
+              <li class="report-timeline__item">
+                <span class="report-timeline__dot"></span>
+                <div class="report-timeline__body">
+                  <span class="report-timeline__title">Dark web sweep &mdash; clean</span>
+                  <span class="report-timeline__meta">4 min ago</span>
+                </div>
+              </li>
+              <li class="report-timeline__item report-timeline__item--auto">
+                <span class="report-timeline__dot"></span>
+                <div class="report-timeline__body">
+                  <div class="report-timeline__title-row">
+                    <span class="report-timeline__title">$312 charge reviewed &amp; cleared</span>
+                    <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+                  </div>
+                  <span class="report-timeline__meta">2 hr ago &middot; Chase &middot;&middot;&middot;4821</span>
+                </div>
+              </li>
+              <li class="report-timeline__item report-timeline__item--auto">
+                <span class="report-timeline__dot"></span>
+                <div class="report-timeline__body">
+                  <div class="report-timeline__title-row">
+                    <span class="report-timeline__title">2 scam calls blocked</span>
+                    <span class="auto-pill"><span class="material-symbols-outlined">bolt</span>Auto</span>
+                  </div>
+                  <span class="report-timeline__meta">Yesterday</span>
+                </div>
+              </li>
+              <li class="report-timeline__item">
+                <span class="report-timeline__dot"></span>
+                <div class="report-timeline__body">
+                  <span class="report-timeline__title">Password vault re&#8209;checked</span>
+                  <span class="report-timeline__meta">Yesterday &middot; All 23 strong</span>
+                </div>
+              </li>
+              <li class="report-timeline__item">
+                <span class="report-timeline__dot"></span>
+                <div class="report-timeline__body">
+                  <span class="report-timeline__title">Credit bureau pull &mdash; no change</span>
+                  <span class="report-timeline__meta">2 days ago</span>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Footer -->
+          <footer class="report-footer">
+            <button class="btn-pill btn-pill--ghost" type="button">
+              <span class="material-symbols-outlined">refresh</span>
+              Re&#8209;run this check
+            </button>
+            <p class="report-footer__note">Next automatic sweep tonight at 2:00 AM. We&rsquo;ll only nudge you if something changes.</p>
+          </footer>
+
+          <!-- Chat composer (sticky) -->
+          <form class="report-chat" onsubmit="return false;" aria-label="Chat with this report">
+            <div class="report-chat__field">
+              <span class="report-chat__leading material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+              <input class="report-chat__input" type="text" placeholder="Chat with this report&hellip;" aria-label="Chat with this report" />
+              <button class="report-chat__voice report-chat__voice--primary" type="button" aria-label="Open voice mode">
+                <span class="material-symbols-outlined">graphic_eq</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>4 · Security Snapshot &middot; Long-term user</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 2 — Personal Collection
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s2">
+      <div class="phone s2">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Back" type="button">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="t-title nav-title">Personal</h1>
+          </div>
+
+          <div class="s2-stack">
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">fingerprint</span></div>
+              <div class="label-stack">
+                <span class="label-bold">Social security number</span>
+                <span class="label-sub">Protect your identity</span>
+              </div>
+              <button class="btn-dark-sm" type="button">Add</button>
+            </div>
+
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">call</span></div>
+              <div class="label-stack">
+                <span class="label-bold">Phone number</span>
+                <span class="label-sub">Protect your phone number</span>
+              </div>
+              <button class="btn-dark-sm" type="button">Add</button>
+            </div>
+          </div>
+
+          <div class="s2-rows">
+            <div class="list-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">mail</span></div>
+              <div class="label-stack list-row__labels">
+                <span class="label-bold">Email address</span>
+                <span class="label-sub">Samantha@zmail.com</span>
+              </div>
+              <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+            </div>
+
+            <div class="list-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">account_circle</span></div>
+              <div class="label-stack list-row__labels">
+                <span class="label-bold">Legal name</span>
+                <span class="label-sub">Samantha Yu</span>
+              </div>
+              <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+            </div>
+
+            <div class="list-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">home_work</span></div>
+              <div class="label-stack list-row__labels">
+                <span class="label-bold">Address (home)</span>
+                <span class="label-sub">123 4th Ave W Brooklyn, NY 123456</span>
+              </div>
+              <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-pill" type="button">
+          <span class="material-symbols-outlined">add</span>Add
+        </button>
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>2 · Personal Collection</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 3 — Add Item (modal sheet)
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s3">
+      <div class="phone s2 s3">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <!-- same underlying page as S2 -->
+        <div class="phone-body">
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Back" type="button">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="t-title nav-title">Personal</h1>
+          </div>
+
+          <div class="s2-stack">
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">fingerprint</span></div>
+              <div class="label-stack">
+                <span class="label-bold">Social security number</span>
+                <span class="label-sub">Protect your identity</span>
+              </div>
+              <button class="btn-dark-sm" type="button">Add</button>
+            </div>
+
+            <div class="reco-card">
+              <div class="icon-chip"><span class="material-symbols-outlined">call</span></div>
+              <div class="label-stack">
+                <span class="label-bold">Phone number</span>
+                <span class="label-sub">Protect your phone number</span>
+              </div>
+              <button class="btn-dark-sm" type="button">Add</button>
+            </div>
+          </div>
+
+          <div class="s2-rows">
+            <div class="list-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">mail</span></div>
+              <div class="label-stack list-row__labels">
+                <span class="label-bold">Email address</span>
+                <span class="label-sub">Samantha@zmail.com</span>
+              </div>
+              <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="list-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">account_circle</span></div>
+              <div class="label-stack list-row__labels">
+                <span class="label-bold">Legal name</span>
+                <span class="label-sub">Samantha Yu</span>
+              </div>
+              <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="list-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">home_work</span></div>
+              <div class="label-stack list-row__labels">
+                <span class="label-bold">Address (home)</span>
+                <span class="label-sub">123 4th Ave W Brooklyn, NY 123456</span>
+              </div>
+              <span class="list-row__trailing material-symbols-outlined">chevron_right</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- scrim + sheet -->
+        <div class="scrim"></div>
+        <div class="sheet">
+          <h2 class="t-sheet">Add an item to Identity Monitoring</h2>
+          <div class="sheet-divider"></div>
+
+          <div class="sheet-row">
+            <div class="label-stack">
+              <span class="label-bold">Manually</span>
+              <span class="label-sub">Enter your information</span>
+            </div>
+            <div class="icon-chip"><span class="material-symbols-outlined">border_color</span></div>
+          </div>
+
+          <div class="sheet-row">
+            <div class="label-stack">
+              <span class="label-bold">From a photo</span>
+              <span class="label-sub">Capture / upload image(s) of an item</span>
+            </div>
+            <div class="icon-chip"><span class="material-symbols-outlined">add_a_photo</span></div>
+          </div>
+
+          <div class="sheet-row">
+            <div class="label-stack">
+              <span class="label-bold">From a file</span>
+              <span class="label-sub">Upload a file or document for auto recognition</span>
+            </div>
+            <div class="icon-chip"><span class="material-symbols-outlined">document_scanner</span></div>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>3 · Add Item Sheet</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 4 — Select Item Type
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s4">
+      <div class="phone s4">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Close" type="button">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+            <h1 class="t-title nav-title">Select item type</h1>
+          </div>
+
+          <div class="s4-list">
+            <div class="s4-row"><span class="label-bold">Driver&rsquo;s license</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Date of birth</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Email address</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Gamertag</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Health insurance card</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Legal Name</span><span class="check-placeholder"></span></div>
+            <div class="s4-row is-selected">
+              <span class="label-bold">Passport</span>
+              <span class="material-symbols-outlined">check</span>
+            </div>
+            <div class="s4-row"><span class="label-bold">Phone number</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Social media profile</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Social security number</span><span class="check-placeholder"></span></div>
+            <div class="s4-row"><span class="label-bold">Temporary Visa</span><span class="check-placeholder"></span></div>
+          </div>
+        </div>
+
+        <button class="btn-pill" type="button">Continue</button>
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>4 · Select Item Type</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 5 — Add Item Details
+         ============================================================ -->
+    <figure class="screen-wrap" id="view-s5">
+      <div class="phone s5">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Close" type="button">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+            <h1 class="t-title nav-title">Add item details</h1>
+          </div>
+
+          <div class="s5-attach">
+            <span class="material-symbols-outlined">add</span>
+            <span class="label-bold" style="color: var(--c-ink-700);">Add image or attachment</span>
+          </div>
+
+          <div class="s5-item-head">
+            <div class="icon-chip"><span class="material-symbols-outlined">badge</span></div>
+            <h2 class="t-item">Passport</h2>
+          </div>
+
+          <form class="s5-form" onsubmit="return false;">
+            <div class="field">
+              <label for="s5-item-name">Item name</label>
+              <input id="s5-item-name" type="text" value="Passport" />
+            </div>
+            <div class="field">
+              <label for="s5-name-doc">Name on document</label>
+              <input id="s5-name-doc" type="text" placeholder="Full passport name" />
+            </div>
+            <div class="field">
+              <label for="s5-number">Passport number</label>
+              <input id="s5-number" type="text" placeholder="8 digit number…" />
+            </div>
+            <div class="field">
+              <label for="s5-country">Issuing country</label>
+              <input id="s5-country" type="text" placeholder="Where was the passport issued from?" />
+            </div>
+            <div class="field">
+              <label for="s5-expires">Expiration</label>
+              <input id="s5-expires" type="text" placeholder="When does it expire?" />
+            </div>
+          </form>
+        </div>
+
+        <button class="btn-pill" type="button">Monitor item</button>
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>5 · Add Item Details</figcaption>
+    </figure>
+
+  </div>
+  </section>
+
+
+  <div class="section-divider" role="separator" aria-hidden="true">
+    <span>End of section 01</span>
+  </div>
+
+  <!-- ============================================================
+       SECTION — Activity Stream
+       ============================================================ -->
+  <section class="flow-section" id="activity-stream">
+  <header class="section-header">
+    <span class="status-pill">
+      <span class="status-spinner material-symbols-outlined">progress_activity</span>
+      In progress
+    </span>
+    <h1><span class="section-num">02</span>Activity stream</h1>
+    <p>A single chronological feed of every signal surfaced &mdash; from dark web hits and breach notifications to credit changes and unusual account activity, each tagged with its source and severity. It gives members one place to see everything being watched on their behalf, so nothing gets lost across the six underlying monitors and users always have a clear answer to &ldquo;what's happened recently?&rdquo;</p>
+
+    <nav class="screen-nav" aria-label="Screens in Activity stream">
+      <button class="screen-nav__chip is-active" type="button" data-view="view-s6" aria-current="page">
+        <span class="screen-nav__num">1</span>
+        <span class="screen-nav__label">Activity Landing</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s7">
+        <span class="screen-nav__num">2</span>
+        <span class="screen-nav__label">Alert &middot; Needs action</span>
+      </button>
+      <button class="screen-nav__chip" type="button" data-view="view-s7b">
+        <span class="screen-nav__num">3</span>
+        <span class="screen-nav__label">Alert &middot; Auto-handled</span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="screens">
+
+    <!-- ============================================================
+         SCREEN 6 — Activity Stream / Landing
+         ============================================================ -->
+    <figure class="screen-wrap is-active" id="view-s6">
+      <div class="phone s6">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <h1 class="t-hero s6-hero">Activity</h1>
+
+          <div class="reco-card s6-alert">
+            <button class="alert-close" type="button" aria-label="Dismiss">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="icon-chip icon-chip--tipped">
+              <span class="severity-tip" role="note">
+                <span class="material-symbols-outlined">emergency_home</span>
+                Critical
+              </span>
+              <span class="material-symbols-outlined">emergency_home</span>
+            </div>
+            <div class="label-stack">
+              <span class="label-bold">SSN found in a new dark web listing</span>
+            </div>
+            <button class="btn-dark-sm" type="button">Take action</button>
+          </div>
+
+          <div class="segmented" role="tablist" aria-label="Activity filter">
+            <button class="seg seg--active" type="button" role="tab" aria-selected="true">All</button>
+            <button class="seg" type="button" role="tab" aria-selected="false">Unread</button>
+            <button class="seg" type="button" role="tab" aria-selected="false">
+              Alerts
+              <span class="seg-badge">3</span>
+            </button>
+          </div>
+
+          <div class="s6-activity">
+            <h3 class="activity-date">
+              <span>Today</span>
+              <button class="filter-dropdown" type="button" aria-haspopup="listbox">
+                Filter by: <span class="filter-value">Latest</span>
+                <span class="material-symbols-outlined">expand_more</span>
+              </button>
+            </h3>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">emergency_home</span></div>
+              <p class="act-text">SSN found in a new dark web listing &mdash; action recommended</p>
+              <button class="btn-dark-sm" type="button">Take action</button>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">gpp_bad</span></div>
+              <p class="act-text">Data breach detected at Acme Health &mdash; your email address was exposed</p>
+              <button class="btn-outline-sm" type="button">View</button>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">compare_arrows</span></div>
+              <p class="act-text">Large transfer detected across two connected accounts &mdash; confirm it was you</p>
+              <button class="btn-outline-sm" type="button">View</button>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">devices</span></div>
+              <p class="act-text">New device signed in to your monitored Gmail account</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <h3 class="activity-date">Yesterday</h3>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">location_on</span></div>
+              <p class="act-text">New address associated with your identity &mdash; review now</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">credit_score</span></div>
+              <p class="act-text">New credit inquiry from Capital One on your Experian report</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">directions_car</span></div>
+              <p class="act-text">Driver's license number flagged in a public records change</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <h3 class="activity-date">This week</h3>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">block</span></div>
+              <p class="act-text">Unusual login attempt blocked on your connected Chase account</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">lock</span></div>
+              <p class="act-text">Account lock applied to your Fidelity account by Kill Switch</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">trending_up</span></div>
+              <p class="act-text">Credit score changed: 742, up 6 points this month</p>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">travel_explore</span></div>
+              <p class="act-text">Weekly dark web scan complete &mdash; no new exposures</p>
+            </div>
+
+            <h3 class="activity-date">Last week</h3>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">verified_user</span></div>
+              <p class="act-text">Data breach detected at Northwind Retail &mdash; your information was not affected</p>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">support_agent</span></div>
+              <p class="act-text">Identity restoration case opened &mdash; specialist assigned</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">forum</span></div>
+              <p class="act-text">Your email address appeared in a forum data dump from 2024</p>
+              <span class="tag-actioned">
+                <span class="material-symbols-outlined">check</span>
+                Actioned
+              </span>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">favorite</span></div>
+              <p class="act-text">Wellbeing check &mdash; no unusual spending patterns this week</p>
+            </div>
+
+            <h3 class="activity-date">Earlier</h3>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">badge</span></div>
+              <p class="act-text">Passport number added to monitored items</p>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">call</span></div>
+              <p class="act-text">Phone number added to monitored items</p>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">medical_information</span></div>
+              <p class="act-text">Medical ID added to monitored items</p>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">group</span></div>
+              <p class="act-text">Family member added as a trusted contact for elder fraud alerts</p>
+            </div>
+
+            <div class="activity-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">check_circle</span></div>
+              <p class="act-text">No activity to report today &mdash; all clear</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>1 · Activity Landing</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 7 — SSN Dark Web Alert Detail
+         ============================================================ -->
+    <figure class="screen-wrap screen-wrap--multi" id="view-s7">
+      <div class="screen-wrap__phones">
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">In-app</span>
+      <div class="phone s7">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Back" type="button">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="t-title nav-title">Alert</h1>
+          </div>
+
+          <div class="s7-content">
+            <span class="severity-pill">
+              <span class="material-symbols-outlined">emergency_home</span>
+              Critical &middot; Action required
+            </span>
+
+            <div class="alert-hero">
+              <div class="alert-hero__chip">
+                <span class="material-symbols-outlined">fingerprint</span>
+              </div>
+              <h2 class="alert-hero__title">Your SSN was found in a new dark web listing</h2>
+              <p class="alert-hero__desc">We detected your social security number in a listing posted to a known dark web forum. Immediate action is recommended to prevent identity fraud.</p>
+            </div>
+
+            <section class="detail-section">
+              <h3 class="detail-section__title">Detection details</h3>
+              <div class="detail-rows">
+                <div class="detail-row">
+                  <span class="detail-label">Detected</span>
+                  <span class="detail-value">Today, 9:14&nbsp;AM</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Source</span>
+                  <span class="detail-value">BreachForum v3</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Exposed</span>
+                  <span class="detail-value">SSN, DOB, full name</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Listing age</span>
+                  <span class="detail-value">2 hours</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="detail-section">
+              <h3 class="detail-section__title">Recommended steps</h3>
+              <div class="step-list">
+                <div class="step-row">
+                  <span class="step-num">1</span>
+                  <div class="label-stack">
+                    <span class="label-bold">Freeze your credit</span>
+                    <span class="label-sub">Blocks new account openings</span>
+                  </div>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+                <div class="step-row">
+                  <span class="step-num">2</span>
+                  <div class="label-stack">
+                    <span class="label-bold">Engage Kill Switch</span>
+                    <span class="label-sub">Lock connected financial accounts</span>
+                  </div>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+                <div class="step-row">
+                  <span class="step-num">3</span>
+                  <div class="label-stack">
+                    <span class="label-bold">Contact a specialist</span>
+                    <span class="label-sub">Open an identity restoration case</span>
+                  </div>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </div>
+            </section>
+
+            <button class="btn-pill" type="button">Handle all 3 for me</button>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">Email</span>
+      <div class="phone s7-email">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="mail-toolbar">
+            <span class="mail-toolbar__left">
+              <span class="material-symbols-outlined">chevron_left</span>
+              Inbox
+            </span>
+            <span class="mail-toolbar__actions">
+              <span class="material-symbols-outlined">keyboard_arrow_up</span>
+              <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            </span>
+          </div>
+
+          <div class="mail-header">
+            <div class="mail-subject">
+              <span class="material-symbols-outlined mail-subject__flag">flag</span>
+              <span class="mail-subject__text">Action required: Your SSN was found on the dark web</span>
+            </div>
+            <div class="mail-from">
+              <div class="mail-avatar">
+                <span class="material-symbols-outlined">shield</span>
+              </div>
+              <div class="mail-meta">
+                <div class="mail-meta__row">
+                  <span class="mail-meta__from">Keystone Security</span>
+                  <span class="mail-meta__date">9:14 AM</span>
+                </div>
+                <span class="mail-meta__to">to <b>you</b> &middot; alerts@keystone.app</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mail-body">
+            <p>Hi Alex,</p>
+            <div class="mail-body__hero">
+              <div class="icon-chip">
+                <span class="material-symbols-outlined">fingerprint</span>
+              </div>
+              <div class="mail-body__hero-text">
+                <span class="mail-body__hero-label">Critical &middot; Action required</span>
+                <span class="mail-body__hero-title">SSN found on BreachForum v3</span>
+              </div>
+            </div>
+            <p>We detected your social security number in a listing posted to a known dark web forum this morning. Your date of birth and full name were exposed alongside it. Immediate action is recommended to prevent identity fraud.</p>
+            <p><b>Recommended next steps:</b></p>
+            <ol>
+              <li><b>Freeze your credit</b> &mdash; blocks new account openings at all 3 bureaus.</li>
+              <li><b>Engage Kill Switch</b> &mdash; locks your 14 connected financial accounts.</li>
+              <li><b>Contact a specialist</b> &mdash; opens an identity restoration case.</li>
+            </ol>
+            <a class="mail-body__cta" href="#">
+              <span class="material-symbols-outlined">bolt</span>
+              Handle all 3 for me
+            </a>
+            <p class="mail-body__signoff">Stay safe,<br/>The Keystone team</p>
+            <p class="mail-body__footer">You're getting this because critical identity alerts are enabled. Manage your alert preferences in the Keystone app.</p>
+          </div>
+
+          <div class="mail-actionbar">
+            <span class="material-symbols-outlined">folder</span>
+            <span class="material-symbols-outlined">delete</span>
+            <span class="material-symbols-outlined">mail</span>
+            <span class="material-symbols-outlined">reply</span>
+            <span class="material-symbols-outlined">ios_share</span>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">Lock screen</span>
+      <div class="phone s7-lock">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="lock-header">
+            <span class="lock-lockicon">
+              <span class="material-symbols-outlined">lock</span>
+            </span>
+            <span class="lock-date">Thursday, April 9</span>
+            <span class="lock-time">9:14</span>
+          </div>
+
+          <div class="lock-notifs">
+            <div class="lock-notif lock-notif--critical">
+              <div class="lock-notif__head">
+                <span class="lock-notif__app lock-notif__app--alert">
+                  <span class="material-symbols-outlined">shield</span>
+                </span>
+                <span class="lock-notif__name">Keystone</span>
+                <span class="lock-notif__when">now</span>
+              </div>
+              <span class="lock-notif__title">Critical: SSN found on the dark web</span>
+              <span class="lock-notif__body">Your SSN surfaced on BreachForum v3. 3 protective steps are ready for your review.</span>
+            </div>
+          </div>
+
+          <div class="lock-footer">
+            <span class="lock-footer__icon">
+              <span class="material-symbols-outlined">flashlight_on</span>
+            </span>
+            <span class="lock-footer__icon">
+              <span class="material-symbols-outlined">photo_camera</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      </div>
+      <figcaption>2 · Dark Web Alert &middot; Needs action</figcaption>
+    </figure>
+
+
+    <!-- ============================================================
+         SCREEN 7b — SSN Dark Web Alert Detail (Auto-handled)
+         ============================================================ -->
+    <figure class="screen-wrap screen-wrap--multi" id="view-s7b">
+      <div class="screen-wrap__phones">
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">In-app</span>
+      <div class="phone s7">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Back" type="button">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="t-title nav-title">Alert</h1>
+          </div>
+
+          <div class="s7-content">
+            <span class="severity-pill severity-pill--resolved">
+              <span class="material-symbols-outlined">verified</span>
+              Resolved &middot; Auto-handled
+            </span>
+
+            <div class="alert-hero">
+              <div class="alert-hero__chip alert-hero__chip--done">
+                <span class="material-symbols-outlined">shield_lock</span>
+              </div>
+              <h2 class="alert-hero__title">We handled a new SSN dark web listing for you</h2>
+              <p class="alert-hero__desc">Your SSN surfaced on BreachForum v3 this morning. Per your safety preferences, Keystone ran all 3 protective steps on your behalf &mdash; no action needed.</p>
+            </div>
+
+            <section class="detail-section">
+              <h3 class="detail-section__title">Detection details</h3>
+              <div class="detail-rows">
+                <div class="detail-row">
+                  <span class="detail-label">Detected</span>
+                  <span class="detail-value">Today, 9:14&nbsp;AM</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Source</span>
+                  <span class="detail-value">BreachForum v3</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Exposed</span>
+                  <span class="detail-value">SSN, DOB, full name</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Handled</span>
+                  <span class="detail-value">9:14&nbsp;AM</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="detail-section">
+              <h3 class="detail-section__title">Steps auto&#8209;completed</h3>
+              <div class="step-list">
+                <div class="step-row step-row--done">
+                  <span class="step-num step-num--done">
+                    <span class="material-symbols-outlined">check</span>
+                  </span>
+                  <div class="label-stack">
+                    <span class="label-bold">Credit frozen at all 3 bureaus</span>
+                    <span class="label-sub">Equifax, Experian, TransUnion &middot; 9:14 AM</span>
+                  </div>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+                <div class="step-row step-row--done">
+                  <span class="step-num step-num--done">
+                    <span class="material-symbols-outlined">check</span>
+                  </span>
+                  <div class="label-stack">
+                    <span class="label-bold">Kill Switch engaged</span>
+                    <span class="label-sub">14 linked accounts locked &middot; 9:14 AM</span>
+                  </div>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+                <div class="step-row step-row--done">
+                  <span class="step-num step-num--done">
+                    <span class="material-symbols-outlined">check</span>
+                  </span>
+                  <div class="label-stack">
+                    <span class="label-bold">Restoration specialist assigned</span>
+                    <span class="label-sub">Case #K&#8209;4821 &middot; Standing by if needed</span>
+                  </div>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="detail-section">
+              <h3 class="detail-section__title">Why this happened automatically</h3>
+              <div class="pref-card">
+                <div class="icon-chip"><span class="material-symbols-outlined">bolt</span></div>
+                <div class="label-stack">
+                  <span class="label-bold">Auto&#8209;handle critical SSN alerts</span>
+                  <span class="label-sub">On since Mar 14</span>
+                </div>
+                <button class="btn-outline-sm" type="button">Edit</button>
+              </div>
+            </section>
+
+            <button class="btn-pill btn-pill--ghost-s7" type="button">
+              <span class="material-symbols-outlined">receipt_long</span>
+              View full audit log
+            </button>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">Email</span>
+      <div class="phone s7-email">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="mail-toolbar">
+            <span class="mail-toolbar__left">
+              <span class="material-symbols-outlined">chevron_left</span>
+              Inbox
+            </span>
+            <span class="mail-toolbar__actions">
+              <span class="material-symbols-outlined">keyboard_arrow_up</span>
+              <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            </span>
+          </div>
+
+          <div class="mail-header">
+            <div class="mail-subject">
+              <span class="mail-subject__text">Resolved: We auto&#8209;handled a new SSN dark web listing for you</span>
+            </div>
+            <div class="mail-from">
+              <div class="mail-avatar">
+                <span class="material-symbols-outlined">shield</span>
+              </div>
+              <div class="mail-meta">
+                <div class="mail-meta__row">
+                  <span class="mail-meta__from">Keystone Security</span>
+                  <span class="mail-meta__date">9:14 AM</span>
+                </div>
+                <span class="mail-meta__to">to <b>you</b> &middot; alerts@keystone.app</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mail-body">
+            <p>Hi Alex,</p>
+            <div class="mail-body__hero mail-body__hero--resolved">
+              <div class="icon-chip">
+                <span class="material-symbols-outlined">shield_lock</span>
+              </div>
+              <div class="mail-body__hero-text">
+                <span class="mail-body__hero-label">Resolved &middot; Auto-handled</span>
+                <span class="mail-body__hero-title">SSN listing on BreachForum v3</span>
+              </div>
+            </div>
+            <p>Your SSN surfaced on BreachForum v3 this morning. Per your safety preferences, Keystone ran all 3 protective steps on your behalf &mdash; no action needed from you.</p>
+            <p><b>Steps we completed at 9:14 AM:</b></p>
+            <ol>
+              <li><b>Credit frozen at all 3 bureaus</b> &mdash; Equifax, Experian, TransUnion.</li>
+              <li><b>Kill Switch engaged</b> &mdash; 14 linked financial accounts locked.</li>
+              <li><b>Restoration specialist assigned</b> &mdash; Case #K&#8209;4821, standing by if needed.</li>
+            </ol>
+            <a class="mail-body__cta" href="#">
+              <span class="material-symbols-outlined">receipt_long</span>
+              View full audit log
+            </a>
+            <p class="mail-body__signoff">You&rsquo;re covered,<br/>The Keystone team</p>
+            <p class="mail-body__footer">You&rsquo;re getting this because &ldquo;Auto-handle critical SSN alerts&rdquo; is on. Manage your alert preferences in the Keystone app.</p>
+          </div>
+
+          <div class="mail-actionbar">
+            <span class="material-symbols-outlined">folder</span>
+            <span class="material-symbols-outlined">delete</span>
+            <span class="material-symbols-outlined">mail</span>
+            <span class="material-symbols-outlined">reply</span>
+            <span class="material-symbols-outlined">ios_share</span>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      <div class="screen-wrap__phone-group">
+      <span class="screen-wrap__label">Lock screen</span>
+      <div class="phone s7-lock">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+          <div class="lock-header">
+            <span class="lock-lockicon">
+              <span class="material-symbols-outlined">lock</span>
+            </span>
+            <span class="lock-date">Thursday, April 9</span>
+            <span class="lock-time">9:14</span>
+          </div>
+
+          <div class="lock-notifs">
+            <div class="lock-notif">
+              <div class="lock-notif__head">
+                <span class="lock-notif__app lock-notif__app--done">
+                  <span class="material-symbols-outlined">check</span>
+                </span>
+                <span class="lock-notif__name">Keystone</span>
+                <span class="lock-notif__when">now</span>
+              </div>
+              <span class="lock-notif__title">Resolved: We handled a new SSN alert for you</span>
+              <span class="lock-notif__body">Credit frozen, Kill Switch engaged, specialist on standby. Full audit log available.</span>
+            </div>
+          </div>
+
+          <div class="lock-footer">
+            <span class="lock-footer__icon">
+              <span class="material-symbols-outlined">flashlight_on</span>
+            </span>
+            <span class="lock-footer__icon">
+              <span class="material-symbols-outlined">photo_camera</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      </div>
+
+      </div>
+      <figcaption>3 · Dark Web Alert &middot; Auto-handled</figcaption>
+    </figure>
+
+  </div>
+  </section>
+
+
+  <div class="section-divider" role="separator" aria-hidden="true">
+    <span>End of section 02</span>
+  </div>
+
+  <!-- ============================================================
+       SECTION — Financial Account(s) Monitoring
+       ============================================================ -->
+  <section class="flow-section" id="financial-accounts">
+  <header class="section-header">
+    <span class="status-pill">
+      <span class="status-spinner material-symbols-outlined">progress_activity</span>
+      Sprint 3a concept
+    </span>
+    <h1><span class="section-num">03</span>Financial Account(s) Monitoring</h1>
+    <p>The most NerdWallet-branded screen in the prototype suite. Tests whether making NerdWallet&rsquo;s brand presence more prominent increases perceived trust and value. This sub-page of Finances shows cross-account behavioral AI monitoring: a single view of all connected financial accounts with AI-powered transaction analysis. The key variable under test is NerdWallet brand integration.</p>
+
+    <nav class="screen-nav" aria-label="Screens in Financial Account(s) Monitoring">
+      <button class="screen-nav__chip is-active" type="button" data-view="view-s8" aria-current="page">
+        <span class="screen-nav__num">1</span>
+        <span class="screen-nav__label">Account Monitoring</span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="screens">
+
+    <!-- ============================================================
+         SCREEN 8 — Financial Account(s) Monitoring
+         ============================================================ -->
+    <figure class="screen-wrap is-active" id="view-s8">
+      <div class="phone s8">
+        <div class="status-bar">
+          <span class="sb-time t-status">9:41</span>
+          <div class="sb-icons">
+            <span class="material-symbols-outlined">signal_cellular_alt</span>
+            <span class="material-symbols-outlined">wifi</span>
+            <span class="material-symbols-outlined">battery_full</span>
+          </div>
+        </div>
+
+        <div class="phone-body">
+
+          <!-- Back nav -->
+          <div class="nav-bar">
+            <button class="nav-icon-btn" aria-label="Back to Finances" type="button">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="t-title nav-title">Financial Accounts</h1>
+          </div>
+
+          <!-- NerdWallet co-brand bar (centered) -->
+          <div class="s8-cobrand s8-cobrand--center">
+            <span class="s8-cobrand__klogo">K</span>
+            <span class="s8-cobrand__x">&times;</span>
+            <span class="s8-cobrand__nw">NerdWallet</span>
+          </div>
+
+          <!-- Status -->
+          <div class="s8-status">
+            <div class="s8-status-row">
+              <span class="s8-status-dot" aria-hidden="true"></span>
+              <span class="s8-status-text">5 accounts clear, 1 needs a look</span>
+            </div>
+            <span class="s8-freshness">Last scanned 4 min ago &middot; 6 accounts connected</span>
+          </div>
+
+          <!-- Connected accounts -->
+          <section class="s8-accounts">
+            <div class="s8-section-head">
+              <h3 class="s8-section-title">Connected accounts</h3>
+              <button class="text-btn" type="button">Manage</button>
+            </div>
+
+            <div class="s8-account-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">account_balance</span></div>
+              <div class="s8-account-info">
+                <span class="s8-account-name">Chase</span>
+                <span class="s8-account-type">Checking &middot;&middot;&middot; 4821</span>
+              </div>
+              <div class="s8-account-trail">
+                <span class="s8-check material-symbols-outlined">check_circle</span>
+                <span class="s8-account-time">4m ago</span>
+              </div>
+            </div>
+
+            <div class="s8-account-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">savings</span></div>
+              <div class="s8-account-info">
+                <span class="s8-account-name">Bank of America</span>
+                <span class="s8-account-type">Savings &middot;&middot;&middot; 7733</span>
+              </div>
+              <div class="s8-account-trail">
+                <span class="s8-check material-symbols-outlined">check_circle</span>
+                <span class="s8-account-time">4m ago</span>
+              </div>
+            </div>
+
+            <div class="s8-account-row s8-account-row--attention">
+              <div class="icon-chip"><span class="material-symbols-outlined">trending_up</span></div>
+              <div class="s8-account-info">
+                <span class="s8-account-name">Fidelity</span>
+                <span class="s8-account-type">Investment &middot;&middot;&middot; 0052</span>
+              </div>
+              <div class="s8-account-trail">
+                <span class="s8-attention-badge">1 to review</span>
+              </div>
+            </div>
+
+            <div class="s8-account-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">credit_card</span></div>
+              <div class="s8-account-info">
+                <span class="s8-account-name">Amex</span>
+                <span class="s8-account-type">Credit card &middot;&middot;&middot; 1005</span>
+              </div>
+              <div class="s8-account-trail">
+                <span class="s8-check material-symbols-outlined">check_circle</span>
+                <span class="s8-account-time">4m ago</span>
+              </div>
+            </div>
+
+            <div class="s8-account-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">currency_bitcoin</span></div>
+              <div class="s8-account-info">
+                <span class="s8-account-name">Coinbase</span>
+                <span class="s8-account-type">Crypto wallet</span>
+              </div>
+              <div class="s8-account-trail">
+                <span class="s8-check material-symbols-outlined">check_circle</span>
+                <span class="s8-account-time">12m ago</span>
+              </div>
+            </div>
+
+            <div class="s8-account-row">
+              <div class="icon-chip"><span class="material-symbols-outlined">credit_card</span></div>
+              <div class="s8-account-info">
+                <span class="s8-account-name">Capital One</span>
+                <span class="s8-account-type">Credit card &middot;&middot;&middot; 9140</span>
+              </div>
+              <div class="s8-account-trail">
+                <span class="s8-check material-symbols-outlined">check_circle</span>
+                <span class="s8-account-time">4m ago</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- AI monitoring activity feed -->
+          <section class="s8-feed">
+            <span class="s8-nw-badge">
+              <span class="material-symbols-outlined">auto_awesome</span>
+              Powered by NerdWallet
+            </span>
+            <h3 class="s8-section-title">Financial Account Insights</h3>
+            <p class="s8-feed-lede">NerdWallet already tracks your accounts. Now we protect them too.</p>
+
+            <!-- Item 1: Needs action -->
+            <div class="s8-feed-item s8-feed-item--action">
+              <div class="icon-chip"><span class="material-symbols-outlined">warning</span></div>
+              <div class="s8-feed-item__text">
+                <span class="s8-feed-item__title">Unfamiliar withdrawal: $2,400 from Fidelity</span>
+                <span class="s8-feed-item__meta">Investment &middot;&middot;&middot; 0052 &middot; April 11 &middot; Phoenix, AZ</span>
+              </div>
+              <p class="s8-feed-item__desc">NerdWallet AI flagged this because it doesn&rsquo;t match your usual account activity. This is the first withdrawal over $500 from this account in 90 days, and the location is new.</p>
+              <div class="s8-feed-item__actions">
+                <button class="btn-dark-sm" type="button">Review</button>
+                <button class="btn-outline-sm" type="button">Ignore</button>
+              </div>
+            </div>
+
+            <h4 class="s8-feed-section-title">Account activity</h4>
+
+            <!-- Item 2: Informational -->
+            <div class="s8-feed-item">
+              <div class="s8-feed-item__head">
+                <div class="icon-chip"><span class="material-symbols-outlined">replay</span></div>
+                <div class="s8-feed-item__text">
+                  <span class="s8-feed-item__title">New recurring charge detected</span>
+                  <span class="s8-feed-item__meta">Amex &middot;&middot;&middot; 1005 &middot; $14.99/mo &middot; CloudVault Storage</span>
+                </div>
+              </div>
+              <div class="s8-feed-item__actions">
+                <button class="btn-outline-sm" type="button">Looks right</button>
+              </div>
+            </div>
+
+            <!-- Item 3: Informational -->
+            <div class="s8-feed-item">
+              <div class="s8-feed-item__head">
+                <div class="icon-chip"><span class="material-symbols-outlined">compare_arrows</span></div>
+                <div class="s8-feed-item__text">
+                  <span class="s8-feed-item__title">Large transfer between your accounts</span>
+                  <span class="s8-feed-item__meta">Chase &rarr; BofA &middot; $3,200 &middot; April 10</span>
+                </div>
+              </div>
+              <div class="s8-feed-item__actions">
+                <span class="tag-actioned">
+                  <span class="material-symbols-outlined">check</span>
+                  Confirmed
+                </span>
+              </div>
+            </div>
+
+            <!-- Item 4: Dismissed -->
+            <div class="s8-feed-item">
+              <div class="s8-feed-item__head">
+                <div class="icon-chip"><span class="material-symbols-outlined">devices</span></div>
+                <div class="s8-feed-item__text">
+                  <span class="s8-feed-item__title">New device signed in to Coinbase</span>
+                  <span class="s8-feed-item__meta">MacBook Pro &middot; San Francisco, CA &middot; April 9</span>
+                </div>
+              </div>
+              <div class="s8-feed-item__actions">
+                <span class="tag-actioned">
+                  <span class="material-symbols-outlined">check</span>
+                  Dismissed
+                </span>
+              </div>
+            </div>
+
+            <!-- Item 5: Informational -->
+            <div class="s8-feed-item">
+              <div class="s8-feed-item__head">
+                <div class="icon-chip"><span class="material-symbols-outlined">insert_chart</span></div>
+                <div class="s8-feed-item__text">
+                  <span class="s8-feed-item__title">Spending is 23% below your norm this week</span>
+                  <span class="s8-feed-item__meta">Amex &middot;&middot;&middot; 1005 &middot; vs. 30-day average</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 6: All clear -->
+            <div class="s8-feed-item">
+              <div class="s8-feed-item__head">
+                <div class="icon-chip"><span class="material-symbols-outlined">check_circle</span></div>
+                <div class="s8-feed-item__text">
+                  <span class="s8-feed-item__title">No unusual patterns across your 6 accounts</span>
+                  <span class="s8-feed-item__meta">Weekly behavioral scan &middot; April 7</span>
+                </div>
+              </div>
+            </div>
+            <button class="text-btn s8-view-all" type="button">View all financial account activity &rarr;</button>
+          </section>
+
+          <!-- Insights / summary -->
+          <section class="s8-insights">
+            <div class="s8-insights__nw-bar">
+              <span class="s8-insights__nw-mark">NerdWallet</span>
+              <span class="s8-insights__nw-label">Financial Protection</span>
+            </div>
+
+            <p class="s8-insights__summary">We checked 847 transactions across your 6 accounts this week. Everything looks right, except one withdrawal on your Fidelity account that&rsquo;s worth a look.</p>
+
+            <div class="s8-insights__stats">
+              <div class="s8-stat">
+                <span class="s8-stat__num">6</span>
+                <span class="s8-stat__label">Accounts monitored</span>
+              </div>
+              <div class="s8-stat">
+                <span class="s8-stat__num">847</span>
+                <span class="s8-stat__label">Transactions scanned</span>
+              </div>
+              <div class="s8-stat">
+                <span class="s8-stat__num">12</span>
+                <span class="s8-stat__label">Days since last flag</span>
+              </div>
+            </div>
+
+            <p class="s8-insights__trust">Your accounts are connected and monitored around the clock. If something looks off, we&rsquo;ll tell you.</p>
+          </section>
+
+          <button class="s8-manage-btn" type="button">
+            <span class="material-symbols-outlined">settings</span>
+            Manage financial accounts
+          </button>
+
+        </div>
+
+        <div class="home-indicator"></div>
+      </div>
+      <figcaption>1 · Financial Account(s) Monitoring</figcaption>
+    </figure>
+
+  </div>
+  </section>
+
+  </main>
+
+  <script>
+    // Screen navigation — tab-style switching within each .flow-section.
+    // Each .screen-nav__chip has a data-view pointing to a .screen-wrap id.
+    // Only one screen per section is visible at a time. URL hash stays in sync.
+    (function () {
+      const chips = document.querySelectorAll('.screen-nav__chip');
+      if (!chips.length) return;
+
+      function activateView(viewId, { scroll = false } = {}) {
+        const target = document.getElementById(viewId);
+        if (!target) return false;
+        const section = target.closest('.flow-section');
+        if (!section) return false;
+
+        // Toggle screen visibility within this section only
+        section.querySelectorAll('.screen-wrap').forEach((w) => {
+          w.classList.toggle('is-active', w.id === viewId);
+        });
+
+        // Toggle chip active state in this section's nav
+        section.querySelectorAll('.screen-nav__chip').forEach((c) => {
+          const isActive = c.dataset.view === viewId;
+          c.classList.toggle('is-active', isActive);
+          if (isActive) {
+            c.setAttribute('aria-current', 'page');
+          } else {
+            c.removeAttribute('aria-current');
+          }
+        });
+
+        if (scroll) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return true;
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', (e) => {
+          e.preventDefault();
+          const viewId = chip.dataset.view;
+          if (activateView(viewId)) {
+            history.replaceState(null, '', '#' + viewId);
+          }
+        });
+      });
+
+      // Deep-link support: #view-s3 on load activates that view
+      const initial = location.hash.replace('#', '');
+      if (initial && initial.startsWith('view-s')) {
+        activateView(initial);
+      }
+
+      // Also react to back/forward nav
+      window.addEventListener('hashchange', () => {
+        const id = location.hash.replace('#', '');
+        if (id && id.startsWith('view-s')) activateView(id);
+      });
+    })();
+  </script>
+
+</body>
+</html>

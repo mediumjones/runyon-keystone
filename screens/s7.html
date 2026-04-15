@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Web Alert · In-app — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=2" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Dark Web Alert · In-app</h1>
+      <p class="viewer-bar__desc">SSN dark web alert requiring user action</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s7" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <a class="nav-icon-btn" aria-label="Back" href="s6.html" style="text-decoration:none">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="t-title nav-title">Alert</h1>
+      </div>
+
+      <div class="s7-content">
+        <span class="severity-pill">
+          <span class="material-symbols-outlined">emergency_home</span>
+          Critical &middot; Action required
+        </span>
+
+        <div class="alert-hero">
+          <div class="alert-hero__chip">
+            <span class="material-symbols-outlined">fingerprint</span>
+          </div>
+          <h2 class="alert-hero__title">Your SSN was found in a new dark web listing</h2>
+          <p class="alert-hero__desc">We detected your social security number in a listing posted to a known dark web forum. Immediate action is recommended to prevent identity fraud.</p>
+        </div>
+
+        <section class="detail-section">
+          <h3 class="detail-section__title">Detection details</h3>
+          <div class="detail-rows">
+            <div class="detail-row">
+              <span class="detail-label">Detected</span>
+              <span class="detail-value">Today, 9:14&nbsp;AM</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Source</span>
+              <span class="detail-value">BreachForum v3</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Exposed</span>
+              <span class="detail-value">SSN, DOB, full name</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Listing age</span>
+              <span class="detail-value">2 hours</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-section">
+          <h3 class="detail-section__title">Recommended steps</h3>
+          <div class="step-list">
+            <div class="step-row">
+              <span class="step-num">1</span>
+              <div class="label-stack">
+                <span class="label-bold">Freeze your credit</span>
+                <span class="label-sub">Blocks new account openings</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="step-row">
+              <span class="step-num">2</span>
+              <div class="label-stack">
+                <span class="label-bold">Engage Kill Switch</span>
+                <span class="label-sub">Lock connected financial accounts</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+            <div class="step-row">
+              <span class="step-num">3</span>
+              <div class="label-stack">
+                <span class="label-bold">Contact a specialist</span>
+                <span class="label-sub">Open an identity restoration case</span>
+              </div>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+          </div>
+        </section>
+
+        <a class="btn-pill" href="s7b.html" style="text-decoration:none">Handle all 3 for me</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
