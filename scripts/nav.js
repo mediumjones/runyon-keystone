@@ -58,12 +58,12 @@
           ]
         },
         {
-          label: 'Auto-handled',
+          label: 'Auto-resolved',
           open: true,
           items: [
-            { file: 's7b.html', title: 'Auto-handled \u00b7 In-app' },
-            { file: 's7b-email.html', title: 'Auto-handled \u00b7 Email' },
-            { file: 's7b-lock.html', title: 'Auto-handled \u00b7 Lock' },
+            { file: 's7b.html', title: 'Dark Web Alert \u00b7 In-app' },
+            { file: 's7b-email.html', title: 'Dark Web Alert \u00b7 Email' },
+            { file: 's7b-lock.html', title: 'Dark Web Alert \u00b7 Lock' },
           ]
         }
       ]
