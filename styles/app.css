@@ -1487,6 +1487,7 @@ html { scroll-behavior: smooth; }
   text-transform: none;
   color: var(--c-ink-900);
 }
+
 .report-hero__eyebrow-row {
   display: flex;
   align-items: center;

@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
   <link rel="stylesheet" href="../styles/tokens.css" />
-  <link rel="stylesheet" href="../styles/app.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=3" />
+  <link rel="stylesheet" href="../styles/status-card.css" />
   <link rel="stylesheet" href="../styles/viewer.css?v=9" />
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
   <script src="../scripts/gate.js"></script>
@@ -57,7 +58,13 @@
         <div class="report-head-text">
           <h1 class="report-title">Your security snapshot</h1>
           <p class="report-subtitle">A plain&#8209;English look at what we&rsquo;re watching for you.</p>
-          <span class="report-stamp">Just checked &middot; Today 9:41 AM</span>
+          <div class="status-card">
+            <div class="status-card__row">
+              <span class="status-card__dot" aria-hidden="true"></span>
+              <span class="status-card__text">Monitoring active, no issues found</span>
+            </div>
+            <span class="status-card__meta">Just checked &middot; Today 9:41 AM</span>
+          </div>
         </div>
       </header>
 
