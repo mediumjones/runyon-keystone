@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etsy · Checkout — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=3" />
+  <link rel="stylesheet" href="../styles/moment2.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=9" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/gate.js"></script>
+  <script src="../scripts/nav.js?v=2" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Checkout Prompt &middot; Merchant-Locked</h1>
+      <p class="viewer-bar__desc">Default behavior — generate a merchant-locked card at checkout on a familiar site</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content-desktop" id="screen-content">
+
+      <!--
+        ═══════════════════════════════════════════════════════════
+        CONTENT CONSTANTS — Screen 2.1: Merchant-locked prompt
+        Locked defaults are rendered below. Swap any constant by
+        uncommenting the alternate and commenting out the default.
+        One-line edits — no layout changes needed.
+        ═══════════════════════════════════════════════════════════
+
+        PROMPT_HEADLINE (locked default):
+          "Generate a card for etsy.com?"
+
+        PROMPT_HEADLINE alternates:
+          "Use a card just for Etsy?"
+          "Want a card that only works at Etsy?"
+          "Project Keystone can make a card just for etsy.com."
+          "Check out with a card made for etsy.com?"
+
+        PROMPT_BODY (locked default):
+          "This card will only work at Etsy. If Etsy is ever
+           breached, your real card stays safe."
+
+        PROMPT_BODY alternates:
+          "Locked to etsy.com. Useless anywhere else. If Etsy is
+           ever breached, your real card stays safe."
+          "A card that only works at Etsy. Nowhere else. So an
+           Etsy breach never touches your real card."
+          "We'll generate a card that only Etsy can charge. Your
+           real card stays hidden."
+
+        PROMPT_PRIMARY_CTA (locked): "Generate card"
+
+        PROMPT_PRIMARY_CTA alternates:
+          "Use a card just for Etsy"
+          "Make an Etsy card"
+          "Generate and continue"
+
+        PROMPT_SECONDARY_CTA (locked): "Use my real card"
+        (No alternates — escape hatch, reads plainly.)
+
+        PROMPT_TERTIARY_LINK (locked): "Learn more"
+        (Stubs to nothing for Sprint 3a.)
+        ═══════════════════════════════════════════════════════════
+      -->
+
+      <!-- Browser chrome -->
+      <div class="desktop-chrome">
+        <div class="desktop-chrome__top">
+          <span class="desktop-dots">
+            <i class="dot dot--r"></i>
+            <i class="dot dot--y"></i>
+            <i class="dot dot--g"></i>
+          </span>
+          <div class="desktop-tabs">
+            <div class="desktop-tab desktop-tab--active">
+              <span class="desktop-tab__fav">E</span>
+              <span class="desktop-tab__title">Checkout &mdash; Etsy</span>
+              <span class="material-symbols-outlined desktop-tab__close">close</span>
+            </div>
+            <div class="desktop-tab desktop-tab--new">+</div>
+          </div>
+        </div>
+        <div class="desktop-chrome__bar desktop-chrome__bar--nav">
+          <span class="desktop-nav">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="material-symbols-outlined is-dim">arrow_forward</span>
+            <span class="material-symbols-outlined">refresh</span>
+          </span>
+          <div class="desktop-urlbar">
+            <span class="material-symbols-outlined">lock</span>
+            <span class="desktop-urlbar__path"><b>etsy.com</b>/checkout</span>
+            <span class="desktop-ext">
+              <span class="desktop-ext__icon">
+                <span class="material-symbols-outlined">extension</span>
+              </span>
+              <span class="desktop-ext__badge">K</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page content — greyed-out mock checkout with floating prompt -->
+      <div class="desktop-body">
+        <div class="mock-checkout" aria-hidden="true">
+
+          <!-- Generic merchant topbar -->
+          <div class="mock-topbar">
+            <span class="mock-brand">Artisan Market</span>
+            <nav class="mock-nav">
+              <span>Home</span>
+              <span>Shop</span>
+              <span class="is-active">Checkout</span>
+            </nav>
+            <span class="mock-cart">Cart &middot; 2</span>
+          </div>
+
+          <div class="mock-grid">
+            <!-- Left: form -->
+            <div class="mock-form">
+              <h1 class="mock-title">Checkout</h1>
+
+              <!-- Shipping section -->
+              <section class="mock-section">
+                <h3 class="mock-section__title">Shipping address</h3>
+                <div class="mock-field">
+                  <label class="mock-field__label">Full name</label>
+                  <div class="mock-field__input mock-field__input--filled">Alex Morgan</div>
+                </div>
+                <div class="mock-field-row">
+                  <div class="mock-field">
+                    <label class="mock-field__label">Street address</label>
+                    <div class="mock-field__input mock-field__input--filled">142 Alder Lane, Apt 3B</div>
+                  </div>
+                  <div class="mock-field" style="max-width:120px;">
+                    <label class="mock-field__label">ZIP</label>
+                    <div class="mock-field__input mock-field__input--filled">98104</div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Payment section -->
+              <section class="mock-section">
+                <h3 class="mock-section__title">Payment</h3>
+                <div class="mock-field mock-field--focus">
+                  <label class="mock-field__label">Card number</label>
+                  <div class="mock-field__input">
+                    <span class="mock-field__placeholder">1234 1234 1234 1234</span>
+                    <span class="mock-field__caret"></span>
+                  </div>
+                </div>
+                <div class="mock-field-row">
+                  <div class="mock-field">
+                    <label class="mock-field__label">Expiry</label>
+                    <div class="mock-field__input"><span class="mock-field__placeholder">MM / YY</span></div>
+                  </div>
+                  <div class="mock-field">
+                    <label class="mock-field__label">CVC</label>
+                    <div class="mock-field__input"><span class="mock-field__placeholder">123</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <button class="mock-submit" type="button" disabled>Review order</button>
+            </div>
+
+            <!-- Right: order summary -->
+            <aside class="mock-summary">
+              <div class="mock-summary__title">Order summary</div>
+              <div class="mock-summary__row">
+                <span>Hand-thrown ceramic vase</span>
+                <span>$45.00</span>
+              </div>
+              <div class="mock-summary__row">
+                <span>Linen table runner</span>
+                <span>$28.00</span>
+              </div>
+              <div class="mock-summary__row mock-summary__row--dim">
+                <span>Shipping</span>
+                <span>$5.95</span>
+              </div>
+              <div class="mock-summary__row mock-summary__row--total">
+                <span>Total</span>
+                <span>$78.95</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Floating prompt — anchored near card input -->
+        <!-- TODO(ds): No floating-prompt / in-context-prompt component exists
+             in the design system. Built as a reusable pattern with closest
+             available tokens. Props: headline, body, primaryCTA, secondaryCTA,
+             tertiaryLink. Reuse in Moments 3 and 4. -->
+        <div class="icp" role="dialog" aria-label="Project Keystone suggestion: generate a card locked to etsy.com.">
+          <div class="icp__mark">
+            <span class="icp__mark-icon">K</span>
+            Keystone
+          </div>
+          <h2 class="icp__headline">Generate a card for etsy.com?</h2>
+          <p class="icp__body">This card will only work at Etsy. If Etsy is ever breached, your real card stays safe.</p>
+          <div class="icp__actions">
+            <a class="icp__btn icp__btn--primary" href="s11-confirm.html" aria-label="Generate a card that only works at Etsy." style="text-decoration:none">Generate card</a>
+            <button class="icp__btn icp__btn--secondary" type="button" onclick="console.log('real card')">Use my real card</button>
+          </div>
+          <a class="icp__link" href="javascript:void(0)">Learn more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

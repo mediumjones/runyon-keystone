@@ -1,0 +1,398 @@
+/* =============================================================
+   Moment 2 — Merchant-Locked Card
+   Screen 2.1: Checkout prompt
+   Screen 2.2: Post-purchase confirmation
+   ============================================================= */
+
+/* ---- Mock Checkout (greyed-out background for 2.1) ----------- */
+.mock-checkout {
+  flex: 1 1 auto;
+  min-height: 500px;
+  overflow: hidden;
+  padding: 0 40px 28px;
+  font-family: var(--font-system);
+  opacity: 0.38;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mock-topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-divider);
+  margin-bottom: 24px;
+}
+.mock-brand {
+  font: 600 15px/1 var(--font-system);
+  color: var(--c-ink-900);
+  letter-spacing: -0.3px;
+}
+.mock-nav {
+  display: flex;
+  gap: 16px;
+  font: 400 12px/1 var(--font-system);
+  color: var(--c-ink-600);
+}
+.mock-nav .is-active {
+  font-weight: 600;
+  color: var(--c-ink-900);
+}
+.mock-cart {
+  margin-left: auto;
+  font: 500 12px/1 var(--font-system);
+  color: var(--c-ink-600);
+}
+
+.mock-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 32px;
+  align-items: start;
+}
+
+.mock-title {
+  font: 600 22px/1.2 var(--font-system);
+  color: var(--c-ink-900);
+  margin: 0 0 20px;
+}
+
+/* Mock form sections */
+.mock-section {
+  margin-bottom: 24px;
+}
+.mock-section__title {
+  font: 600 13px/1 var(--font-system);
+  color: var(--c-ink-800);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px;
+}
+
+/* Mock form fields */
+.mock-field {
+  margin-bottom: 10px;
+}
+.mock-field__label {
+  display: block;
+  font: 500 11px/1 var(--font-system);
+  color: var(--c-ink-600);
+  margin-bottom: 4px;
+}
+.mock-field__input {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid var(--c-divider);
+  border-radius: var(--r-sm);
+  font: 400 13px/1 var(--font-system);
+  color: var(--c-ink-300);
+  background: var(--c-surface);
+}
+.mock-field__input--filled {
+  color: var(--c-ink-800);
+}
+.mock-field--focus .mock-field__input {
+  border-color: var(--c-ink-900);
+  box-shadow: 0 0 0 1px var(--c-ink-900);
+}
+.mock-field__placeholder {
+  color: var(--c-ink-300);
+}
+.mock-field__caret {
+  width: 1px;
+  height: 16px;
+  background: var(--c-ink-900);
+  animation: caret-blink 1s step-end infinite;
+  margin-left: 1px;
+}
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+.mock-field-row {
+  display: flex;
+  gap: 10px;
+}
+.mock-field-row .mock-field {
+  flex: 1;
+}
+
+/* Mock submit button */
+.mock-submit {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  border-radius: var(--r-sm);
+  background: var(--c-ink-300);
+  color: var(--c-white);
+  font: 600 13px/1 var(--font-system);
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* Mock order summary */
+.mock-summary {
+  background: var(--c-surface-alt);
+  border: 1px solid var(--c-divider);
+  border-radius: var(--r-md);
+  padding: 16px;
+}
+.mock-summary__title {
+  font: 600 13px/1 var(--font-system);
+  color: var(--c-ink-900);
+  margin-bottom: 12px;
+}
+.mock-summary__row {
+  display: flex;
+  justify-content: space-between;
+  font: 400 12px/1.6 var(--font-system);
+  color: var(--c-ink-700);
+}
+.mock-summary__row--dim {
+  color: var(--c-ink-300);
+}
+.mock-summary__row--total {
+  font-weight: 600;
+  color: var(--c-ink-900);
+  border-top: 1px solid var(--c-divider);
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+
+/* ---- In-Context Prompt (reusable, ICP) ----------------------- */
+/* TODO(ds): No floating-prompt component exists in the design system.
+   Built with closest available tokens. Reuse in Moments 3 and 4
+   by passing different headline, body, and CTA content. */
+
+.icp {
+  position: absolute;
+  top: 250px;
+  left: 40px;
+  width: 320px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-card);
+  padding: 24px;
+  box-shadow:
+    0 4px 24px -4px rgba(17, 17, 17, 0.12),
+    0 1px 3px rgba(17, 17, 17, 0.06);
+  z-index: 10;
+  font-family: var(--font-system);
+}
+
+.icp__mark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 13px/1 var(--font-hand);
+  color: var(--c-ink-900);
+  margin-bottom: 16px;
+}
+.icp__mark-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--c-ink-900);
+  color: var(--c-white);
+  font: 700 12px/1 var(--font-system);
+}
+
+.icp__headline {
+  font: 700 20px/1.25 var(--font-hand);
+  color: var(--c-ink-900);
+  margin: 0 0 8px;
+}
+
+.icp__body {
+  font: 400 14px/1.5 var(--font-system);
+  color: var(--c-ink-600);
+  margin: 0 0 20px;
+}
+
+.icp__actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.icp__btn {
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--r-btn);
+  font: 600 13px/1 var(--font-system);
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.icp__btn:hover {
+  transform: translateY(-1px);
+}
+.icp__btn:active {
+  transform: translateY(0);
+}
+
+.icp__btn--primary {
+  background: var(--c-ink-900);
+  color: var(--c-white);
+}
+.icp__btn--primary:hover {
+  opacity: 0.9;
+}
+
+.icp__btn--secondary {
+  background: var(--c-surface);
+  color: var(--c-ink-700);
+  border: 1px solid var(--c-divider);
+}
+.icp__btn--secondary:hover {
+  background: var(--c-surface-muted);
+}
+
+.icp__link {
+  display: block;
+  text-align: center;
+  font: 400 12px/1 var(--font-system);
+  color: var(--c-ink-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.icp__link:hover {
+  color: var(--c-ink-900);
+}
+
+
+/* ---- Confirmation screen (2.2) -------------------------------- */
+
+.confirm {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px 56px;
+  text-align: center;
+  min-height: 460px;
+  font-family: var(--font-system);
+}
+
+.confirm__mark {
+  font: 700 15px/1 var(--font-hand);
+  color: var(--c-ink-600);
+  letter-spacing: 0.3px;
+  margin-bottom: 24px;
+}
+
+.confirm__check {
+  margin-bottom: 16px;
+}
+.confirm__check .material-symbols-outlined {
+  font-size: 40px;
+  color: var(--c-ink-900);
+}
+
+.confirm__headline {
+  font: 700 32px/1.15 var(--font-hand);
+  color: var(--c-ink-900);
+  margin: 0 0 8px;
+  max-width: 420px;
+}
+
+.confirm__subhead {
+  font: 400 15px/1.5 var(--font-system);
+  color: var(--c-ink-600);
+  margin: 0 0 32px;
+  max-width: 380px;
+}
+
+/* Card summary */
+.confirm__summary {
+  width: 100%;
+  max-width: 320px;
+  border-top: 1px dashed rgba(17, 17, 17, 0.15);
+  border-bottom: 1px dashed rgba(17, 17, 17, 0.15);
+  padding: 20px 0;
+  margin-bottom: 32px;
+}
+.confirm__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+.confirm__summary-label {
+  font: 400 13px/1 var(--font-system);
+  color: var(--c-ink-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.confirm__summary-value {
+  font: 600 14px/1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.confirm__summary-value--lock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: var(--c-ink-900);
+}
+.confirm__summary-value--lock .material-symbols-outlined {
+  font-size: 14px;
+}
+
+/* CTAs */
+.confirm__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.confirm__btn {
+  height: var(--btn-lg-h);
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--r-btn);
+  font: 600 14px/1 var(--font-system);
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.confirm__btn:hover {
+  transform: translateY(-1px);
+}
+.confirm__btn:active {
+  transform: translateY(0);
+}
+
+.confirm__btn--primary {
+  background: var(--c-ink-900);
+  color: var(--c-white);
+}
+.confirm__btn--primary:hover {
+  opacity: 0.9;
+}
+
+.confirm__link {
+  font: 400 13px/1 var(--font-system);
+  color: var(--c-ink-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.confirm__link:hover {
+  color: var(--c-ink-900);
+}

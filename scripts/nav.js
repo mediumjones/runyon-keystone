@@ -71,11 +71,17 @@
     {
       title: 'Virtual Cards',
       num: '03',
+      topItems: [
+        { file: 's9-concept.html', title: 'Concept Explainer' },
+        { file: 's1-desktop.html', title: 'Browser Extension' },
+      ],
       groups: [
         {
+          label: 'Merchant-locked card',
+          open: true,
           items: [
-            { file: 's9-concept.html', title: 'Concept Explainer' },
-            { file: 's1-desktop.html', title: 'Browser Extension' },
+            { file: 's10-prompt.html', title: 'Checkout Prompt' },
+            { file: 's11-confirm.html', title: 'Post-Purchase Confirmation' },
           ]
         }
       ]
