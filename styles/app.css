@@ -11,16 +11,16 @@
 html, body { min-height: 100%; }
 
 body {
-  /* Paper/notebook research-board atmosphere */
-  background-color: #f7f5f0;
+  /* Paper/notebook research-board atmosphere — deeper tone */
+  background-color: #c8bfb0;
   background-image:
-    radial-gradient(ellipse 800px 600px at 20% 10%, rgba(240, 232, 218, 0.4), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 80% 90%, rgba(228, 232, 236, 0.35), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 20% 10%, rgba(210, 200, 180, 0.45), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 80% 90%, rgba(180, 186, 194, 0.40), transparent 60%),
     repeating-linear-gradient(90deg,
-      rgba(17, 17, 17, 0.022) 0, rgba(17, 17, 17, 0.022) 1px,
+      rgba(17, 17, 17, 0.045) 0, rgba(17, 17, 17, 0.045) 1px,
       transparent 1px, transparent 32px),
     repeating-linear-gradient(0deg,
-      rgba(17, 17, 17, 0.018) 0, rgba(17, 17, 17, 0.018) 1px,
+      rgba(17, 17, 17, 0.038) 0, rgba(17, 17, 17, 0.038) 1px,
       transparent 1px, transparent 32px);
   font-family: var(--font-hand);
   color: var(--c-black);

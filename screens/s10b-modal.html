@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verdant Supply · Checkout — Keystone</title>
+  <title>Verdant Supply · Extension Popover — Keystone</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
@@ -25,8 +25,8 @@
       Concepts
     </a>
     <div class="viewer-bar__info">
-      <h1 class="viewer-bar__title">Checkout &middot; Payment Dropdown</h1>
-      <p class="viewer-bar__desc">Dropdown open with generate row + saved cards</p>
+      <h1 class="viewer-bar__title">Checkout &middot; Extension Popover</h1>
+      <p class="viewer-bar__desc">Generate a virtual card — card type and base card in one view</p>
     </div>
     <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
       <span class="material-symbols-outlined">download</span>
@@ -38,35 +38,45 @@
 
       <!--
         ═══════════════════════════════════════════════════════════
-        CONTENT CONSTANTS — Screen 2.1: Checkout + vault dropdown
+        CONTENT CONSTANTS — Screen 2.2: Extension popover
         ═══════════════════════════════════════════════════════════
 
-        GENERATE_ROW_TITLE (locked): "Create a secure virtual card"
-        GENERATE_ROW_SUB (locked):
-          "Uses a new card number in place of your real one"
+        POPOVER_HEADLINE (locked):
+          "Create a virtual card for verdantsupply.com"
         Alternates:
-          "Create a unique card number for verdantsupply.com"
-          "Protect this purchase with a virtual card"
-          "Use a virtual card for verdantsupply.com"
+          "Generate a virtual card for verdantsupply.com"
+          "New virtual card for verdantsupply.com"
 
-        GENERATE_ROW_BADGE (locked): "Recommended"
+        CARD_TYPE_LABEL (locked): "Card type"
+        CARD_TYPE_1 (pre-selected, RECOMMENDED):
+          Title: "Unique to verdantsupply.com"
+          Desc: "Reusable, locked to this merchant. Tracks lifetime spend.
+                 Useless anywhere else if breached."
+        CARD_TYPE_2:
+          Title: "One-time burner"
+          Desc: "Amount-locked to this purchase. Auto-closes after the
+                 charge clears."
+        CARD_TYPE_3:
+          Title: "Trial card"
+          Desc: "Set an expiry before a trial converts to paid. 48-hour
+                 heads-up before the card dies."
 
-        DROPDOWN_SECTION_LABEL (locked): "Your cards"
-
-        CARD_1:
+        BASE_CARD_LABEL (locked): "Choose a base card to create from"
+        BASE_CARD_1 (pre-selected, recommended):
           Issuer: Discover it Cash Back · •••• 2298
-        CARD_2:
+          Benefit: 5% cash back on online shopping
+          Badge: "💡 Recommended"
+
+        BASE_CARD_2:
           Issuer: Chase Sapphire Preferred · •••• 4417
+          Benefit: 3x points on travel and dining
 
-        Alternate card pairings (commented):
-          Amazon Prime Visa + Capital One Venture X
-          Chase Freedom Flex + American Express Gold
-
-        ADD_CARD (locked): "Add a new card to your vault"
+        PRIMARY_CTA (locked): "Create"
+        SECONDARY_CTA (locked): "Cancel"
         ═══════════════════════════════════════════════════════════
       -->
 
-      <!-- Browser chrome (matches s1-desktop) -->
+      <!-- Browser chrome (same as Screen 2.1) -->
       <div class="desktop-chrome">
         <div class="desktop-chrome__top">
           <span class="desktop-dots">
@@ -103,7 +113,7 @@
         </div>
       </div>
 
-      <!-- Verdant Supply checkout page -->
+      <!-- Checkout page visible beneath popover -->
       <div class="desktop-body">
         <div class="desktop-site">
           <div class="site-topbar">
@@ -146,67 +156,14 @@
                 </div>
               </section>
 
-              <!-- Payment with vault dropdown -->
+              <!-- Payment field (dropdown closed for this screen) -->
               <section class="checkout-section">
                 <h3 class="checkout-section__title">Payment</h3>
-                <div class="field field--active" style="position:relative;">
+                <div class="field">
                   <label class="field__label">Card number</label>
                   <div class="field__input">
                     <span class="field__input-text field__input--empty">Select a card&hellip;</span>
                     <span class="material-symbols-outlined" style="font-size:16px;color:var(--c-ink-300);">expand_more</span>
-                  </div>
-
-                  <!-- Payment method dropdown -->
-                  <div class="vault-dropdown" role="listbox" aria-label="Payment method picker. Generate a unique virtual card, or select one of your saved cards.">
-
-                    <div class="vault-list">
-                      <!-- Generate row — first item, styled like a card row -->
-                      <a class="vault-gen" href="s10b-modal.html" aria-label="Create a secure virtual card. Uses a new card number in place of your real one. Recommended. Opens the Project Keystone browser extension.">
-                        <span class="vault-gen__chip-frame"><span class="vault-gen__chip">K</span></span>
-                        <span class="vault-gen__text">
-                          <span class="vault-gen__title">Create a secure virtual card <span class="vault-gen__rec">Recommended</span></span>
-                          <span class="vault-gen__sub">Uses a new card number in place of your real one</span>
-                        </span>
-                        <span class="material-symbols-outlined vault-gen__arrow">chevron_right</span>
-                      </a>
-
-                      <div class="vault-divider"></div>
-
-                      <div class="vault-list__label">Your cards</div>
-
-                      <!-- Card 1: Discover -->
-                      <a class="vault-card" href="#" onclick="console.log('real card - Discover'); return false;">
-                        <span class="vault-card__chip-frame"><span class="vault-card__chip">DISC</span></span>
-                        <span class="vault-card__text">
-                          <span class="vault-card__title">Discover it Cash Back</span>
-                          <span class="vault-card__sub">Discover &bull;&bull;&bull;&bull; 2298 &middot; exp 04/28</span>
-                        </span>
-                        <span class="material-symbols-outlined vault-card__arrow">chevron_right</span>
-                      </a>
-
-                      <!-- Card 2: Chase -->
-                      <a class="vault-card" href="#" onclick="console.log('real card - Chase'); return false;">
-                        <span class="vault-card__chip-frame"><span class="vault-card__chip">CHASE</span></span>
-                        <span class="vault-card__text">
-                          <span class="vault-card__title">Chase Sapphire Preferred</span>
-                          <span class="vault-card__sub">Chase &bull;&bull;&bull;&bull; 4417 &middot; exp 11/27</span>
-                        </span>
-                        <span class="material-symbols-outlined vault-card__arrow">chevron_right</span>
-                      </a>
-
-                      <div class="vault-divider"></div>
-
-                      <!-- Add card row -->
-                      <button class="vault-add" type="button" onclick="console.log('add card')">
-                        <span class="vault-add__chip">
-                          <span class="material-symbols-outlined">add</span>
-                        </span>
-                        <span class="vault-add__text">
-                          <span class="vault-add__title">Add a new card to your vault</span>
-                          <span class="vault-add__sub">Encrypted &middot; syncs to your Monitoring Vault</span>
-                        </span>
-                      </button>
-                    </div>
                   </div>
                 </div>
               </section>
@@ -233,6 +190,83 @@
                 <span>$42.00</span>
               </div>
             </aside>
+          </div>
+        </div>
+
+        <!-- Keystone Extension Popover anchored to plugin icon -->
+        <div class="ext-pop" role="dialog" aria-label="Create a new virtual card number. Choose card type and base card. Currently: Unique to verdantsupply.com, from Discover it Cash Back.">
+          <div class="ext-pop__head">
+            <span class="ext-pop__brand">K</span>
+            <span class="ext-pop__headline">Create a new virtual card number</span>
+          </div>
+
+          <!-- Section 1: Card type -->
+          <div class="ext-pop__section">
+            <div class="ext-pop__label">Card type</div>
+
+            <div class="ext-pop__opt is-selected">
+              <span class="ext-pop__radio"></span>
+              <div class="ext-pop__opt-body">
+                <div class="ext-pop__opt-head">
+                  <span class="ext-pop__opt-title">Unique to verdantsupply.com</span>
+                  <span class="ext-pop__opt-badge">Recommended</span>
+                </div>
+                <div class="ext-pop__opt-desc">Reusable, locked to this merchant. Tracks lifetime spend. Useless anywhere else if breached.</div>
+              </div>
+            </div>
+
+            <div class="ext-pop__opt">
+              <span class="ext-pop__radio"></span>
+              <div class="ext-pop__opt-body">
+                <div class="ext-pop__opt-head">
+                  <span class="ext-pop__opt-title">One-time burner</span>
+                </div>
+                <div class="ext-pop__opt-desc">Amount-locked to this purchase. Auto-closes after the charge clears.</div>
+              </div>
+            </div>
+
+            <div class="ext-pop__opt">
+              <span class="ext-pop__radio"></span>
+              <div class="ext-pop__opt-body">
+                <div class="ext-pop__opt-head">
+                  <span class="ext-pop__opt-title">Trial card</span>
+                </div>
+                <div class="ext-pop__opt-desc">Set an expiry before a trial converts to paid. 48-hour heads-up before the card dies.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Base card -->
+          <div class="ext-pop__section">
+            <div class="ext-pop__label">Choose a base card to create from</div>
+
+            <div class="ext-pop__opt ext-pop__opt--card is-selected">
+              <span class="ext-pop__radio"></span>
+              <span class="ext-pop__opt-chip-frame"><span class="ext-pop__opt-chip">DISC</span></span>
+              <div class="ext-pop__opt-body">
+                <div class="ext-pop__opt-card-title">Discover it Cash Back &bull;&bull;&bull;&bull; 2298</div>
+                <div class="ext-pop__opt-card-sub">5% cash back on online shopping</div>
+                <span class="ext-pop__opt-nw" style="margin-top:4px;">
+                  <span class="material-symbols-outlined">lightbulb</span>
+                  Recommended
+                </span>
+              </div>
+            </div>
+
+            <div class="ext-pop__opt ext-pop__opt--card">
+              <span class="ext-pop__radio"></span>
+              <span class="ext-pop__opt-chip-frame"><span class="ext-pop__opt-chip">CHASE</span></span>
+              <div class="ext-pop__opt-body">
+                <div class="ext-pop__opt-card-title">Chase Sapphire Preferred &bull;&bull;&bull;&bull; 4417</div>
+                <div class="ext-pop__opt-card-sub">3x points on travel and dining</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions (right-aligned: Cancel, Create) -->
+          <div class="ext-pop__actions">
+            <a class="ext-pop__btn-cancel" href="s10-prompt.html">Cancel</a>
+            <a class="ext-pop__btn-primary" href="s10c-filled.html" style="text-decoration:none" aria-label="Create virtual card and continue to checkout.">Create virtual card</a>
           </div>
         </div>
       </div>

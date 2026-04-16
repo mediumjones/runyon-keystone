@@ -1,398 +1,963 @@
 /* =============================================================
-   Moment 2 — Merchant-Locked Card
-   Screen 2.1: Checkout prompt
-   Screen 2.2: Post-purchase confirmation
+   Moment 2 — Merchant-Locked Card Flow
+   Screen 2.1: Checkout + vault dropdown
+   Screen 2.2: Card type selection modal
+   Screen 2.3: Checkout with virtual card populated
+   Screen 2.4: Order confirmation + plugin popover
    ============================================================= */
 
-/* ---- Mock Checkout (greyed-out background for 2.1) ----------- */
-.mock-checkout {
-  flex: 1 1 auto;
-  min-height: 500px;
-  overflow: hidden;
-  padding: 0 40px 28px;
-  font-family: var(--font-system);
-  opacity: 0.38;
-  pointer-events: none;
-  user-select: none;
+/* ---- Vault page overrides ----------------------------------- */
+/* Grow the container's own height via min-height so the rounded
+   browser window properly contains the vault dropdown / popover
+   (keeps overflow clipping intact so the cream doesn't leak past
+   the rounded corners). */
+.screen-content-desktop:has(.vault-dropdown) {
+  min-height: 700px;
+  background: #f6f3ee;
+}
+.screen-content-desktop:has(.vault-dropdown) .desktop-body,
+.screen-content-desktop:has(.vault-dropdown) .desktop-site {
+  overflow: visible;
+}
+.screen-content-desktop:has(.vault-dropdown) .desktop-site {
+  padding-bottom: 220px;
 }
 
-.mock-topbar {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--c-divider);
-  margin-bottom: 24px;
+.screen-content-desktop:has(.ext-pop) {
+  min-height: 760px;
+  background: #f6f3ee;
 }
-.mock-brand {
-  font: 600 15px/1 var(--font-system);
-  color: var(--c-ink-900);
-  letter-spacing: -0.3px;
+.screen-content-desktop:has(.ext-pop) .desktop-body,
+.screen-content-desktop:has(.ext-pop) .desktop-site {
+  overflow: visible;
 }
-.mock-nav {
-  display: flex;
-  gap: 16px;
-  font: 400 12px/1 var(--font-system);
-  color: var(--c-ink-600);
-}
-.mock-nav .is-active {
-  font-weight: 600;
-  color: var(--c-ink-900);
-}
-.mock-cart {
-  margin-left: auto;
-  font: 500 12px/1 var(--font-system);
-  color: var(--c-ink-600);
+.screen-content-desktop:has(.ext-pop) .desktop-site {
+  padding-bottom: 260px;
 }
 
-.mock-grid {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 32px;
-  align-items: start;
+.screen-content-desktop:has(.kp-popover) {
+  background: #f6f3ee;
+}
+.screen-content-desktop:has(.kp-popover) .desktop-body,
+.screen-content-desktop:has(.kp-popover) .desktop-site {
+  overflow: visible;
 }
 
-.mock-title {
-  font: 600 22px/1.2 var(--font-system);
-  color: var(--c-ink-900);
-  margin: 0 0 20px;
-}
+/* ---- Card Vault Dropdown ------------------------------------- */
+/* TODO(ds): No CardVaultDropdown component exists in the design
+   system. Built as reusable pattern for Moments 3 and 4.
+   Props: cards[], onGenerate, onUseOriginal, onAddCard. */
 
-/* Mock form sections */
-.mock-section {
-  margin-bottom: 24px;
-}
-.mock-section__title {
-  font: 600 13px/1 var(--font-system);
-  color: var(--c-ink-800);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0 0 12px;
-}
-
-/* Mock form fields */
-.mock-field {
-  margin-bottom: 10px;
-}
-.mock-field__label {
-  display: block;
-  font: 500 11px/1 var(--font-system);
-  color: var(--c-ink-600);
-  margin-bottom: 4px;
-}
-.mock-field__input {
-  height: 36px;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  border: 1px solid var(--c-divider);
-  border-radius: var(--r-sm);
-  font: 400 13px/1 var(--font-system);
-  color: var(--c-ink-300);
-  background: var(--c-surface);
-}
-.mock-field__input--filled {
-  color: var(--c-ink-800);
-}
-.mock-field--focus .mock-field__input {
-  border-color: var(--c-ink-900);
-  box-shadow: 0 0 0 1px var(--c-ink-900);
-}
-.mock-field__placeholder {
-  color: var(--c-ink-300);
-}
-.mock-field__caret {
-  width: 1px;
-  height: 16px;
-  background: var(--c-ink-900);
-  animation: caret-blink 1s step-end infinite;
-  margin-left: 1px;
-}
-@keyframes caret-blink {
-  50% { opacity: 0; }
-}
-.mock-field-row {
-  display: flex;
-  gap: 10px;
-}
-.mock-field-row .mock-field {
-  flex: 1;
-}
-
-/* Mock submit button */
-.mock-submit {
-  display: block;
-  width: 100%;
-  height: 40px;
-  margin-top: 20px;
-  border: none;
-  border-radius: var(--r-sm);
-  background: var(--c-ink-300);
-  color: var(--c-white);
-  font: 600 13px/1 var(--font-system);
-  cursor: default;
-  opacity: 0.6;
-}
-
-/* Mock order summary */
-.mock-summary {
-  background: var(--c-surface-alt);
-  border: 1px solid var(--c-divider);
-  border-radius: var(--r-md);
-  padding: 16px;
-}
-.mock-summary__title {
-  font: 600 13px/1 var(--font-system);
-  color: var(--c-ink-900);
-  margin-bottom: 12px;
-}
-.mock-summary__row {
-  display: flex;
-  justify-content: space-between;
-  font: 400 12px/1.6 var(--font-system);
-  color: var(--c-ink-700);
-}
-.mock-summary__row--dim {
-  color: var(--c-ink-300);
-}
-.mock-summary__row--total {
-  font-weight: 600;
-  color: var(--c-ink-900);
-  border-top: 1px solid var(--c-divider);
-  margin-top: 8px;
-  padding-top: 8px;
-}
-
-
-/* ---- In-Context Prompt (reusable, ICP) ----------------------- */
-/* TODO(ds): No floating-prompt component exists in the design system.
-   Built with closest available tokens. Reuse in Moments 3 and 4
-   by passing different headline, body, and CTA content. */
-
-.icp {
+.vault-dropdown {
   position: absolute;
-  top: 250px;
-  left: 40px;
-  width: 320px;
-  background: var(--c-surface);
-  border: 1px solid var(--c-card-border);
-  border-radius: var(--r-card);
-  padding: 24px;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: 10px;
   box-shadow:
-    0 4px 24px -4px rgba(17, 17, 17, 0.12),
-    0 1px 3px rgba(17, 17, 17, 0.06);
-  z-index: 10;
-  font-family: var(--font-system);
+    0 10px 30px -10px rgba(17, 17, 17, 0.28),
+    0 30px 60px -20px rgba(17, 17, 17, 0.18);
+  font-family: var(--font-hand);
+  overflow: hidden;
+}
+.vault-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 18px;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-left: 1px solid rgba(17, 17, 17, 0.14);
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  transform: rotate(45deg);
 }
 
-.icp__mark {
+/* Header */
+.vault-head {
   display: flex;
   align-items: center;
   gap: 8px;
-  font: 700 13px/1 var(--font-hand);
-  color: var(--c-ink-900);
-  margin-bottom: 16px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
 }
-.icp__mark-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: var(--c-ink-900);
+.vault-head__brand {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--c-black);
   color: var(--c-white);
-  font: 700 12px/1 var(--font-system);
-}
-
-.icp__headline {
-  font: 700 20px/1.25 var(--font-hand);
-  color: var(--c-ink-900);
-  margin: 0 0 8px;
-}
-
-.icp__body {
-  font: 400 14px/1.5 var(--font-system);
-  color: var(--c-ink-600);
-  margin: 0 0 20px;
-}
-
-.icp__actions {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.icp__btn {
-  flex: 1;
-  height: 40px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  border-radius: var(--r-btn);
-  font: 600 13px/1 var(--font-system);
-  cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  font: 800 10px/1 var(--font-hand);
+  flex-shrink: 0;
 }
-.icp__btn:hover {
-  transform: translateY(-1px);
+.vault-head__title {
+  flex: 1 1 0;
+  font: 400 14px/1.1 var(--font-hand);
+  color: #6a6d75;
 }
-.icp__btn:active {
-  transform: translateY(0);
-}
-
-.icp__btn--primary {
-  background: var(--c-ink-900);
-  color: var(--c-white);
-}
-.icp__btn--primary:hover {
-  opacity: 0.9;
-}
-
-.icp__btn--secondary {
-  background: var(--c-surface);
-  color: var(--c-ink-700);
-  border: 1px solid var(--c-divider);
-}
-.icp__btn--secondary:hover {
-  background: var(--c-surface-muted);
-}
-
-.icp__link {
-  display: block;
-  text-align: center;
-  font: 400 12px/1 var(--font-system);
-  color: var(--c-ink-600);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
-}
-.icp__link:hover {
-  color: var(--c-ink-900);
-}
-
-
-/* ---- Confirmation screen (2.2) -------------------------------- */
-
-.confirm {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 40px 56px;
-  text-align: center;
-  min-height: 460px;
-  font-family: var(--font-system);
-}
-
-.confirm__mark {
-  font: 700 15px/1 var(--font-hand);
-  color: var(--c-ink-600);
-  letter-spacing: 0.3px;
-  margin-bottom: 24px;
-}
-
-.confirm__check {
-  margin-bottom: 16px;
-}
-.confirm__check .material-symbols-outlined {
-  font-size: 40px;
-  color: var(--c-ink-900);
-}
-
-.confirm__headline {
-  font: 700 32px/1.15 var(--font-hand);
-  color: var(--c-ink-900);
-  margin: 0 0 8px;
-  max-width: 420px;
-}
-
-.confirm__subhead {
-  font: 400 15px/1.5 var(--font-system);
-  color: var(--c-ink-600);
-  margin: 0 0 32px;
-  max-width: 380px;
-}
-
-/* Card summary */
-.confirm__summary {
-  width: 100%;
-  max-width: 320px;
-  border-top: 1px dashed rgba(17, 17, 17, 0.15);
-  border-bottom: 1px dashed rgba(17, 17, 17, 0.15);
-  padding: 20px 0;
-  margin-bottom: 32px;
-}
-.confirm__summary-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 0;
-}
-.confirm__summary-label {
-  font: 400 13px/1 var(--font-system);
-  color: var(--c-ink-600);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.confirm__summary-value {
-  font: 600 14px/1 var(--font-hand);
-  color: var(--c-ink-900);
-}
-.confirm__summary-value--lock {
-  display: flex;
+.vault-head__pill {
+  display: inline-flex;
   align-items: center;
   gap: 4px;
+  padding: 3px 7px;
+  background: var(--c-surface-muted);
+  color: var(--c-ink-700);
+  border-radius: 100px;
+  font: 700 10px/1 var(--font-hand);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.vault-head__pill .material-symbols-outlined {
+  font-size: 11px;
+  color: var(--c-ink-700);
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+}
+
+/* Generate row — styled like a card row, with K brand chip */
+.vault-gen {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-hand);
+  border-radius: 6px;
+}
+.vault-gen:hover { background: #f1efe9; }
+.vault-gen__chip-frame {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #f0eeea;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.vault-gen__chip {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 11px/1 var(--font-hand);
+}
+.vault-gen__text {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.vault-gen__title {
+  font: 700 14px/1.2 var(--font-hand);
+  color: var(--c-ink-900);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.vault-gen__sub {
+  font: 400 11px/1.2 var(--font-hand);
+  color: var(--c-ink-600);
+}
+.vault-gen__rec {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  background: #eae8e4;
+  color: var(--c-ink-700);
+  border-radius: 100px;
+  font: 700 9px/1.3 var(--font-hand);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.vault-gen__arrow {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--c-ink-300);
+  margin-left: auto;
+}
+.vault-gen:hover .vault-gen__arrow {
+  color: var(--c-ink-600);
+}
+
+/* Card list */
+.vault-list {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+.vault-list__label {
+  font: 400 10px/1 var(--font-hand);
+  color: var(--c-ink-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 12px 4px;
+}
+
+/* Card row — condensed items with inline CTAs */
+.vault-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  border-radius: 6px;
+  text-align: left;
+  width: 100%;
+  font-family: var(--font-hand);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.vault-card:hover {
+  background: #f1efe9;
+}
+
+.vault-card__chip-frame {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #f0eeea;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.vault-card__chip {
+  width: 22px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 5px/1 var(--font-system);
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #2a2a2a 0%, #4a4a4a 100%);
+}
+
+.vault-card__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.vault-card__title {
+  font: 700 14px/1.2 var(--font-hand);
+  color: #1a2e22;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.vault-card__sub {
+  font: 400 11px/1.2 var(--font-hand);
+  color: #6a6d75;
+}
+
+/* Chevron on right side of card row */
+.vault-card__arrow {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--c-ink-300);
+  margin-left: auto;
+}
+.vault-card:hover .vault-card__arrow {
+  color: var(--c-ink-600);
+}
+
+
+.vault-divider {
+  height: 1px;
+  background: rgba(17, 17, 17, 0.08);
+  margin: 4px 0;
+}
+
+/* Add card row */
+.vault-add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: var(--font-hand);
+}
+.vault-add:hover { background: #f1efe9; }
+.vault-add__chip {
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-surface-muted);
+  border: 1px dashed var(--c-ink-300);
+  flex-shrink: 0;
+}
+.vault-add__chip .material-symbols-outlined {
+  font-size: 13px;
+  color: var(--c-ink-700);
+  font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 20;
+}
+.vault-add__text {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.vault-add__title {
+  font: 700 14px/1.2 var(--font-hand);
+  color: #1a2e22;
+}
+.vault-add__sub {
+  font: 400 11px/1.2 var(--font-hand);
+  color: #6a6d75;
+}
+
+
+
+/* ---- Extension Popover (Screen 2.2) --------------------------- */
+/* Anchored to the Keystone plugin icon in the browser chrome.
+   Contains card type radios + base card radios in one view. */
+
+.ext-pop {
+  position: absolute;
+  top: -8px; /* caret aligns just below the plugin icon bottom */
+  right: 16px;
+  width: 320px;
+  background: var(--c-white);
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: 10px;
+  box-shadow:
+    0 10px 30px -10px rgba(17, 17, 17, 0.28),
+    0 30px 60px -20px rgba(17, 17, 17, 0.18);
+  padding: 16px;
+  z-index: 30;
+  font-family: var(--font-hand);
+}
+.ext-pop::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 47px; /* centered under the K plugin badge */
+  width: 10px;
+  height: 10px;
+  background: var(--c-white);
+  border-left: 1px solid rgba(17, 17, 17, 0.14);
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  transform: rotate(45deg);
+}
+
+.ext-pop__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+.ext-pop__brand {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 11px/1 var(--font-hand);
+  flex-shrink: 0;
+}
+.ext-pop__headline {
+  flex: 1 1 0;
+  font: 700 14px/1.2 var(--font-hand);
+  color: var(--c-ink-900);
+}
+
+.ext-pop__section {
+  margin-bottom: 12px;
+}
+.ext-pop__section:last-of-type {
+  margin-bottom: 0;
+}
+.ext-pop__label {
+  font: 400 10px/1 var(--font-hand);
+  color: var(--c-ink-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* Radio options */
+.ext-pop__opt {
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--c-divider);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.ext-pop__opt:last-child { margin-bottom: 0; }
+.ext-pop__opt:hover { border-color: var(--c-ink-300); }
+.ext-pop__opt.is-selected {
+  border-color: var(--c-ink-900);
+  background: #fafaf8;
+}
+.ext-pop__radio {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-ink-300);
+  margin-top: 3px;
+  position: relative;
+  transition: border-color 0.12s ease;
+}
+.ext-pop__opt.is-selected .ext-pop__radio {
+  border-color: var(--c-ink-900);
+}
+.ext-pop__opt.is-selected .ext-pop__radio::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-ink-900);
+}
+
+.ext-pop__opt-body { flex: 1 1 0; min-width: 0; }
+.ext-pop__opt-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+.ext-pop__opt-title {
+  font: 700 12px/1.2 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ext-pop__opt-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background: var(--c-ink-900);
+  color: var(--c-white);
+  border-radius: 100px;
+  font: 700 8px/1 var(--font-hand);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.ext-pop__opt-nw {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px 2px 5px;
+  background: #eae8e4;
+  color: var(--c-ink-700);
+  border-radius: 100px;
+  font: 400 9px/1.3 var(--font-hand);
+  white-space: nowrap;
+}
+.ext-pop__opt-nw .material-symbols-outlined {
+  font-size: 11px;
+  color: var(--c-ink-600);
+}
+.ext-pop__opt-nw strong {
   font-weight: 700;
   color: var(--c-ink-900);
 }
-.confirm__summary-value--lock .material-symbols-outlined {
-  font-size: 14px;
+.ext-pop__opt-desc {
+  font: 400 11px/1.4 var(--font-hand);
+  color: var(--c-ink-600);
 }
 
-/* CTAs */
-.confirm__actions {
-  display: flex;
-  flex-direction: column;
+/* Base card option — leaves space for chip */
+.ext-pop__opt--card {
   align-items: center;
-  gap: 12px;
+}
+.ext-pop__opt-chip-frame {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  background: #f0eeea;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ext-pop__opt-chip {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 5px/1 var(--font-system);
+  color: #ffffff;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #2a2a2a 0%, #4a4a4a 100%);
+}
+.ext-pop__opt-card-title {
+  font: 700 12px/1.2 var(--font-hand);
+  color: var(--c-ink-900);
+  margin-bottom: 2px;
+}
+.ext-pop__opt-card-sub {
+  font: 400 11px/1.3 var(--font-hand);
+  color: var(--c-ink-600);
 }
 
-.confirm__btn {
-  height: var(--btn-lg-h);
-  min-width: 200px;
+/* Popover actions */
+.ext-pop__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+.ext-pop__btn-primary {
+  padding: 8px 18px;
+  background: var(--c-ink-900);
+  color: var(--c-white);
+  border: none;
+  border-radius: var(--r-btn);
+  font: 700 12px/1 var(--font-hand);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.ext-pop__btn-primary:hover { opacity: 0.88; }
+.ext-pop__btn-cancel {
+  font: 400 12px/1 var(--font-hand);
+  color: var(--c-ink-600);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+.ext-pop__btn-cancel:hover { color: var(--c-ink-900); }
+
+
+/* ---- Card Type Modal (DEPRECATED - kept for fallback) -------- */
+/* TODO(ds): No CardTypeModal component exists in the design system.
+   Built as reusable pattern for Moments 3 and 4.
+   Props: sourceCard, options[], defaultSelected, onConfirm, onCancel. */
+
+.ctm-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  border-radius: var(--r-btn);
-  font: 600 14px/1 var(--font-system);
-  cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-.confirm__btn:hover {
-  transform: translateY(-1px);
-}
-.confirm__btn:active {
-  transform: translateY(0);
+  z-index: 30;
+  border-radius: 25px;
 }
 
-.confirm__btn--primary {
+.ctm {
+  width: 440px;
+  max-height: 90%;
+  background: var(--c-surface);
+  border-radius: var(--r-card);
+  box-shadow: 0 12px 48px -8px rgba(0, 0, 0, 0.2);
+  padding: 28px 28px 24px;
+  font-family: var(--font-system);
+  overflow-y: auto;
+}
+
+.ctm__headline {
+  font: 600 14px/1.4 var(--font-system);
+  color: var(--c-ink-900);
+  margin: 0 0 4px;
+}
+.ctm__sub {
+  font: 400 13px/1.4 var(--font-system);
+  color: var(--c-ink-600);
+  margin: 0 0 20px;
+}
+
+/* Radio options */
+.ctm__option {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--c-divider);
+  border-radius: var(--r-md);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  position: relative;
+}
+.ctm__option:hover {
+  border-color: var(--c-ink-300);
+}
+.ctm__option.is-selected {
+  border-color: var(--c-ink-900);
+  background: #fafaf8;
+}
+
+.ctm__radio {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--c-ink-300);
+  margin-top: 2px;
+  position: relative;
+  transition: border-color 0.15s ease;
+}
+.ctm__option.is-selected .ctm__radio {
+  border-color: var(--c-ink-900);
+}
+.ctm__option.is-selected .ctm__radio::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-ink-900);
+}
+
+.ctm__option-body { flex: 1; min-width: 0; }
+
+.ctm__option-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.ctm__option-title {
+  font: 700 14px/1.2 var(--font-system);
+  color: var(--c-ink-900);
+}
+.ctm__option-badge {
+  font: 700 9px/1 var(--font-system);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #0b6e3e;
+  background: #e8f5e9;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.ctm__option-best {
+  font: 500 12px/1.4 var(--font-system);
+  color: var(--c-ink-600);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.ctm__option-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ctm__option-bullets li {
+  font: 400 11px/1.4 var(--font-system);
+  color: var(--c-ink-700);
+  padding-left: 14px;
+  position: relative;
+}
+.ctm__option-bullets li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: var(--c-ink-300);
+}
+
+.ctm__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.ctm__btn-primary {
+  padding: 10px 22px;
   background: var(--c-ink-900);
   color: var(--c-white);
+  border: none;
+  border-radius: var(--r-btn);
+  font: 600 13px/1 var(--font-system);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  text-decoration: none;
 }
-.confirm__btn--primary:hover {
-  opacity: 0.9;
-}
-
-.confirm__link {
+.ctm__btn-primary:hover { opacity: 0.88; }
+.ctm__btn-cancel {
   font: 400 13px/1 var(--font-system);
   color: var(--c-ink-600);
+  background: none;
+  border: none;
+  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.confirm__link:hover {
+.ctm__btn-cancel:hover { color: var(--c-ink-900); }
+
+
+/* ---- Inline success note (Screen 2.3) ------------------------ */
+
+.field-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #f0f9f4;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(26, 107, 60, 0.12);
+}
+.field-success .material-symbols-outlined {
+  font-size: 16px;
+  color: #0b6e3e;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.field-success__text {
+  font: 400 12px/1.5 var(--font-system);
+  color: var(--c-ink-800);
+}
+.field-success__change {
+  font: 500 11px/1 var(--font-system);
+  color: var(--c-ink-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  margin-top: 4px;
+  display: inline-block;
+}
+.field-success__change:hover { color: var(--c-ink-900); }
+
+
+/* ---- Keystone Plugin Popover (Screen 2.4) -------------------- */
+/* TODO(ds): No KeystonePluginPopover component exists in the design
+   system. Built as reusable pattern for future moments.
+   Props: headline, cardSummary, body, primaryCTA, secondaryCTA. */
+
+.kp-popover {
+  position: absolute;
+  top: -8px; /* caret aligns just below the plugin icon bottom */
+  right: 16px;
+  width: 280px;
+  background: var(--c-white);
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: 10px;
+  box-shadow:
+    0 10px 30px -10px rgba(17, 17, 17, 0.28),
+    0 30px 60px -20px rgba(17, 17, 17, 0.18);
+  padding: 16px;
+  z-index: 30;
+  font-family: var(--font-hand);
+}
+.kp-popover::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 47px; /* centered under the K plugin badge */
+  width: 10px;
+  height: 10px;
+  background: var(--c-white);
+  border-left: 1px solid rgba(17, 17, 17, 0.14);
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  transform: rotate(45deg);
+}
+
+.kp-popover__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+.kp-popover__check {
+  flex-shrink: 0;
   color: var(--c-ink-900);
+  line-height: 0;
+}
+.kp-popover__check .material-symbols-outlined { font-size: 20px; }
+.kp-popover__headline {
+  font: 700 14px/1.3 var(--font-hand);
+  color: var(--c-ink-900);
+}
+
+.kp-popover__summary {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+.kp-popover__row {
+  display: flex;
+  justify-content: space-between;
+  font: 400 12px/1.6 var(--font-hand);
+  color: var(--c-ink-600);
+}
+.kp-popover__row-val {
+  font-weight: 700;
+  color: var(--c-ink-900);
+}
+.kp-popover__stack {
+  font: 400 12px/1.6 var(--font-hand);
+  color: var(--c-ink-900);
+}
+
+.kp-popover__body {
+  font: 400 12px/1.4 var(--font-hand);
+  color: var(--c-ink-600);
+  margin-bottom: 14px;
+}
+
+.kp-popover__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kp-popover__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  background: var(--c-ink-900);
+  color: var(--c-white);
+  border: none;
+  border-radius: var(--r-btn);
+  font: 700 13px/1 var(--font-hand);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.kp-popover__btn:hover { opacity: 0.88; }
+.kp-popover__link {
+  font: 400 12px/1 var(--font-hand);
+  color: var(--c-ink-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+.kp-popover__link:hover { color: var(--c-ink-900); }
+
+
+/* ---- Verdant Supply order confirmation ----------------------- */
+
+.vs-confirm {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  padding: 20px 40px 28px;
+  font-family: var(--font-system);
+}
+
+.vs-confirm__h1 {
+  font: 800 24px/1.2 var(--font-system);
+  color: #1a2e22;
+  letter-spacing: -0.3px;
+  margin: 0 0 6px;
+}
+.vs-confirm__meta {
+  font: 400 13px/1.6 var(--font-system);
+  color: #51545c;
+  margin: 0 0 20px;
+}
+
+.vs-confirm__divider {
+  border: none;
+  border-top: 1px solid rgba(36, 38, 29, 0.1);
+  margin: 16px 0;
+}
+
+.vs-confirm__row {
+  display: flex;
+  justify-content: space-between;
+  font: 400 13px/1.8 var(--font-system);
+  color: #24261d;
+}
+.vs-confirm__row--dim { color: #6a6d75; }
+.vs-confirm__row--total {
+  font-weight: 700;
+  border-top: 1px solid rgba(36, 38, 29, 0.1);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+.vs-confirm__ship {
+  font: 400 13px/1.6 var(--font-system);
+  color: #51545c;
+}
+.vs-confirm__ship strong {
+  color: #24261d;
+}
+
+.vs-confirm__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.vs-confirm__btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font: 600 12px/1 var(--font-system);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.vs-confirm__btn--primary {
+  background: #1a2e22;
+  color: #fff;
+  border: none;
+}
+.vs-confirm__btn--primary:hover { background: #243d2e; }
+.vs-confirm__btn--secondary {
+  background: none;
+  color: #1a2e22;
+  border: 1px solid rgba(36, 38, 29, 0.2);
+}
+.vs-confirm__btn--secondary:hover { background: rgba(36, 38, 29, 0.04); }
+
+
+/* ---- Greyed-out backdrop for modal state --------------------- */
+
+.checkout-dimmed {
+  opacity: 0.25;
+  pointer-events: none;
+  user-select: none;
 }

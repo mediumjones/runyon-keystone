@@ -25,8 +25,8 @@
       Concepts
     </a>
     <div class="viewer-bar__info">
-      <h1 class="viewer-bar__title">Checkout &middot; Payment Dropdown</h1>
-      <p class="viewer-bar__desc">Dropdown open with generate row + saved cards</p>
+      <h1 class="viewer-bar__title">Checkout &middot; Card Populated</h1>
+      <p class="viewer-bar__desc">Virtual card populated + plugin popover confirming the new card</p>
     </div>
     <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
       <span class="material-symbols-outlined">download</span>
@@ -38,35 +38,22 @@
 
       <!--
         ═══════════════════════════════════════════════════════════
-        CONTENT CONSTANTS — Screen 2.1: Checkout + vault dropdown
+        CONTENT CONSTANTS — Screen 2.3: Clean populated checkout
         ═══════════════════════════════════════════════════════════
 
-        GENERATE_ROW_TITLE (locked): "Create a secure virtual card"
-        GENERATE_ROW_SUB (locked):
-          "Uses a new card number in place of your real one"
-        Alternates:
-          "Create a unique card number for verdantsupply.com"
-          "Protect this purchase with a virtual card"
-          "Use a virtual card for verdantsupply.com"
+        Per plan: NO Keystone UI on this page. No banners, no
+        success messages, no inline notes, no "powered by" text,
+        no "Change" link. Looks like a normal populated checkout.
 
-        GENERATE_ROW_BADGE (locked): "Recommended"
+        VIRTUAL_CARD_NUMBER (locked): "4929 1234 5678 9011"
+        VIRTUAL_CARD_EXP (locked):    "12/28"
+        VIRTUAL_CARD_CVV (locked):    "817"
 
-        DROPDOWN_SECTION_LABEL (locked): "Your cards"
-
-        CARD_1:
-          Issuer: Discover it Cash Back · •••• 2298
-        CARD_2:
-          Issuer: Chase Sapphire Preferred · •••• 4417
-
-        Alternate card pairings (commented):
-          Amazon Prime Visa + Capital One Venture X
-          Chase Freedom Flex + American Express Gold
-
-        ADD_CARD (locked): "Add a new card to your vault"
+        Clicking Review order advances to Screen 2.4.
         ═══════════════════════════════════════════════════════════
       -->
 
-      <!-- Browser chrome (matches s1-desktop) -->
+      <!-- Browser chrome -->
       <div class="desktop-chrome">
         <div class="desktop-chrome__top">
           <span class="desktop-dots">
@@ -103,7 +90,7 @@
         </div>
       </div>
 
-      <!-- Verdant Supply checkout page -->
+      <!-- Verdant Supply checkout — card populated -->
       <div class="desktop-body">
         <div class="desktop-site">
           <div class="site-topbar">
@@ -146,72 +133,33 @@
                 </div>
               </section>
 
-              <!-- Payment with vault dropdown -->
+              <!-- Payment — clean populated checkout, no Keystone UI -->
               <section class="checkout-section">
                 <h3 class="checkout-section__title">Payment</h3>
-                <div class="field field--active" style="position:relative;">
+                <div class="field">
                   <label class="field__label">Card number</label>
-                  <div class="field__input">
-                    <span class="field__input-text field__input--empty">Select a card&hellip;</span>
-                    <span class="material-symbols-outlined" style="font-size:16px;color:var(--c-ink-300);">expand_more</span>
+                  <div class="field__input field__input--filled">
+                    <span class="field__input-text">4929 1234 5678 9011</span>
                   </div>
+                </div>
 
-                  <!-- Payment method dropdown -->
-                  <div class="vault-dropdown" role="listbox" aria-label="Payment method picker. Generate a unique virtual card, or select one of your saved cards.">
-
-                    <div class="vault-list">
-                      <!-- Generate row — first item, styled like a card row -->
-                      <a class="vault-gen" href="s10b-modal.html" aria-label="Create a secure virtual card. Uses a new card number in place of your real one. Recommended. Opens the Project Keystone browser extension.">
-                        <span class="vault-gen__chip-frame"><span class="vault-gen__chip">K</span></span>
-                        <span class="vault-gen__text">
-                          <span class="vault-gen__title">Create a secure virtual card <span class="vault-gen__rec">Recommended</span></span>
-                          <span class="vault-gen__sub">Uses a new card number in place of your real one</span>
-                        </span>
-                        <span class="material-symbols-outlined vault-gen__arrow">chevron_right</span>
-                      </a>
-
-                      <div class="vault-divider"></div>
-
-                      <div class="vault-list__label">Your cards</div>
-
-                      <!-- Card 1: Discover -->
-                      <a class="vault-card" href="#" onclick="console.log('real card - Discover'); return false;">
-                        <span class="vault-card__chip-frame"><span class="vault-card__chip">DISC</span></span>
-                        <span class="vault-card__text">
-                          <span class="vault-card__title">Discover it Cash Back</span>
-                          <span class="vault-card__sub">Discover &bull;&bull;&bull;&bull; 2298 &middot; exp 04/28</span>
-                        </span>
-                        <span class="material-symbols-outlined vault-card__arrow">chevron_right</span>
-                      </a>
-
-                      <!-- Card 2: Chase -->
-                      <a class="vault-card" href="#" onclick="console.log('real card - Chase'); return false;">
-                        <span class="vault-card__chip-frame"><span class="vault-card__chip">CHASE</span></span>
-                        <span class="vault-card__text">
-                          <span class="vault-card__title">Chase Sapphire Preferred</span>
-                          <span class="vault-card__sub">Chase &bull;&bull;&bull;&bull; 4417 &middot; exp 11/27</span>
-                        </span>
-                        <span class="material-symbols-outlined vault-card__arrow">chevron_right</span>
-                      </a>
-
-                      <div class="vault-divider"></div>
-
-                      <!-- Add card row -->
-                      <button class="vault-add" type="button" onclick="console.log('add card')">
-                        <span class="vault-add__chip">
-                          <span class="material-symbols-outlined">add</span>
-                        </span>
-                        <span class="vault-add__text">
-                          <span class="vault-add__title">Add a new card to your vault</span>
-                          <span class="vault-add__sub">Encrypted &middot; syncs to your Monitoring Vault</span>
-                        </span>
-                      </button>
+                <div class="field-row" style="margin-top:12px;">
+                  <div class="field">
+                    <label class="field__label">Exp</label>
+                    <div class="field__input field__input--filled">
+                      <span class="field__input-text">12/28</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="field__label">CVV</label>
+                    <div class="field__input field__input--filled">
+                      <span class="field__input-text">817</span>
                     </div>
                   </div>
                 </div>
               </section>
 
-              <button class="checkout-summary__pay" type="button" style="opacity:0.4;cursor:default;margin-top:16px;width:100%;" disabled>Review order</button>
+              <button class="checkout-summary__pay" type="button" onclick="console.log('review order')" style="margin-top:16px;width:100%;">Review order</button>
             </div>
 
             <aside class="checkout-summary">
@@ -233,6 +181,29 @@
                 <span>$42.00</span>
               </div>
             </aside>
+          </div>
+        </div>
+
+        <!-- Keystone Plugin Popover — confirms the virtual card just created -->
+        <div class="kp-popover" role="dialog" aria-label="Project Keystone plugin confirmation. Virtual card created for verdantsupply.com.">
+          <div class="kp-popover__head">
+            <div class="kp-popover__check">
+              <span class="material-symbols-outlined">check_circle</span>
+            </div>
+            <div class="kp-popover__headline">Virtual card created for verdantsupply.com</div>
+          </div>
+
+          <div class="kp-popover__summary">
+            <div class="kp-popover__stack">Card ending 9011</div>
+            <div class="kp-popover__stack">Unique to verdantsupply.com</div>
+            <div class="kp-popover__stack">From Discover it Cash Back &bull;&bull;&bull;&bull; 2298</div>
+          </div>
+
+          <div class="kp-popover__body">Auto-fills next time you shop here.</div>
+
+          <div class="kp-popover__actions">
+            <a class="kp-popover__btn" href="javascript:void(0)" onclick="console.log('manage card')">Manage card</a>
+            <a class="kp-popover__link" href="javascript:void(0)" onclick="console.log('see all cards')">See all my cards</a>
           </div>
         </div>
       </div>
