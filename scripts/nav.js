@@ -27,6 +27,7 @@
             { file: 's1rb.html', title: 'Security Snapshot' },
             { file: 's1rb-family.html', title: 'Family Tab', pill: 'family' },
             { file: 's1rb-teresa.html', title: 'Teresa', pill: 'family' },
+            { file: 's1rb-camila-email.html', title: 'Camila \u00b7 Email', pill: 'family' },
           ]
         },
         {

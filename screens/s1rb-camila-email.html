@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camila · Kid Report Email · Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=4" />
+  <link rel="stylesheet" href="../styles/status-card.css?v=2" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=9" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/gate.js"></script>
+  <script src="../scripts/nav.js?v=7" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+  <style>
+    /* Email-specific chrome */
+    .email-chrome {
+      background: var(--color-surface, #f7f7f7);
+      border-bottom: 1px solid var(--color-border, #e0e0e0);
+      padding: var(--sp-4, 16px) var(--sp-5, 20px) var(--sp-3, 12px);
+      font-family: 'Kalam', cursive;
+    }
+    .email-chrome__row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--sp-2, 8px);
+      margin-bottom: var(--sp-1, 4px);
+    }
+    .email-chrome__label {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary, #888);
+      min-width: 52px;
+      text-align: right;
+    }
+    .email-chrome__value {
+      font-size: 0.85rem;
+      color: var(--color-text, #333);
+    }
+    .email-chrome__subject {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text, #222);
+      margin-top: var(--sp-2, 8px);
+    }
+
+    /* Email body wrapper */
+    .email-body {
+      padding: var(--sp-5, 20px);
+    }
+    .email-body p {
+      font-family: 'Kalam', cursive;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--color-text, #333);
+      margin: 0 0 var(--sp-3, 12px);
+    }
+    .email-greeting {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: var(--sp-2, 8px) !important;
+    }
+
+    /* Stat hero in email */
+    .email-hero {
+      background: var(--color-surface, #f7f7f7);
+      border-radius: var(--radius-lg, 16px);
+      padding: var(--sp-5, 20px);
+      text-align: center;
+      margin: var(--sp-4, 16px) 0;
+    }
+    .email-hero__eyebrow {
+      font-family: 'Kalam', cursive;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary, #888);
+      margin-bottom: var(--sp-1, 4px);
+    }
+    .email-hero__number {
+      font-family: 'Kalam', cursive;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-text, #222);
+    }
+    .email-hero__label {
+      font-family: 'Kalam', cursive;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary, #666);
+      margin-top: var(--sp-1, 4px);
+    }
+
+    /* Check row items for email */
+    .email-check {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3, 12px);
+      padding: var(--sp-3, 12px) 0;
+      border-bottom: 1px solid var(--color-border, #eee);
+      font-family: 'Kalam', cursive;
+    }
+    .email-check:last-child { border-bottom: none; }
+    .email-check__icon {
+      font-size: 20px;
+      color: var(--color-text-secondary, #888);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .email-check__text {
+      flex: 1;
+    }
+    .email-check__title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-text, #333);
+      display: block;
+    }
+    .email-check__meta {
+      font-size: 0.78rem;
+      color: var(--color-text-secondary, #888);
+      display: block;
+      margin-top: 2px;
+    }
+    .email-check__badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: 'Kalam', cursive;
+      padding: 2px 10px;
+      border-radius: 20px;
+      background: var(--color-surface, #f0f0f0);
+      color: var(--color-text-secondary, #666);
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    /* Section dividers in email */
+    .email-section {
+      margin: var(--sp-5, 20px) 0;
+    }
+    .email-section__title {
+      font-family: 'Kalam', cursive;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text, #222);
+      margin-bottom: var(--sp-2, 8px);
+    }
+
+    /* Recommendation cards in email */
+    .email-rec {
+      background: var(--color-surface, #f7f7f7);
+      border-radius: var(--radius-md, 12px);
+      padding: var(--sp-4, 16px);
+      margin-bottom: var(--sp-3, 12px);
+      font-family: 'Kalam', cursive;
+    }
+    .email-rec__title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-text, #333);
+      margin-bottom: var(--sp-1, 4px);
+    }
+    .email-rec__body {
+      font-size: 0.8rem;
+      color: var(--color-text-secondary, #666);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .email-rec__cta {
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-text, #222);
+      text-decoration: underline;
+      margin-top: var(--sp-2, 8px);
+    }
+
+    /* Alert callout */
+    .email-alert {
+      border: 1.5px solid var(--color-text, #333);
+      border-radius: var(--radius-md, 12px);
+      padding: var(--sp-4, 16px);
+      margin: var(--sp-4, 16px) 0;
+      font-family: 'Kalam', cursive;
+    }
+    .email-alert__row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3, 12px);
+    }
+    .email-alert__icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .email-alert__title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-text, #333);
+      display: block;
+    }
+    .email-alert__body {
+      font-size: 0.8rem;
+      color: var(--color-text-secondary, #666);
+      line-height: 1.5;
+      display: block;
+      margin-top: 2px;
+    }
+    .email-alert__cta {
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--color-text, #222);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 20px;
+      margin-top: var(--sp-3, 12px);
+      cursor: pointer;
+    }
+
+    /* Email footer */
+    .email-footer {
+      border-top: 1px solid var(--color-border, #e0e0e0);
+      padding: var(--sp-4, 16px) var(--sp-5, 20px);
+      text-align: center;
+      font-family: 'Kalam', cursive;
+    }
+    .email-footer__cta {
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: var(--color-text, #222);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 28px;
+      cursor: pointer;
+      margin-bottom: var(--sp-3, 12px);
+    }
+    .email-footer__link {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--color-text-secondary, #888);
+      text-decoration: underline;
+      margin-top: var(--sp-2, 8px);
+    }
+    .email-footer__legal {
+      font-size: 0.68rem;
+      color: var(--color-text-tertiary, #aaa);
+      margin-top: var(--sp-3, 12px);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Camila &middot; Kid Report (Email)</h1>
+      <p class="viewer-bar__desc">Weekly digest email a parent receives about their child&rsquo;s digital safety</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s1-report s1-report--long" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar" style="margin-bottom:0">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+
+      <!-- Email client chrome -->
+      <div class="email-chrome">
+        <div class="email-chrome__row">
+          <span class="email-chrome__label">From:</span>
+          <span class="email-chrome__value">Project Keystone &lt;alerts@keystone.nerdwallet.com&gt;</span>
+        </div>
+        <div class="email-chrome__row">
+          <span class="email-chrome__label">To:</span>
+          <span class="email-chrome__value">you</span>
+        </div>
+        <div class="email-chrome__row">
+          <span class="email-chrome__label">Date:</span>
+          <span class="email-chrome__value">Sun, Apr 12, 2026 at 8:00 AM</span>
+        </div>
+        <div class="email-chrome__subject">Camila&rsquo;s weekly safety report</div>
+      </div>
+
+      <!-- Email body -->
+      <div class="email-body">
+
+        <!-- Greeting -->
+        <p class="email-greeting">Hi there,</p>
+        <p>Here&rsquo;s what we checked for Camila this week. Everything looks good, with one thing for you to review.</p>
+
+        <!-- Hero stat -->
+        <div class="email-hero">
+          <div class="email-hero__eyebrow">This week</div>
+          <div class="email-hero__number">42</div>
+          <div class="email-hero__label">checks across Camila&rsquo;s identity and digital footprint</div>
+        </div>
+
+        <!-- Alert callout -->
+        <div class="email-alert">
+          <div class="email-alert__row">
+            <span class="material-symbols-outlined email-alert__icon">visibility</span>
+            <div>
+              <span class="email-alert__title">New social account detected</span>
+              <span class="email-alert__body">A TikTok account was created using Camila&rsquo;s email address on Wednesday. If this was expected, you can dismiss it. If not, we can help you lock it down.</span>
+            </div>
+          </div>
+          <button class="email-alert__cta" type="button">Review this</button>
+        </div>
+
+        <!-- What we checked -->
+        <div class="email-section">
+          <div class="email-section__title">What we checked</div>
+
+          <div class="email-check">
+            <span class="material-symbols-outlined email-check__icon">person_search</span>
+            <div class="email-check__text">
+              <span class="email-check__title">Identity and SSN</span>
+              <span class="email-check__meta">No accounts, loans, or credit inquiries in Camila&rsquo;s name. A clean credit file is exactly what a 14-year-old should have.</span>
+            </div>
+            <span class="email-check__badge">Clear</span>
+          </div>
+
+          <div class="email-check">
+            <span class="material-symbols-outlined email-check__icon">travel_explore</span>
+            <div class="email-check__text">
+              <span class="email-check__title">Data broker scan</span>
+              <span class="email-check__meta">Camila&rsquo;s name and address appeared on 2 people-search sites. We sent removal requests to both.</span>
+            </div>
+            <span class="email-check__badge">Acting</span>
+          </div>
+
+          <div class="email-check">
+            <span class="material-symbols-outlined email-check__icon">alternate_email</span>
+            <div class="email-check__text">
+              <span class="email-check__title">Email and breach monitoring</span>
+              <span class="email-check__meta">Camila&rsquo;s email scanned against 11 breach databases. No exposures found.</span>
+            </div>
+            <span class="email-check__badge">Clear</span>
+          </div>
+
+          <div class="email-check">
+            <span class="material-symbols-outlined email-check__icon">share</span>
+            <div class="email-check__text">
+              <span class="email-check__title">Social media accounts</span>
+              <span class="email-check__meta">3 known accounts (Instagram, Discord, TikTok). Privacy settings reviewed. Instagram is set to public.</span>
+            </div>
+            <span class="email-check__badge">1 flag</span>
+          </div>
+
+          <div class="email-check">
+            <span class="material-symbols-outlined email-check__icon">devices</span>
+            <div class="email-check__text">
+              <span class="email-check__title">Online accounts</span>
+              <span class="email-check__meta">12 accounts use Camila&rsquo;s email. All passwords are unique. None have appeared in breaches.</span>
+            </div>
+            <span class="email-check__badge">Strong</span>
+          </div>
+
+          <div class="email-check">
+            <span class="material-symbols-outlined email-check__icon">school</span>
+            <div class="email-check__text">
+              <span class="email-check__title">School and activity records</span>
+              <span class="email-check__meta">No identity misuse tied to school enrollment or extracurricular sign-ups.</span>
+            </div>
+            <span class="email-check__badge">Clear</span>
+          </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="email-section">
+          <div class="email-section__title">Suggestions for this week</div>
+
+          <div class="email-rec">
+            <div class="email-rec__title">Set Camila&rsquo;s Instagram to private</div>
+            <p class="email-rec__body">Her account is currently public, which means anyone can see her posts and bio. Switching to private takes about 30 seconds and keeps her content visible only to approved followers.</p>
+            <a class="email-rec__cta" href="#">How to do this &rarr;</a>
+          </div>
+
+          <div class="email-rec">
+            <div class="email-rec__title">Freeze Camila&rsquo;s credit file</div>
+            <p class="email-rec__body">Kids are 50x more likely than adults to have their identity stolen because their credit files are blank slates. A credit freeze is free, takes about 5 minutes, and prevents anyone from opening accounts in her name.</p>
+            <a class="email-rec__cta" href="#">Start the freeze &rarr;</a>
+          </div>
+
+          <div class="email-rec">
+            <div class="email-rec__title">Talk about the new TikTok account</div>
+            <p class="email-rec__body">If Camila set it up herself, that&rsquo;s fine. This is a good moment to check her privacy settings together and make sure the account isn&rsquo;t sharing location or personal details in the bio.</p>
+            <a class="email-rec__cta" href="#">Conversation starters &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Closing line -->
+        <p style="margin-top:var(--sp-5, 20px);">That&rsquo;s it for this week. We&rsquo;ll keep watching and let you know if anything changes before the next report.</p>
+
+      </div>
+
+      <!-- Email footer -->
+      <div class="email-footer">
+        <button class="email-footer__cta" type="button">Open Camila&rsquo;s full report</button>
+        <a class="email-footer__link" href="#">Manage what we monitor for Camila</a>
+        <a class="email-footer__link" href="#">Change how often you get these emails</a>
+        <p class="email-footer__legal">Project Keystone by NerdWallet. We never share Camila&rsquo;s data with third parties.<br/>This report was generated automatically. You&rsquo;re receiving it because Camila is on your family plan.<br/>Unsubscribe &middot; Privacy policy</p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
