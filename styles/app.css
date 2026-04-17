@@ -1912,6 +1912,11 @@ html { scroll-behavior: smooth; }
   color: var(--c-white);
   border: 1.5px solid var(--c-black);
 }
+.report-chip--soft {
+  background: var(--c-surface-muted);
+  color: var(--c-ink-600);
+  border: 1.5px solid transparent;
+}
 .report-chip--sm {
   padding: 1px 7px;
   font-size: 8px;
