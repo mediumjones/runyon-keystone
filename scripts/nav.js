@@ -23,7 +23,8 @@
           open: true,
           items: [
             { file: 's1b.html', title: 'Monitoring Landing' },
-            { file: 's8.html', title: 'Financial Accounts' },
+            { file: 's8-email.html', title: 'Financial Accounts \u00b7 1 of 2' },
+            { file: 's8.html', title: 'Financial Accounts \u00b7 2 of 2' },
             { file: 's1rb.html', title: 'Security Snapshot' },
             { file: 's1rb-family.html', title: 'Family Tab', pill: 'family' },
             { file: 's1rb-teresa.html', title: 'Teresa', pill: 'family' },
