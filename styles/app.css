@@ -2420,9 +2420,9 @@ html { scroll-behavior: smooth; }
 }
 .family-person__footprint {
   display: block;
-  font: var(--fw-regular) 11px / 1.5 var(--font-hand);
+  font: var(--fw-regular) 11px / 1.4 var(--font-hand);
   color: var(--c-ink-700);
-  margin-top: 4px;
+  margin-top: 0;
 }
 .family-person__share {
   display: inline-block;
@@ -2461,6 +2461,19 @@ html { scroll-behavior: smooth; }
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--c-ink-600);
+}
+
+/* Seat meter — shows family plan usage */
+.family-add__meter {
+  margin-top: var(--sp-1);
+}
+.family-add__meter-text {
+  font: var(--fw-regular) 11px / 1.4 var(--font-hand);
+  color: var(--c-ink-600);
+}
+.family-add__meter-text strong {
+  font-weight: 700;
+  color: var(--c-ink-900);
 }
 
 /* =============================================================
