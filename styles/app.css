@@ -2291,6 +2291,34 @@ html { scroll-behavior: smooth; }
   text-transform: uppercase;
   color: var(--c-ink-600);
 }
+.family-example__stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(17, 17, 17, 0.18);
+}
+.family-example__stat .material-symbols-outlined {
+  font-size: 14px;
+  color: var(--c-ink-700);
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.family-example__stat-text {
+  font: var(--fw-regular) 12px / 1.4 var(--font-hand);
+  color: var(--c-ink-700);
+}
+.family-example__stat-num {
+  font-weight: 700;
+  color: var(--c-ink-900);
+}
+.family-example__stat-cite {
+  font-size: 10px;
+  color: var(--c-ink-300);
+  margin-left: 2px;
+  vertical-align: super;
+}
 
 /* =============================================================
    Family Tab — populated state
