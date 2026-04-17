@@ -2342,6 +2342,25 @@ html { scroll-behavior: smooth; }
 }
 
 /* Person cards */
+/* Household meta one-liner (under section title) */
+.household-meta {
+  display: block;
+  font: var(--fw-regular) var(--fs-sub) / 1.5 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-600);
+  margin-top: -2px;
+  margin-bottom: var(--sp-3);
+}
+
+/* Soft "house" card wrapping the residents list */
+.household-card {
+  background: rgba(246, 243, 238, 0.55);
+  border: 1px solid var(--c-card-border);
+  border-radius: 28px 28px 14px 14px;
+  padding: var(--sp-3);
+}
+
 .family-people {
   display: flex;
   flex-direction: column;
@@ -2406,6 +2425,23 @@ html { scroll-behavior: smooth; }
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--c-ink-600);
+}
+.family-person__footprint {
+  display: block;
+  font: var(--fw-regular) 11px / 1.5 var(--font-hand);
+  color: var(--c-ink-700);
+  margin-top: 4px;
+}
+.family-person__share {
+  display: inline-block;
+  margin-left: 6px;
+  padding-left: 6px;
+  border-left: 1px solid var(--c-divider);
+  color: var(--c-ink-700);
+}
+.family-person__share strong {
+  font-weight: 700;
+  color: var(--c-ink-900);
 }
 .family-person__chev {
   flex: 0 0 auto;
