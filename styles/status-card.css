@@ -4,6 +4,9 @@
   border-radius: var(--r-md);
   padding: var(--sp-2) var(--sp-3);
   margin-top: var(--sp-2);
+  align-self: stretch;
+  width: 100%;
+  box-sizing: border-box;
 }
 .status-card__row {
   display: flex;
