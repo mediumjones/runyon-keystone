@@ -18,15 +18,21 @@
   <script src="../scripts/viewer.js?v=2" defer></script>
   <style>
     /* ---- Review Transaction subpage --------------------------- */
-    /* Consistent 20px (var(--sp-5)) side rail across all sections
-       so content aligns from top to bottom of the phone body. */
+    /* Single source of truth for horizontal padding — .s8-review-body
+       owns the 20px side rail; individual sections just lay out
+       vertically inside it. Card is naturally inset by the wrapper,
+       gets rounded corners without fighting other margins. */
+
+    .s8-review-body {
+      padding: 0 var(--sp-5);
+    }
 
     /* Flag eyebrow strip — sits right under the nav bar */
     .s8-review-eyebrow {
       display: flex;
       align-items: center;
       gap: var(--sp-2);
-      padding: var(--sp-4) var(--sp-5) var(--sp-3);
+      padding: var(--sp-4) 0 var(--sp-3);
     }
     .s8-review-eyebrow .material-symbols-outlined {
       font-size: 18px;
@@ -47,11 +53,12 @@
       color: var(--c-ink-600);
     }
 
-    /* Transaction detail — full-bleed grey card so the inner content
-       aligns with sections above/below at the same 20px side rail. */
+    /* Transaction detail — rounded grey card, naturally inset by
+       the .s8-review-body wrapper padding. */
     .s8-review-card {
-      padding: var(--sp-5) var(--sp-5) var(--sp-4);
+      padding: var(--sp-4);
       background: var(--c-surface-muted);
+      border-radius: var(--r-md);
       margin-bottom: var(--sp-5);
     }
     .s8-review-card__amount {
@@ -92,7 +99,6 @@
 
     /* Reason rows */
     .s8-review-section {
-      padding: 0 var(--sp-5);
       margin-bottom: var(--sp-5);
     }
     .s8-review-section__title {
@@ -141,7 +147,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      padding: 0 var(--sp-5);
       margin-bottom: var(--sp-4);
     }
     /* Override the default floating .btn-pill so the two stacked
@@ -182,7 +187,7 @@
       border-color: var(--c-ink-900);
     }
     .s8-review-more {
-      padding: 0 var(--sp-5) var(--sp-6);
+      padding-bottom: var(--sp-6);
       text-align: center;
     }
   </style>
@@ -223,6 +228,8 @@
         </a>
         <h1 class="t-title nav-title">Financial Accounts</h1>
       </div>
+
+      <div class="s8-review-body">
 
       <!-- Eyebrow -->
       <div class="s8-review-eyebrow">
@@ -285,6 +292,8 @@
       <div class="s8-review-more">
         <button class="text-btn" type="button">View more Fidelity activity &rarr;</button>
       </div>
+
+      </div><!-- /.s8-review-body -->
 
     </div>
   </div>
