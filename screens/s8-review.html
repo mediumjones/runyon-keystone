@@ -15,6 +15,32 @@
   <script src="../scripts/gate.js"></script>
   <script src="../scripts/nav.js?v=9" defer></script>
   <script src="../scripts/viewer.js?v=2" defer></script>
+  <style>
+    /* Review page CTA overrides — flat, full-bleed, not sticky. */
+    .s7-content .detail-section:last-of-type {
+      margin-bottom: 0;
+    }
+    .s7-content .btn-pill {
+      position: static;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      width: 100%;
+      margin-top: 0;
+      box-shadow: none;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .s7-content .btn-pill + .btn-pill {
+      margin-top: 8px;
+    }
+    .s7-content .btn-pill:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .s7-content .btn-pill--ghost-s7:hover {
+      background: var(--c-surface-muted);
+    }
+  </style>
 </head>
 <body class="screen-page">
 
