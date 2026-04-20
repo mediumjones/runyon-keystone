@@ -8,7 +8,7 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ## 1 · Identity Monitoring
 
-- 1.1 **Home** `empty` — `s1.html`
+- 1.1 **Home** `new user` — `s1.html`
 - 1.2 **Home** — `s1b.html`
 - 1.3 **Financial Accounts** — `s8.html`
 
@@ -16,9 +16,9 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ## 2 · Security Snapshot
 
-- 2.1 **Solo** `empty` — `s1ra.html`
+- 2.1 **Solo** `new user` — `s1ra.html`
 - 2.2 **Solo** — `s1rb.html`
-- 2.3 **Family** `empty` — `s1ra-family.html`
+- 2.3 **Family** `new user` — `s1ra-family.html`
 - 2.4 **Family** — `s1rb-family.html`
 - 2.5 **Mom-in-law** — `s1rb-teresa.html`
 - 2.6 **Kid** `email` — `s1rb-camila-email.html`
@@ -61,9 +61,10 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ### Legend
 
-- `empty` — grey pill, marks empty-state variants
+- `new user` — grey pill, marks new-user / empty-state variants
 - `email` — light blue pill, marks email-format screens
-- `in app` / `lockscreen` — grey pills, alert delivery surface
+- `in app` — dark grey filled pill, alert delivery surface
+- `lockscreen` — dark blue filled pill, alert delivery surface
 - `auto` — grey pill, "automatically handled" alert variant
 - `manual` — grey pill, "manually handled" alert variant
 - Items may carry multiple pills (e.g. `in app` + `auto`)

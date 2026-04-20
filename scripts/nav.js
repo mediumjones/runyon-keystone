@@ -9,7 +9,7 @@
       title: 'Identity Monitoring',
       num: '01',
       topItems: [
-        { file: 's1.html',  title: 'Home', pill: 'empty' },
+        { file: 's1.html',  title: 'Home', pill: 'new user' },
         { file: 's1b.html', title: 'Home' },
         { file: 's8.html',  title: 'Financial Accounts' },
       ],
@@ -19,9 +19,9 @@
       title: 'Security Snapshot',
       num: '02',
       topItems: [
-        { file: 's1ra.html',              title: 'Solo',       pill: 'empty' },
+        { file: 's1ra.html',              title: 'Solo',       pill: 'new user' },
         { file: 's1rb.html',              title: 'Solo' },
-        { file: 's1ra-family.html',       title: 'Family',     pill: 'empty' },
+        { file: 's1ra-family.html',       title: 'Family',     pill: 'new user' },
         { file: 's1rb-family.html',       title: 'Family' },
         { file: 's1rb-teresa.html',       title: 'Mom-in-law' },
         { file: 's1rb-camila-email.html', title: 'Kid',        pill: 'email' },

@@ -189,6 +189,18 @@
   background: #e0edfb;
   border-color: #c6dcf5;
 }
+/* Lockscreen variant — dark blue (filled) */
+.toc-pill--lockscreen {
+  color: #ffffff;
+  background: #1e40af;
+  border-color: #1e40af;
+}
+/* In-app variant — dark grey (filled) */
+.toc-pill--in-app {
+  color: #ffffff;
+  background: var(--c-ink-700);
+  border-color: var(--c-ink-700);
+}
 
 /* ---- Side Navigation ----------------------------------------- */
 .sn {
@@ -328,6 +340,18 @@
   color: #2c5282;
   background: #e0edfb;
   border-color: #c6dcf5;
+}
+/* Lockscreen variant — dark blue (filled) */
+.sn-pill--lockscreen {
+  color: #ffffff;
+  background: #1e40af;
+  border-color: #1e40af;
+}
+/* In-app variant — dark grey (filled) */
+.sn-pill--in-app {
+  color: #ffffff;
+  background: var(--c-ink-700);
+  border-color: var(--c-ink-700);
 }
 
 /* Push page content right when nav is open */
