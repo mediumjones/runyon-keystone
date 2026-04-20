@@ -132,26 +132,41 @@
       color: var(--c-ink-600);
     }
 
-    /* Bottom CTAs (inline, not sticky; 16px apart) */
+    /* Bottom CTAs (inline, not sticky) */
     .s8-review-actions {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 10px;
       padding: var(--sp-4) var(--sp-5) 0;
     }
+    /* Override the default floating .btn-pill so the two stacked
+       buttons render inline with tight, matched spacing (the base
+       .btn-pill is position:absolute with big drop shadows). */
     .s8-review-actions .btn-pill {
+      position: static;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      height: 48px;
+      width: 100%;
       align-self: stretch;
       text-decoration: none;
       text-align: center;
       justify-content: center;
+      box-shadow: none;
+      font: var(--fw-bold) 15px / 1 var(--font-hand);
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
-    /* Scoped dark/ghost variants (btn-pill variants are normally
-       declared under .s1-report — redeclare here for the s8 screen). */
+    .s8-review-actions .btn-pill:hover {
+      transform: none;
+      box-shadow: none;
+    }
     .s8-review-actions .btn-pill--dark {
       background: var(--c-black);
       color: var(--c-white);
       border: 1.5px solid var(--c-black);
     }
+    .s8-review-actions .btn-pill--dark:hover { background: #1a1a1a; }
     .s8-review-actions .btn-pill--ghost {
       background: transparent;
       color: var(--c-black);
