@@ -39,12 +39,12 @@
           label: 'Dark Web Alert',
           open: true,
           items: [
-            { file: 's7.html',        title: 'Alert', pills: ['in app',     'auto']   },
-            { file: 's7-email.html',  title: 'Alert', pills: ['email',      'auto']   },
-            { file: 's7-lock.html',   title: 'Alert', pills: ['lockscreen', 'auto']   },
-            { file: 's7b.html',       title: 'Alert', pills: ['in app',     'manual'] },
-            { file: 's7b-email.html', title: 'Alert', pills: ['email',      'manual'] },
-            { file: 's7b-lock.html',  title: 'Alert', pills: ['lockscreen', 'manual'] },
+            { file: 's7.html',        title: 'SSN Alert Auto',      pills: ['in app']     },
+            { file: 's7-email.html',  title: 'SSN Alert Auto',      pills: ['email']      },
+            { file: 's7-lock.html',   title: 'SSN Alert Auto',      pills: ['lockscreen'] },
+            { file: 's7b.html',       title: 'SSN Alert Manual',  pills: ['in app']     },
+            { file: 's7b-email.html', title: 'SSN Alert Manual',  pills: ['email']      },
+            { file: 's7b-lock.html',  title: 'SSN Alert Manual',  pills: ['lockscreen'] },
           ]
         },
         {
