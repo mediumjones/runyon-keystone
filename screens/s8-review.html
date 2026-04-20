@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Accounts · Review Transaction — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=4" />
+  <link rel="stylesheet" href="../styles/s8.css" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=9" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/gate.js"></script>
+  <script src="../scripts/nav.js?v=9" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+  <style>
+    /* ---- Review Transaction subpage --------------------------- */
+
+    /* Flag eyebrow strip */
+    .s8-review-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-5);
+    }
+    .s8-review-eyebrow .material-symbols-outlined {
+      font-size: 18px;
+      color: var(--c-ink-900);
+    }
+    .s8-review-eyebrow__label {
+      flex: 1 1 auto;
+      font: var(--fw-bold) var(--fs-sub) / 1 var(--font-hand);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--c-ink-900);
+    }
+    .s8-review-eyebrow__time {
+      font: var(--fw-regular) var(--fs-sub) / 1.4 var(--font-hand);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--c-ink-600);
+    }
+
+    /* Transaction detail hero */
+    .s8-review-card {
+      padding: var(--sp-2) var(--sp-5) var(--sp-4);
+    }
+    .s8-review-card__amount {
+      font: var(--fw-bold) 38px / 1 var(--font-hand);
+      color: var(--c-ink-900);
+    }
+    .s8-review-card__desc {
+      margin-top: 4px;
+      font: var(--fw-regular) var(--fs-base) / 1.3 var(--font-hand);
+      color: var(--c-ink-700);
+    }
+    .s8-review-card__facts {
+      margin: var(--sp-3) 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .s8-review-card__facts > div {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--sp-3);
+    }
+    .s8-review-card__facts dt {
+      margin: 0;
+      font: var(--fw-regular) var(--fs-sub) / 1.4 var(--font-hand);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--c-ink-600);
+    }
+    .s8-review-card__facts dd {
+      margin: 0;
+      font: var(--fw-regular) 13px / 1.4 var(--font-hand);
+      color: var(--c-ink-900);
+      text-align: right;
+    }
+
+    /* Reason rows */
+    .s8-review-section {
+      padding: var(--sp-3) var(--sp-5) var(--sp-4);
+    }
+    .s8-review-section__title {
+      font: var(--fw-bold) var(--fs-base) / 1.2 var(--font-hand);
+      color: var(--c-ink-900);
+      margin: 0 0 var(--sp-2);
+    }
+    .s8-review-reasons {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .s8-review-reasons li {
+      display: flex;
+      gap: var(--sp-3);
+      align-items: flex-start;
+    }
+    .s8-review-reasons .material-symbols-outlined {
+      font-size: 20px;
+      color: var(--c-ink-700);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .s8-review-reasons__text {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .s8-review-reasons__title {
+      font: var(--fw-bold) 13px / 1.3 var(--font-hand);
+      color: var(--c-ink-900);
+    }
+    .s8-review-reasons__meta {
+      font: var(--fw-regular) 11px / 1.4 var(--font-hand);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--c-ink-600);
+    }
+
+    /* Could-be rows */
+    .s8-review-could {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .s8-review-could__row {
+      display: flex;
+      gap: var(--sp-3);
+      align-items: flex-start;
+      padding: var(--sp-3);
+      background: var(--c-surface-muted);
+      border-radius: var(--r-md);
+    }
+    .s8-review-could__row .material-symbols-outlined {
+      font-size: 20px;
+      color: var(--c-ink-700);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .s8-review-could__text {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .s8-review-could__title {
+      font: var(--fw-bold) 13px / 1.3 var(--font-hand);
+      color: var(--c-ink-900);
+    }
+    .s8-review-could__body {
+      font: var(--fw-regular) 12px / 1.45 var(--font-hand);
+      color: var(--c-ink-700);
+    }
+
+    /* Bottom CTAs */
+    .s8-review-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-5) 0;
+    }
+    .s8-review-actions .btn-pill {
+      align-self: stretch;
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+    }
+    /* Scoped dark/ghost variants (btn-pill variants are normally
+       declared under .s1-report — redeclare here for the s8 screen). */
+    .s8-review-actions .btn-pill--dark {
+      background: var(--c-black);
+      color: var(--c-white);
+      border: 1.5px solid var(--c-black);
+    }
+    .s8-review-actions .btn-pill--ghost {
+      background: transparent;
+      color: var(--c-black);
+      border: 1.5px solid var(--c-ink-300);
+    }
+    .s8-review-actions .btn-pill--ghost:hover {
+      border-color: var(--c-ink-900);
+    }
+    .s8-review-more {
+      padding: var(--sp-3) var(--sp-5) var(--sp-4);
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Financial Accounts &middot; 2 of 3</h1>
+      <p class="viewer-bar__desc">Review transaction — subpage drilled into from the flagged activity</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content s8" id="screen-content">
+
+      <!-- iOS status bar -->
+      <div class="status-bar">
+        <span class="sb-time t-status">9:41</span>
+        <div class="sb-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_full</span>
+        </div>
+      </div>
+
+      <!-- Back nav -->
+      <div class="nav-bar">
+        <a class="nav-icon-btn" aria-label="Back to Financial Accounts" href="s8.html" style="text-decoration:none">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="t-title nav-title">Financial Accounts</h1>
+      </div>
+
+      <!-- Eyebrow -->
+      <div class="s8-review-eyebrow">
+        <span class="material-symbols-outlined">warning</span>
+        <span class="s8-review-eyebrow__label">Flagged &middot; Needs your review</span>
+        <span class="s8-review-eyebrow__time">4 min ago</span>
+      </div>
+
+      <!-- Transaction detail -->
+      <section class="s8-review-card">
+        <div class="s8-review-card__amount">$2,400</div>
+        <div class="s8-review-card__desc">Cash withdrawal from Fidelity</div>
+        <dl class="s8-review-card__facts">
+          <div>
+            <dt>Account</dt>
+            <dd>Fidelity &middot; Investment &bull;&bull;&bull;&bull; 0052</dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>April 11, 2026 &middot; 2:14 PM</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>Phoenix, AZ</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>ATM withdrawal</dd>
+          </div>
+        </dl>
+      </section>
+
+      <hr class="s8-divider" />
+
+      <!-- Why we flagged this -->
+      <section class="s8-review-section">
+        <h3 class="s8-review-section__title">Why we flagged this</h3>
+        <ul class="s8-review-reasons">
+          <li>
+            <span class="material-symbols-outlined">paid</span>
+            <div class="s8-review-reasons__text">
+              <span class="s8-review-reasons__title">First withdrawal over $500 from this account in 90 days</span>
+              <span class="s8-review-reasons__meta">4.8&times; your typical Fidelity withdrawal &middot; Avg $500</span>
+            </div>
+          </li>
+          <li>
+            <span class="material-symbols-outlined">location_on</span>
+            <div class="s8-review-reasons__text">
+              <span class="s8-review-reasons__title">New transaction location</span>
+              <span class="s8-review-reasons__meta">You typically transact from Austin, TX</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="s8-divider" />
+
+      <!-- What this could be -->
+      <section class="s8-review-section">
+        <h3 class="s8-review-section__title">What this could be</h3>
+        <div class="s8-review-could">
+          <div class="s8-review-could__row">
+            <span class="material-symbols-outlined">flight_takeoff</span>
+            <div class="s8-review-could__text">
+              <span class="s8-review-could__title">Legitimate</span>
+              <span class="s8-review-could__body">Travel, a planned large purchase, or a real cash-out you forgot to note. If this was you, confirm it and we&rsquo;ll stop asking.</span>
+            </div>
+          </div>
+          <div class="s8-review-could__row">
+            <span class="material-symbols-outlined">gpp_bad</span>
+            <div class="s8-review-could__text">
+              <span class="s8-review-could__title">Suspicious</span>
+              <span class="s8-review-could__body">Unauthorized access to your Fidelity account, or compromised credentials. Dispute it to freeze the account and open a case.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Decision actions -->
+      <div class="s8-review-actions">
+        <a class="btn-pill btn-pill--dark" href="s8.html">Dispute this transaction</a>
+        <a class="btn-pill btn-pill--ghost" href="s8.html">Confirm it was me</a>
+      </div>
+
+      <div class="s8-review-more">
+        <button class="text-btn" type="button">View more Fidelity activity &rarr;</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
