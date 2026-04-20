@@ -39,12 +39,12 @@
           label: 'Dark Web Alert',
           open: true,
           items: [
-            { file: 's7.html',        title: 'Dark Web Alert \u00b7 In-app', pill: 'auto' },
-            { file: 's7-email.html',  title: 'Dark Web Alert \u00b7 Email',  pill: 'auto' },
-            { file: 's7-lock.html',   title: 'Dark Web Alert \u00b7 Lock',   pill: 'auto' },
-            { file: 's7b.html',       title: 'Dark Web Alert \u00b7 In-app', pill: 'manual' },
-            { file: 's7b-email.html', title: 'Dark Web Alert \u00b7 Email',  pill: 'manual' },
-            { file: 's7b-lock.html',  title: 'Dark Web Alert \u00b7 Lock',   pill: 'manual' },
+            { file: 's7.html',        title: 'Alert', pills: ['in app',     'auto']   },
+            { file: 's7-email.html',  title: 'Alert', pills: ['email',      'auto']   },
+            { file: 's7-lock.html',   title: 'Alert', pills: ['lockscreen', 'auto']   },
+            { file: 's7b.html',       title: 'Alert', pills: ['in app',     'manual'] },
+            { file: 's7b-email.html', title: 'Alert', pills: ['email',      'manual'] },
+            { file: 's7b-lock.html',  title: 'Alert', pills: ['lockscreen', 'manual'] },
           ]
         },
         {
@@ -84,8 +84,14 @@
   function buildItems(items) {
     return items.map(item => {
       const active = item.file === currentFile;
-      const pill = item.pill ? `<span class="sn-pill sn-pill--${item.pill}">${item.pill}</span>` : '';
-      return `<a class="sn-item${active ? ' is-active' : ''}" href="${item.file}">${item.title}${pill}</a>`;
+      // Accepts item.pill (string) or item.pills (string[]).
+      const pillList = item.pills || (item.pill ? [item.pill] : []);
+      const pills = pillList.map(p => {
+        // Slug any whitespace in the variant class so CSS targeting works.
+        const variant = p.toLowerCase().replace(/\s+/g, '-');
+        return `<span class="sn-pill sn-pill--${variant}">${p}</span>`;
+      }).join('');
+      return `<a class="sn-item${active ? ' is-active' : ''}" href="${item.file}">${item.title}${pills}</a>`;
     }).join('');
   }
 

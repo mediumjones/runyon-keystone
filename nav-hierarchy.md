@@ -31,12 +31,12 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ### Dark Web Alert (6)
 
-- 3.2 **Dark Web Alert · In-app** `auto` — `s7.html`
-- 3.3 **Dark Web Alert · Email** `auto` — `s7-email.html`
-- 3.4 **Dark Web Alert · Lock** `auto` — `s7-lock.html`
-- 3.5 **Dark Web Alert · In-app** `manual` — `s7b.html`
-- 3.6 **Dark Web Alert · Email** `manual` — `s7b-email.html`
-- 3.7 **Dark Web Alert · Lock** `manual` — `s7b-lock.html`
+- 3.2 **Alert** `in app` `auto` — `s7.html`
+- 3.3 **Alert** `email` `auto` — `s7-email.html`
+- 3.4 **Alert** `lockscreen` `auto` — `s7-lock.html`
+- 3.5 **Alert** `in app` `manual` — `s7b.html`
+- 3.6 **Alert** `email` `manual` — `s7b-email.html`
+- 3.7 **Alert** `lockscreen` `manual` — `s7b-lock.html`
 
 ### Financial Alert (4)
 
@@ -63,7 +63,9 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 - `empty` — grey pill, marks empty-state variants
 - `email` — light blue pill, marks email-format screens
+- `in app` / `lockscreen` — grey pills, alert delivery surface
 - `auto` — grey pill, "automatically handled" alert variant
 - `manual` — grey pill, "manually handled" alert variant
+- Items may carry multiple pills (e.g. `in app` + `auto`)
 - `1 of N · 2 of N …` — multi-screen flows
 - Numbers after a group label = screens in that group
