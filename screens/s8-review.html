@@ -24,7 +24,7 @@
       display: flex;
       align-items: center;
       gap: var(--sp-2);
-      padding: var(--sp-3) var(--sp-5);
+      padding: var(--sp-3) var(--sp-5) var(--sp-2);
     }
     .s8-review-eyebrow .material-symbols-outlined {
       font-size: 18px;
@@ -44,9 +44,12 @@
       color: var(--c-ink-600);
     }
 
-    /* Transaction detail hero */
+    /* Transaction detail — light grey card */
     .s8-review-card {
-      padding: var(--sp-2) var(--sp-5) var(--sp-4);
+      margin: 0 var(--sp-5);
+      padding: var(--sp-4);
+      background: var(--c-surface-muted);
+      border-radius: var(--r-md);
     }
     .s8-review-card__amount {
       font: var(--fw-bold) 38px / 1 var(--font-hand);
@@ -59,7 +62,8 @@
     }
     .s8-review-card__facts {
       margin: var(--sp-3) 0 0;
-      padding: 0;
+      padding: var(--sp-3) 0 0;
+      border-top: 1px solid rgba(17, 17, 17, 0.08);
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -85,12 +89,12 @@
 
     /* Reason rows */
     .s8-review-section {
-      padding: var(--sp-3) var(--sp-5) var(--sp-4);
+      padding: var(--sp-4) var(--sp-5) 0;
     }
     .s8-review-section__title {
       font: var(--fw-bold) var(--fs-base) / 1.2 var(--font-hand);
       color: var(--c-ink-900);
-      margin: 0 0 var(--sp-2);
+      margin: 0 0 var(--sp-3);
     }
     .s8-review-reasons {
       list-style: none;
@@ -128,47 +132,12 @@
       color: var(--c-ink-600);
     }
 
-    /* Could-be rows */
-    .s8-review-could {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-2);
-    }
-    .s8-review-could__row {
-      display: flex;
-      gap: var(--sp-3);
-      align-items: flex-start;
-      padding: var(--sp-3);
-      background: var(--c-surface-muted);
-      border-radius: var(--r-md);
-    }
-    .s8-review-could__row .material-symbols-outlined {
-      font-size: 20px;
-      color: var(--c-ink-700);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .s8-review-could__text {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .s8-review-could__title {
-      font: var(--fw-bold) 13px / 1.3 var(--font-hand);
-      color: var(--c-ink-900);
-    }
-    .s8-review-could__body {
-      font: var(--fw-regular) 12px / 1.45 var(--font-hand);
-      color: var(--c-ink-700);
-    }
-
-    /* Bottom CTAs */
+    /* Bottom CTAs (inline, not sticky; 16px apart) */
     .s8-review-actions {
       display: flex;
       flex-direction: column;
-      gap: var(--sp-2);
-      padding: var(--sp-3) var(--sp-5) 0;
+      gap: 16px;
+      padding: var(--sp-4) var(--sp-5) 0;
     }
     .s8-review-actions .btn-pill {
       align-self: stretch;
@@ -265,8 +234,6 @@
         </dl>
       </section>
 
-      <hr class="s8-divider" />
-
       <!-- Why we flagged this -->
       <section class="s8-review-section">
         <h3 class="s8-review-section__title">Why we flagged this</h3>
@@ -288,33 +255,10 @@
         </ul>
       </section>
 
-      <hr class="s8-divider" />
-
-      <!-- What this could be -->
-      <section class="s8-review-section">
-        <h3 class="s8-review-section__title">What this could be</h3>
-        <div class="s8-review-could">
-          <div class="s8-review-could__row">
-            <span class="material-symbols-outlined">flight_takeoff</span>
-            <div class="s8-review-could__text">
-              <span class="s8-review-could__title">Legitimate</span>
-              <span class="s8-review-could__body">Travel, a planned large purchase, or a real cash-out you forgot to note. If this was you, confirm it and we&rsquo;ll stop asking.</span>
-            </div>
-          </div>
-          <div class="s8-review-could__row">
-            <span class="material-symbols-outlined">gpp_bad</span>
-            <div class="s8-review-could__text">
-              <span class="s8-review-could__title">Suspicious</span>
-              <span class="s8-review-could__body">Unauthorized access to your Fidelity account, or compromised credentials. Dispute it to freeze the account and open a case.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Decision actions -->
       <div class="s8-review-actions">
-        <a class="btn-pill btn-pill--dark" href="s8.html">Dispute this transaction</a>
         <a class="btn-pill btn-pill--ghost" href="s8.html">Confirm it was me</a>
+        <a class="btn-pill btn-pill--dark" href="s8.html">Dispute this transaction</a>
       </div>
 
       <div class="s8-review-more">
