@@ -183,6 +183,12 @@
   vertical-align: 1px;
   margin-left: 4px;
 }
+/* Email variant — light blue accent for email-format screens */
+.toc-pill--email {
+  color: #2c5282;
+  background: #e0edfb;
+  border-color: #c6dcf5;
+}
 
 /* ---- Side Navigation ----------------------------------------- */
 .sn {
@@ -316,6 +322,12 @@
   border-radius: 3px;
   vertical-align: 1px;
   margin-left: 4px;
+}
+/* Email variant — light blue accent for email-format screens */
+.sn-pill--email {
+  color: #2c5282;
+  background: #e0edfb;
+  border-color: #c6dcf5;
 }
 
 /* Push page content right when nav is open */

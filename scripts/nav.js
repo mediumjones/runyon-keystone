@@ -8,81 +8,70 @@
     {
       title: 'Identity Monitoring',
       num: '01',
-      groups: [
-        {
-          label: 'Empty states',
-          open: true,
-          items: [
-            { file: 's1.html', title: 'Monitoring Landing' },
-            { file: 's1ra.html', title: 'Security Snapshot' },
-            { file: 's1ra-family.html', title: 'Family Tab', pill: 'family' },
-          ]
-        },
-        {
-          label: 'Populated',
-          open: true,
-          items: [
-            { file: 's1b.html', title: 'Monitoring Landing' },
-            { file: 's8-email.html', title: 'Financial Accounts \u00b7 1 of 3' },
-            { file: 's8-review.html', title: 'Financial Accounts \u00b7 2 of 3' },
-            { file: 's8.html', title: 'Financial Accounts \u00b7 3 of 3' },
-            { file: 's1rb.html', title: 'Security Snapshot' },
-            { file: 's1rb-family.html', title: 'Family Tab', pill: 'family' },
-            { file: 's1rb-teresa.html', title: 'Teresa', pill: 'family' },
-            { file: 's1rb-camila-email.html', title: 'Camila \u00b7 Email', pill: 'family' },
-          ]
-        },
-        {
-          label: 'Details',
-          open: false,
-          items: [
-            { file: 's2.html', title: 'Personal Collection' },
-            { file: 's3.html', title: 'Add Item Sheet' },
-            { file: 's4.html', title: 'Select Item Type' },
-            { file: 's5.html', title: 'Add Item Details' },
-          ]
-        }
-      ]
+      topItems: [
+        { file: 's1.html',  title: 'Home', pill: 'empty' },
+        { file: 's1b.html', title: 'Home' },
+        { file: 's8.html',  title: 'Financial Accounts' },
+      ],
+      groups: []
+    },
+    {
+      title: 'Security Snapshot',
+      num: '02',
+      topItems: [
+        { file: 's1ra.html',              title: 'Solo',       pill: 'empty' },
+        { file: 's1rb.html',              title: 'Solo' },
+        { file: 's1ra-family.html',       title: 'Family',     pill: 'empty' },
+        { file: 's1rb-family.html',       title: 'Family' },
+        { file: 's1rb-teresa.html',       title: 'Mom-in-law' },
+        { file: 's1rb-camila-email.html', title: 'Kid',        pill: 'email' },
+      ],
+      groups: []
     },
     {
       title: 'Activity and Alerts',
-      num: '02',
+      num: '03',
       topItems: [
-        { file: 's6.html', title: 'Activity Landing' },
+        { file: 's6.html', title: 'Activity Feed' },
       ],
       groups: [
         {
-          label: 'Manual response',
+          label: 'Dark Web Alert',
           open: true,
           items: [
-            { file: 's7.html', title: 'Dark Web Alert \u00b7 In-app' },
-            { file: 's7-email.html', title: 'Dark Web Alert \u00b7 Email' },
-            { file: 's7-lock.html', title: 'Dark Web Alert \u00b7 Lock' },
+            { file: 's7.html',        title: 'Dark Web Alert \u00b7 In-app', pill: 'auto' },
+            { file: 's7-email.html',  title: 'Dark Web Alert \u00b7 Email',  pill: 'auto' },
+            { file: 's7-lock.html',   title: 'Dark Web Alert \u00b7 Lock',   pill: 'auto' },
+            { file: 's7b.html',       title: 'Dark Web Alert \u00b7 In-app', pill: 'manual' },
+            { file: 's7b-email.html', title: 'Dark Web Alert \u00b7 Email',  pill: 'manual' },
+            { file: 's7b-lock.html',  title: 'Dark Web Alert \u00b7 Lock',   pill: 'manual' },
           ]
         },
         {
-          label: 'Auto-resolved',
+          label: 'Financial Alert',
           open: true,
           items: [
-            { file: 's7b.html', title: 'Dark Web Alert \u00b7 In-app' },
-            { file: 's7b-email.html', title: 'Dark Web Alert \u00b7 Email' },
-            { file: 's7b-lock.html', title: 'Dark Web Alert \u00b7 Lock' },
+            { file: 's8-email.html',    title: 'Financial Alert \u00b7 1 of 4', pill: 'email' },
+            { file: 's8-review.html',   title: 'Financial Alert \u00b7 2 of 4' },
+            { file: 's8-action.html',   title: 'Financial Alert \u00b7 3 of 4' },
+            { file: 's8-resolved.html', title: 'Financial Alert \u00b7 4 of 4' },
           ]
         }
       ]
     },
     {
-      title: 'Virtual Cards',
-      num: '03',
-      topItems: [],
+      title: 'Masked Identity',
+      num: '04',
+      topItems: [
+        { file: 's9-concept.html', title: 'Masked Identity Home' },
+      ],
       groups: [
         {
-          label: 'Merchant-locked card',
+          label: 'Virtual Card',
           open: true,
           items: [
-            { file: 's9-concept.html', title: 'Concept Explainer' },
-            { file: 's10-prompt.html', title: 'Payment Dropdown' },
-            { file: 's10b-modal.html', title: 'Extension Popover' },
+            { file: 's10-prompt.html',  title: 'Payment Dropdown' },
+            { file: 's10b-modal.html',  title: 'Extension Popover' },
             { file: 's10c-filled.html', title: 'Card Populated' },
           ]
         }
@@ -95,7 +84,7 @@
   function buildItems(items) {
     return items.map(item => {
       const active = item.file === currentFile;
-      const pill = item.pill ? `<span class="sn-pill">${item.pill}</span>` : '';
+      const pill = item.pill ? `<span class="sn-pill sn-pill--${item.pill}">${item.pill}</span>` : '';
       return `<a class="sn-item${active ? ' is-active' : ''}" href="${item.file}">${item.title}${pill}</a>`;
     }).join('');
   }
