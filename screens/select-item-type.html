@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Item Details — Keystone</title>
+  <title>Select Item Type — Keystone</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
   <link rel="stylesheet" href="../styles/tokens.css" />
   <link rel="stylesheet" href="../styles/app.css?v=4" />
-  <link rel="stylesheet" href="../styles/viewer.css?v=12" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=13" />
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
   <script src="../scripts/gate.js"></script>
   <script src="../scripts/nav.js?v=14" defer></script>
@@ -24,8 +24,8 @@
       Concepts
     </a>
     <div class="viewer-bar__info">
-      <h1 class="viewer-bar__title">Add Item Details</h1>
-      <p class="viewer-bar__desc">Enter details for a new monitored item</p>
+      <h1 class="viewer-bar__title">Select Item Type</h1>
+      <p class="viewer-bar__desc">Choose the type of personal item to add for monitoring</p>
     </div>
     <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
       <span class="material-symbols-outlined">download</span>
@@ -33,7 +33,7 @@
   </header>
 
   <div class="viewer-stage">
-    <div class="screen-content s5" id="screen-content">
+    <div class="screen-content s4" id="screen-content">
 
       <!-- iOS status bar -->
       <div class="status-bar">
@@ -48,43 +48,27 @@
         <button class="nav-icon-btn" aria-label="Close" type="button">
           <span class="material-symbols-outlined">close</span>
         </button>
-        <h1 class="t-title nav-title">Add item details</h1>
+        <h1 class="t-title nav-title">Select item type</h1>
       </div>
 
-      <div class="s5-attach">
-        <span class="material-symbols-outlined">add</span>
-        <span class="label-bold" style="color: var(--c-ink-700);">Add image or attachment</span>
+      <div class="s4-list">
+        <div class="s4-row"><span class="label-bold">Driver&rsquo;s license</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Date of birth</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Email address</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Gamertag</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Health insurance card</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Legal Name</span><span class="check-placeholder"></span></div>
+        <div class="s4-row is-selected">
+          <span class="label-bold">Passport</span>
+          <span class="material-symbols-outlined">check</span>
+        </div>
+        <div class="s4-row"><span class="label-bold">Phone number</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Social media profile</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Social security number</span><span class="check-placeholder"></span></div>
+        <div class="s4-row"><span class="label-bold">Temporary Visa</span><span class="check-placeholder"></span></div>
       </div>
 
-      <div class="s5-item-head">
-        <div class="icon-chip"><span class="material-symbols-outlined">badge</span></div>
-        <h2 class="t-item">Passport</h2>
-      </div>
-
-      <form class="s5-form" onsubmit="return false;">
-        <div class="field">
-          <label for="s5-item-name">Item name</label>
-          <input id="s5-item-name" type="text" value="Passport" />
-        </div>
-        <div class="field">
-          <label for="s5-name-doc">Name on document</label>
-          <input id="s5-name-doc" type="text" placeholder="Full passport name" />
-        </div>
-        <div class="field">
-          <label for="s5-number">Passport number</label>
-          <input id="s5-number" type="text" placeholder="8 digit number…" />
-        </div>
-        <div class="field">
-          <label for="s5-country">Issuing country</label>
-          <input id="s5-country" type="text" placeholder="Where was the passport issued from?" />
-        </div>
-        <div class="field">
-          <label for="s5-expires">Expiration</label>
-          <input id="s5-expires" type="text" placeholder="When does it expire?" />
-        </div>
-      </form>
-
-      <a class="btn-pill" href="s2.html" style="text-decoration:none">Monitor item</a>
+      <a class="btn-pill" href="add-item-details.html" style="text-decoration:none">Continue</a>
     </div>
   </div>
 

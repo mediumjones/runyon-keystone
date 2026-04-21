@@ -133,23 +133,30 @@
   margin-bottom: 4px;
 }
 .toc-subsection summary {
-  font: var(--fw-semibold) 11px / 1 var(--font-system);
-  color: var(--c-ink-300);
+  font: var(--fw-bold) 11px / 1 var(--font-system);
+  color: var(--c-ink-700);
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  padding: 6px var(--sp-3);
+  padding: 10px var(--sp-3);
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   border-radius: var(--r-sm);
+  background: var(--c-surface-muted);
+  border: 1px solid var(--c-divider);
   transition: color 0.15s ease, background 0.15s ease;
 }
 .toc-subsection summary:hover {
-  color: var(--c-ink-600);
-  background: var(--c-surface-muted);
+  color: var(--c-ink-900);
+  background: var(--c-chip);
+}
+.toc-subsection > :not(summary) {
+  margin-left: var(--sp-4);
+  border-left: 1px solid var(--c-divider);
+  padding-left: var(--sp-3);
 }
 .toc-subsection summary::-webkit-details-marker { display: none; }
 .toc-subsection summary::before {
@@ -269,23 +276,32 @@
 }
 
 /* Collapsible group */
-.sn-group { margin-bottom: 2px; }
+.sn-group { margin-bottom: 6px; }
 .sn-group summary {
-  font: 600 10px / 1 var(--font-system);
-  color: var(--c-ink-300);
+  font: 700 10px / 1 var(--font-system);
+  color: var(--c-ink-700);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  padding: 5px 8px;
+  padding: 7px 8px;
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
   gap: 4px;
   border-radius: 4px;
+  background: var(--c-surface-muted);
+  border: 1px solid var(--c-divider);
+  margin-bottom: 4px;
   transition: color 0.15s ease, background 0.15s ease;
   user-select: none;
 }
-.sn-group summary:hover { color: var(--c-ink-600); background: var(--c-surface-muted); }
+.sn-group summary:hover { color: var(--c-ink-900); background: var(--c-chip); }
+.sn-group[open] .sn-item {
+  margin-left: 10px;
+  border-left: 1px solid var(--c-divider);
+  padding-left: 10px;
+  border-radius: 0 4px 4px 0;
+}
 .sn-group summary::-webkit-details-marker { display: none; }
 .sn-group summary::before {
   content: "\25B8";

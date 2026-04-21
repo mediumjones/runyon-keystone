@@ -9,9 +9,9 @@
       title: 'Identity Monitoring',
       num: '01',
       topItems: [
-        { file: 's1.html',  title: 'Home', pill: 'new user' },
-        { file: 's1b.html', title: 'Home' },
-        { file: 's8.html',  title: 'Financial Accounts' },
+        { file: 'home-new-user.html',  title: 'Home', pill: 'new user' },
+        { file: 'home.html', title: 'Home' },
+        { file: 'financial-accounts.html',  title: 'Financial Accounts' },
       ],
       groups: []
     },
@@ -19,12 +19,12 @@
       title: 'Security Snapshot',
       num: '02',
       topItems: [
-        { file: 's1ra.html',              title: 'Solo',       pill: 'new user' },
-        { file: 's1rb.html',              title: 'Solo' },
-        { file: 's1ra-family.html',       title: 'Family',     pill: 'new user' },
-        { file: 's1rb-family.html',       title: 'Family' },
-        { file: 's1rb-teresa.html',       title: 'Mom-in-law' },
-        { file: 's1rb-camila-email.html', title: 'Kid',        pill: 'email' },
+        { file: 'solo-new-user.html',              title: 'Solo',       pill: 'new user' },
+        { file: 'solo.html',              title: 'Solo' },
+        { file: 'family-new-user.html',       title: 'Family',     pill: 'new user' },
+        { file: 'family.html',       title: 'Family' },
+        { file: 'mom-in-law.html',       title: 'Mom-in-law' },
+        { file: 'kid-email.html', title: 'Kid',        pill: 'email' },
       ],
       groups: []
     },
@@ -32,29 +32,29 @@
       title: 'Activity and Alerts',
       num: '03',
       topItems: [
-        { file: 's6.html', title: 'Activity Feed' },
+        { file: 'activity-feed.html', title: 'Activity Feed' },
       ],
       groups: [
         {
           label: 'Dark Web Alert',
           open: true,
           items: [
-            { file: 's7.html',        title: 'SSN Alert Auto',      pills: ['in app']     },
-            { file: 's7-email.html',  title: 'SSN Alert Auto',      pills: ['email']      },
-            { file: 's7-lock.html',   title: 'SSN Alert Auto',      pills: ['lockscreen'] },
-            { file: 's7b.html',       title: 'SSN Alert Manual',  pills: ['in app']     },
-            { file: 's7b-email.html', title: 'SSN Alert Manual',  pills: ['email']      },
-            { file: 's7b-lock.html',  title: 'SSN Alert Manual',  pills: ['lockscreen'] },
+            { file: 'ssn-alert-auto-in-app.html',        title: 'SSN Alert Auto',      pills: ['in app']     },
+            { file: 'ssn-alert-auto-email.html',  title: 'SSN Alert Auto',      pills: ['email']      },
+            { file: 'ssn-alert-auto-lockscreen.html',   title: 'SSN Alert Auto',      pills: ['lockscreen'] },
+            { file: 'ssn-alert-manual-in-app.html',       title: 'SSN Alert Manual',  pills: ['in app']     },
+            { file: 'ssn-alert-manual-email.html', title: 'SSN Alert Manual',  pills: ['email']      },
+            { file: 'ssn-alert-manual-lockscreen.html',  title: 'SSN Alert Manual',  pills: ['lockscreen'] },
           ]
         },
         {
           label: 'Financial Alert',
           open: true,
           items: [
-            { file: 's8-email.html',    title: 'Financial Alert \u00b7 1 of 4', pill: 'email' },
-            { file: 's8-review.html',   title: 'Financial Alert \u00b7 2 of 4' },
-            { file: 's8-action.html',   title: 'Financial Alert \u00b7 3 of 4' },
-            { file: 's8-resolved.html', title: 'Financial Alert \u00b7 4 of 4' },
+            { file: 'financial-alert-1-of-4.html',    title: 'Financial Alert \u00b7 1 of 4', pill: 'email' },
+            { file: 'financial-alert-2-of-4.html',   title: 'Financial Alert \u00b7 2 of 4' },
+            { file: 'financial-alert-3-of-4.html',   title: 'Financial Alert \u00b7 3 of 4' },
+            { file: 'financial-alert-4-of-4.html', title: 'Financial Alert \u00b7 4 of 4' },
           ]
         }
       ]
@@ -63,16 +63,16 @@
       title: 'Masked Identity',
       num: '04',
       topItems: [
-        { file: 's9-concept.html', title: 'Masked Identity Home' },
+        { file: 'masked-identity-home.html', title: 'Masked Identity Home' },
       ],
       groups: [
         {
           label: 'Virtual Card',
           open: true,
           items: [
-            { file: 's10-prompt.html',  title: 'Payment Dropdown' },
-            { file: 's10b-modal.html',  title: 'Extension Popover' },
-            { file: 's10c-filled.html', title: 'Card Populated' },
+            { file: 'payment-dropdown.html',  title: 'Payment Dropdown' },
+            { file: 'extension-popover.html',  title: 'Extension Popover' },
+            { file: 'card-populated.html', title: 'Card Populated' },
           ]
         }
       ]

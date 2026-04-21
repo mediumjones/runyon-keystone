@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
   <link rel="stylesheet" href="../styles/tokens.css" />
   <link rel="stylesheet" href="../styles/app.css?v=4" />
-  <link rel="stylesheet" href="../styles/viewer.css?v=12" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=13" />
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
   <script src="../scripts/gate.js"></script>
   <script src="../scripts/nav.js?v=14" defer></script>
@@ -24,8 +24,8 @@
       Concepts
     </a>
     <div class="viewer-bar__info">
-      <h1 class="viewer-bar__title">SSN Alert Auto</h1>
-      <p class="viewer-bar__desc">Email notification of SSN dark web exposure</p>
+      <h1 class="viewer-bar__title">SSN Alert Manual</h1>
+      <p class="viewer-bar__desc">Email notification of auto-resolved exposure</p>
     </div>
     <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
       <span class="material-symbols-outlined">download</span>
@@ -57,8 +57,7 @@
 
       <div class="mail-header">
         <div class="mail-subject">
-          <span class="material-symbols-outlined mail-subject__flag">flag</span>
-          <span class="mail-subject__text">Action required: Your SSN was found on the dark web</span>
+          <span class="mail-subject__text">Resolved: We auto&#8209;handled a new SSN dark web listing for you</span>
         </div>
         <div class="mail-from">
           <div class="mail-avatar">
@@ -76,28 +75,28 @@
 
       <div class="mail-body">
         <p>Hi Alex,</p>
-        <div class="mail-body__hero">
+        <div class="mail-body__hero mail-body__hero--resolved">
           <div class="icon-chip">
-            <span class="material-symbols-outlined">fingerprint</span>
+            <span class="material-symbols-outlined">shield_lock</span>
           </div>
           <div class="mail-body__hero-text">
-            <span class="mail-body__hero-label">Critical &middot; Action required</span>
-            <span class="mail-body__hero-title">SSN found on BreachForum v3</span>
+            <span class="mail-body__hero-label">Resolved &middot; Auto-handled</span>
+            <span class="mail-body__hero-title">SSN listing on BreachForum v3</span>
           </div>
         </div>
-        <p>We detected your social security number in a listing posted to a known dark web forum this morning. Your date of birth and full name were exposed alongside it. Immediate action is recommended to prevent identity fraud.</p>
-        <p><b>Recommended next steps:</b></p>
+        <p>Your SSN surfaced on BreachForum v3 this morning. Per your safety preferences, Keystone ran all 3 protective steps on your behalf &mdash; no action needed from you.</p>
+        <p><b>Steps we completed at 9:14 AM:</b></p>
         <ol>
-          <li><b>Freeze your credit</b> &mdash; blocks new account openings at all 3 bureaus.</li>
-          <li><b>Engage Kill Switch</b> &mdash; locks your 14 connected financial accounts.</li>
-          <li><b>Contact a specialist</b> &mdash; opens an identity restoration case.</li>
+          <li><b>Credit frozen at all 3 bureaus</b> &mdash; Equifax, Experian, TransUnion.</li>
+          <li><b>Kill Switch engaged</b> &mdash; 14 linked financial accounts locked.</li>
+          <li><b>Restoration specialist assigned</b> &mdash; Case #K&#8209;4821, standing by if needed.</li>
         </ol>
         <a class="mail-body__cta" href="#">
-          <span class="material-symbols-outlined">bolt</span>
-          Handle all 3 for me
+          <span class="material-symbols-outlined">receipt_long</span>
+          View full audit log
         </a>
-        <p class="mail-body__signoff">Stay safe,<br/>The Keystone team</p>
-        <p class="mail-body__footer">You're getting this because critical identity alerts are enabled. Manage your alert preferences in the Keystone app.</p>
+        <p class="mail-body__signoff">You&rsquo;re covered,<br/>The Keystone team</p>
+        <p class="mail-body__footer">You&rsquo;re getting this because &ldquo;Auto-handle critical SSN alerts&rdquo; is on. Manage your alert preferences in the Keystone app.</p>
       </div>
 
       <div class="mail-actionbar">
