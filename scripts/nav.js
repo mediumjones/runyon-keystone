@@ -10,8 +10,8 @@
       num: '01',
       topItems: [
         { file: 'home-new-user.html',  title: 'Home', pill: 'new user' },
-        { file: 'home.html', title: 'Home' },
-        { file: 'financial-accounts.html',  title: 'Financial Accounts' },
+        { file: 'home.html', title: 'Home', pill: 'returning' },
+        { file: 'financial-accounts.html',  title: 'Financial Accounts', pill: 'returning' },
       ],
       groups: []
     },
@@ -20,9 +20,9 @@
       num: '02',
       topItems: [
         { file: 'solo-new-user.html',              title: 'Solo',       pill: 'new user' },
-        { file: 'solo.html',              title: 'Solo' },
+        { file: 'solo.html',              title: 'Solo', pill: 'returning' },
         { file: 'family-new-user.html',       title: 'Family',     pill: 'new user' },
-        { file: 'family.html',       title: 'Family' },
+        { file: 'family.html',       title: 'Family', pill: 'returning' },
         { file: 'mom-in-law.html',       title: 'Mom-in-law' },
         { file: 'kid-email.html', title: 'Kid',        pill: 'email' },
       ],
@@ -60,8 +60,17 @@
       ]
     },
     {
-      title: 'Virtual Card',
+      title: 'Keystone Agents',
       num: '04',
+      topItems: [
+        { file: 'keystone-agents-onboarding.html', title: 'Onboarding',  pill: 'new user' },
+        { file: 'keystone-agents-populated.html',  title: 'Populated', pill: 'returning' },
+      ],
+      groups: []
+    },
+    {
+      title: 'Virtual Card',
+      num: '05',
       topItems: [
         { file: 'masked-identity-home.html', title: 'Virtual Card Explainer' },
         { file: 'payment-dropdown.html',     title: 'Payment Dropdown' },

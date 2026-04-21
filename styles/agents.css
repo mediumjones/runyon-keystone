@@ -1,0 +1,965 @@
+/* =============================================================
+   Keystone Agents — desktop two-panel experience
+   Concept 1: Onboarding  ·  Concept 2: Returning-user dashboard
+   Uses tokens.css; system font for chat/data, Kalam for brand.
+   ============================================================= */
+
+/* ---- Desktop shell (wider than default 780) ------------------ */
+.screen-content-desktop.screen-content-desktop--agents {
+  width: 1080px;
+  max-width: 100%;
+  background: var(--c-surface);
+  display: flex;
+  flex-direction: column;
+  min-height: 820px;
+  /* Shell grows to fit content; outer page scrolls. Internal scrolls
+     on panel + chat are disabled; sticky footers keep the input + actions
+     pinned to the viewport bottom while the page scrolls. */
+  overflow: visible;
+  border-radius: 14px;
+}
+
+/* Minimal app-chrome bar (no URL — this is a native app window) */
+.ka-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  height: 44px;
+  padding: 0 var(--sp-4);
+  background: #ececec;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  flex-shrink: 0;
+}
+.ka-chrome .desktop-dots { margin-right: var(--sp-2); }
+.ka-chrome__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font: var(--fw-bold) 13px / 1 var(--font-system);
+  color: var(--c-ink-900);
+  letter-spacing: 0.4px;
+}
+.ka-chrome__brand .ka-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--fw-bold) 11px / 1 var(--font-hand);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.25);
+}
+.ka-chrome__spacer { flex: 1 1 auto; }
+.ka-chrome__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #c9d7cd;
+  color: #1a2e22;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 11px / 1 var(--font-system);
+}
+
+/* ---- App body: two-panel layout ------------------------------ */
+.ka-app {
+  flex: 1 1 auto;
+  display: grid;
+  min-height: 0;
+  background: #f6f3ee;
+}
+.ka-app--onboarding { grid-template-columns: 270px 1fr; }
+.ka-app--dashboard  { grid-template-columns: 270px 1fr; }
+
+/* Shared panel */
+.ka-panel {
+  background: #faf7f1;
+  border-right: 1px solid rgba(17, 17, 17, 0.08);
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 14px;
+}
+.ka-panel__head {
+  padding: var(--sp-4) var(--sp-3) var(--sp-3);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  flex-shrink: 0;
+}
+.ka-panel__body {
+  flex: 1 1 auto;
+  padding: var(--sp-3) var(--sp-3) var(--sp-3);
+}
+/* Sticky footer pinned to the viewport bottom of the left panel */
+.ka-panel__tray,
+.ka-panel__actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  flex-shrink: 0;
+  padding: var(--sp-3);
+  background: #f3efe6;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  border-bottom-left-radius: 14px;
+}
+/* Match the chat-input footer height (63px) so both sit flush. */
+.ka-panel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 63px;
+  padding: 0 var(--sp-3);
+  justify-content: center;
+}
+
+/* ---- Panel titles -------------------------------------------- */
+.ka-panel__eyebrow {
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+  margin-bottom: 6px;
+}
+.ka-panel__title {
+  font: var(--fw-bold) var(--fs-section) / var(--lh-tight) var(--font-hand);
+  color: var(--c-ink-900);
+  margin: 0 0 var(--sp-2);
+}
+.ka-panel__sub {
+  font: var(--fw-regular) 12px / 1.4 var(--font-hand);
+  color: var(--c-ink-600);
+  margin: 0;
+}
+
+/* =============================================================
+   ONBOARDING — agent roster
+   ============================================================= */
+
+.ka-keystone-card {
+  position: relative;
+  background: var(--c-white);
+  border: 1px solid rgba(17, 17, 17, 0.22);
+  border-radius: var(--r-card);
+  padding: var(--sp-3);
+  margin-bottom: var(--sp-3);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 6px 14px -8px rgba(17, 17, 17, 0.18),
+    0 1px 2px rgba(17, 17, 17, 0.05);
+}
+.ka-keystone-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+.ka-keystone-card__head:last-child { margin-bottom: 0; }
+.ka-keystone-card__mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--fw-bold) 16px / 1 var(--font-hand);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 1px 3px rgba(17, 17, 17, 0.25);
+  flex-shrink: 0;
+}
+.ka-keystone-card__text { flex: 1 1 0; min-width: 0; }
+.ka-keystone-card__name {
+  font: var(--fw-bold) 13px / 1.1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-keystone-card__role {
+  font: var(--fw-regular) 9px / 1.3 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-600);
+  margin-top: 2px;
+}
+.ka-keystone-card__quote {
+  font: var(--fw-regular) 12px / var(--lh-snug) var(--font-hand);
+  color: var(--c-ink-800);
+  margin: 0;
+}
+.ka-keystone-card__quote::before { content: '\201C'; color: var(--c-ink-300); }
+.ka-keystone-card__quote::after  { content: '\201D'; color: var(--c-ink-300); }
+
+/* Sub-agent stack (single column, compact cards) */
+.ka-agents-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ka-agent-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: 10px;
+  padding: var(--sp-2) var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  min-width: 0;
+}
+.ka-agent-card:hover {
+  border-color: rgba(17, 17, 17, 0.3);
+  box-shadow: 0 4px 10px -4px rgba(17, 17, 17, 0.14), 0 1px 2px rgba(17, 17, 17, 0.04);
+}
+.ka-agent-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+.ka-agent-card__head > div { min-width: 0; flex: 1 1 0; }
+.ka-agent-card__expertise {
+  font: var(--fw-regular) 11px / 1.35 var(--font-hand);
+  color: var(--c-ink-600);
+  margin: 0;
+}
+.ka-agent-card__activity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--c-divider);
+  font: var(--fw-regular) 10px / 1 var(--font-hand);
+  letter-spacing: 0.2px;
+  color: var(--c-ink-600);
+}
+.ka-agent-card__activity .ka-adot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ka-adot--live {
+  background: var(--grad-live);
+  box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 6px var(--c-live-glow);
+  animation: live-breathe 1.8s ease-in-out infinite;
+}
+.ka-adot--working { background: #c38f00; }
+.ka-adot--alert   { background: #b3341c; box-shadow: 0 0 0 2px rgba(179, 52, 28, 0.18); }
+.ka-adot--idle    { background: #b5b5b5; }
+.ka-adot--done    { background: #2e8b57; }
+.ka-agent-chip {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--c-surface-muted);
+  color: var(--c-ink-800);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ka-agent-chip .material-symbols-outlined {
+  font-size: 15px;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+.ka-agent-card__name {
+  font: var(--fw-bold) 12px / 1.1 var(--font-hand);
+  color: var(--c-ink-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ka-agent-card__role {
+  font: var(--fw-regular) 9px / 1.2 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Pulse-active state (when agent is being introduced in chat) */
+.ka-agent-card.is-active {
+  border-color: rgba(17, 17, 17, 0.55);
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.06);
+}
+
+/* Start-a-new-conversation CTA (onboarding panel) */
+.ka-start-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 36px;
+  margin-top: var(--sp-3);
+  background: var(--c-black);
+  color: var(--c-white);
+  border: none;
+  border-radius: var(--r-pill);
+  font: var(--fw-bold) 12px / 1 var(--font-hand);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 2px 6px rgba(17, 17, 17, 0.2);
+}
+.ka-start-cta .material-symbols-outlined { font-size: 15px; }
+
+/* =============================================================
+   CHAT PANE (shared)
+   ============================================================= */
+
+.ka-chat {
+  display: flex;
+  flex-direction: column;
+  background: #f6f3ee;
+  border-bottom-right-radius: 14px;
+}
+.ka-chat__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--c-white);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  flex-shrink: 0;
+}
+.ka-chat__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--fw-bold) 16px / 1 var(--font-hand);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 2px 4px rgba(17, 17, 17, 0.18);
+}
+.ka-chat__head-text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.ka-chat__head-name {
+  font: var(--fw-bold) var(--fs-sheet) / 1.1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-chat__head-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font: var(--fw-regular) 12px / 1.3 var(--font-hand);
+  color: var(--c-ink-600);
+}
+.ka-chat__head-status .dot-live {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--grad-live);
+  box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 8px var(--c-live-glow);
+  animation: live-breathe 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.ka-chat__head-status .dot-live::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--c-live);
+  opacity: 0.55;
+  animation: live-ping 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+  z-index: -1;
+}
+.ka-chat__head-meta {
+  font: var(--fw-regular) 10px / 1.3 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+}
+
+/* Message list */
+.ka-chat__body {
+  flex: 1 1 auto;
+  padding: var(--sp-5) var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* Chat input pinned to bottom of the chat pane; stays glued to the
+   viewport bottom while the outer page scrolls (sticky). */
+.ka-chat__input {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  flex-shrink: 0;
+  padding: var(--sp-3) var(--sp-6) var(--sp-4);
+  background: #f6f3ee;
+  border-top: 1px solid rgba(17, 17, 17, 0.05);
+  border-bottom-right-radius: 14px;
+}
+.ka-input {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 34px;
+  background: var(--c-white);
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: var(--r-pill);
+  padding: 0 4px 0 14px;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+}
+.ka-input__field {
+  flex: 1 1 0;
+  min-width: 0;
+  font: var(--fw-regular) 12px / 1 var(--font-hand);
+  color: var(--c-ink-300);
+}
+.ka-input__send {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.ka-input__send .material-symbols-outlined {
+  font-size: 14px;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+}
+
+/* Message bubbles */
+.ka-msg {
+  display: flex;
+  gap: var(--sp-3);
+  max-width: 720px;
+}
+.ka-msg--assistant { align-self: flex-start; }
+.ka-msg--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.ka-msg__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--c-black);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--fw-bold) 13px / 1 var(--font-hand);
+  flex-shrink: 0;
+}
+.ka-msg--user .ka-msg__avatar {
+  background: #c9d7cd;
+  color: #1a2e22;
+}
+.ka-msg__bubble {
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: 14px 14px 14px 4px;
+  padding: var(--sp-3) var(--sp-4);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  font: var(--fw-regular) 14px / var(--lh-normal) var(--font-hand);
+  color: var(--c-ink-800);
+}
+.ka-msg--user .ka-msg__bubble {
+  background: var(--c-black);
+  color: var(--c-white);
+  border-color: var(--c-black);
+  border-radius: 14px 14px 4px 14px;
+}
+.ka-msg__bubble p { margin: 0; }
+.ka-msg__bubble p + p { margin-top: var(--sp-2); }
+
+/* Inline "agent intro" header in message */
+.ka-msg__agent-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+.ka-msg__agent-head .ka-agent-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+}
+.ka-msg__agent-head .ka-agent-chip .material-symbols-outlined { font-size: 15px; }
+.ka-msg__agent-name {
+  font: var(--fw-bold) 13px / 1 var(--font-hand);
+  color: var(--c-ink-900);
+  letter-spacing: 0.2px;
+}
+.ka-msg__agent-role {
+  font: var(--fw-regular) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+}
+.ka-msg__quote {
+  display: block;
+  margin: 0 0 var(--sp-2);
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--c-divider);
+  font: var(--fw-regular) 14px / var(--lh-snug) var(--font-hand);
+  color: var(--c-ink-600);
+  font-style: italic;
+}
+
+/* =============================================================
+   CHAT COMPONENTS — cards, activity panel, results
+   ============================================================= */
+
+.ka-component {
+  align-self: stretch;
+  max-width: 760px;
+  margin-left: 44px; /* align with assistant bubble column */
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+}
+.ka-component__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px dashed var(--c-divider);
+  background: var(--c-surface-alt);
+}
+.ka-component__head-title {
+  font: var(--fw-bold) var(--fs-label) / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-700);
+}
+.ka-component__head-meta {
+  margin-left: auto;
+  font: var(--fw-regular) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+}
+
+/* ---- Action cards row ---------------------------------------- */
+.ka-action-cards {
+  align-self: stretch;
+  max-width: 760px;
+  margin-left: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--sp-3);
+}
+.ka-action-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-card);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+}
+.ka-action-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(17, 17, 17, 0.3);
+  box-shadow: 0 10px 20px -8px rgba(17, 17, 17, 0.18), 0 1px 2px rgba(17, 17, 17, 0.04);
+}
+.ka-action-card__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--c-chip);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-ink-800);
+}
+.ka-action-card__icon .material-symbols-outlined { font-size: 18px; }
+.ka-action-card__title {
+  font: var(--fw-bold) var(--fs-base) / 1.2 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-action-card__desc {
+  font: var(--fw-regular) 12px / var(--lh-snug) var(--font-hand);
+  color: var(--c-ink-600);
+}
+
+/* ---- Activity panel ------------------------------------------ */
+.ka-activity__list { display: flex; flex-direction: column; }
+.ka-activity__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--c-divider);
+}
+.ka-activity__row:last-child { border-bottom: 0; }
+.ka-activity__row .ka-agent-chip { width: 28px; height: 28px; border-radius: 8px; }
+.ka-activity__row .ka-agent-chip .material-symbols-outlined { font-size: 16px; }
+.ka-activity__agent {
+  width: 88px;
+  flex-shrink: 0;
+  font: var(--fw-bold) 13px / 1.1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-activity__task {
+  flex: 1 1 0;
+  min-width: 0;
+  font: var(--fw-regular) 13px / var(--lh-snug) var(--font-hand);
+  color: var(--c-ink-600);
+}
+.ka-activity__status {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+.ka-activity__status--working {
+  background: var(--c-surface-muted);
+  color: var(--c-ink-800);
+}
+.ka-activity__status--working::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--grad-live);
+  animation: live-breathe 1.8s ease-in-out infinite;
+}
+.ka-activity__status--done {
+  background: #eaf3ec;
+  color: #1a4628;
+}
+.ka-activity__status--done::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2e8b57;
+}
+.ka-activity__status--done-warn { background: #faf0d7; color: #7a5600; }
+.ka-activity__status--done-warn::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #c38f00; }
+.ka-activity__status--done-bad { background: #f7e0dc; color: #7a2014; }
+.ka-activity__status--done-bad::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #b3341c; }
+.ka-activity__status--waiting { background: #eeeeee; color: var(--c-ink-600); }
+.ka-activity__status--waiting::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #b5b5b5; }
+
+/* ---- Results cards ------------------------------------------- */
+.ka-result {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--c-divider);
+  align-items: flex-start;
+}
+.ka-result:last-child { border-bottom: 0; }
+.ka-result__sev {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.ka-result__sev--green { background: #2e8b57; box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.15); }
+.ka-result__sev--yellow { background: #c38f00; box-shadow: 0 0 0 3px rgba(195, 143, 0, 0.15); }
+.ka-result__sev--red { background: #b3341c; box-shadow: 0 0 0 3px rgba(179, 52, 28, 0.15); }
+.ka-result__sev--gray { background: #a0a0a0; box-shadow: 0 0 0 3px rgba(160, 160, 160, 0.15); }
+.ka-result__body { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ka-result__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+.ka-result__name {
+  font: var(--fw-bold) 13px / 1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-result__role {
+  font: var(--fw-regular) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+}
+.ka-result__finding {
+  font: var(--fw-regular) 13px / var(--lh-snug) var(--font-hand);
+  color: var(--c-ink-600);
+  margin-top: 2px;
+}
+.ka-result__action { margin-top: var(--sp-2); align-self: flex-start; }
+
+/* =============================================================
+   DASHBOARD — conversation list + chat
+   ============================================================= */
+
+.ka-convos__new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 34px;
+  background: var(--c-black);
+  color: var(--c-white);
+  border: none;
+  border-radius: var(--r-pill);
+  font: var(--fw-bold) 12px / 1 var(--font-hand);
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 2px 6px rgba(17, 17, 17, 0.2);
+  margin-bottom: var(--sp-2);
+}
+.ka-convos__new .material-symbols-outlined { font-size: 15px; }
+
+.ka-convos__search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 var(--sp-2);
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-pill);
+  font: var(--fw-regular) 11px / 1 var(--font-hand);
+  color: var(--c-ink-300);
+}
+.ka-convos__search .material-symbols-outlined { font-size: 14px; color: var(--c-ink-300); }
+
+.ka-convos__section-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: var(--sp-3) 0 6px;
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+}
+.ka-convos__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  background: var(--c-surface-muted);
+  color: var(--c-ink-700);
+  border-radius: var(--r-pill);
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+}
+
+.ka-convo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: var(--sp-2);
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+}
+.ka-convo:hover {
+  border-color: rgba(17, 17, 17, 0.3);
+  box-shadow: 0 4px 10px -4px rgba(17, 17, 17, 0.14);
+}
+.ka-convo.is-selected {
+  border-color: var(--c-black);
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.06);
+}
+.ka-convo--active {
+  border-left: 3px solid var(--c-black);
+  padding-left: calc(var(--sp-2) - 2px);
+}
+.ka-convo--past { background: transparent; }
+.ka-convo__title {
+  font: var(--fw-bold) 12px / 1.25 var(--font-hand);
+  color: var(--c-ink-900);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.ka-convo__meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ka-convo__meta .ka-agent-chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+.ka-convo__meta .ka-agent-chip .material-symbols-outlined { font-size: 11px; }
+.ka-convo__lead {
+  font: var(--fw-bold) 9px / 1 var(--font-hand);
+  letter-spacing: 0.3px;
+  color: var(--c-ink-700);
+}
+.ka-convo__status {
+  font: var(--fw-regular) 11px / 1.3 var(--font-hand);
+  color: var(--c-ink-600);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.ka-convo__date {
+  font: var(--fw-regular) 9px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+  margin-top: 1px;
+}
+.ka-convo__outcome {
+  font: var(--fw-regular) 11px / 1.3 var(--font-hand);
+  color: var(--c-ink-600);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Agent team section at top of dashboard left panel */
+.ka-panel__team {
+  padding: var(--sp-3);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  flex-shrink: 0;
+}
+.ka-panel__team .ka-keystone-card {
+  margin-bottom: var(--sp-2);
+  padding: var(--sp-2);
+}
+.ka-panel__team .ka-keystone-card__quote { font-size: 11px; }
+.ka-tray__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+  margin-bottom: var(--sp-2);
+}
+.ka-tray__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ka-tray__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.ka-tray__row .ka-agent-chip {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+.ka-tray__row .ka-agent-chip .material-symbols-outlined { font-size: 13px; }
+.ka-tray__name {
+  font: var(--fw-bold) 11px / 1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-tray__activity {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: right;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  font: var(--fw-regular) 10px / 1 var(--font-hand);
+  color: var(--c-ink-600);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ka-tray__activity .ka-adot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* Chat footer action row */
+.ka-followups {
+  align-self: stretch;
+  max-width: 760px;
+  margin-left: 44px;
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+/* Status / tracking card */
+.ka-status-card {
+  align-self: stretch;
+  max-width: 760px;
+  margin-left: 44px;
+  background: var(--c-surface-muted);
+  border: 1px dashed rgba(17, 17, 17, 0.2);
+  border-radius: var(--r-card);
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.ka-status-card .dot-live {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--grad-live);
+  box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 8px var(--c-live-glow);
+  animation: live-breathe 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.ka-status-card__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ka-status-card__label {
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-700);
+}
+.ka-status-card__line {
+  font: var(--fw-regular) 13px / 1.3 var(--font-hand);
+  color: var(--c-ink-800);
+}
+
+/* Keystone live-dot breathing animations reuse tokens via s8.css,
+   but add them here so this file works standalone if s8.css is
+   not loaded on the agents pages. */
+@keyframes live-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 8px var(--c-live-glow); }
+  50%      { transform: scale(1.12); box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 14px var(--c-live-glow); }
+}
+@keyframes live-ping {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  80%  { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}

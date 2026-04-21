@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keystone Agents · Onboarding — Keystone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/app.css?v=9" />
+  <link rel="stylesheet" href="../styles/agents.css?v=1" />
+  <link rel="stylesheet" href="../styles/viewer.css?v=14" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="../scripts/gate.js"></script>
+  <script src="../scripts/nav.js?v=15" defer></script>
+  <script src="../scripts/viewer.js?v=2" defer></script>
+</head>
+<body class="screen-page">
+
+  <header class="viewer-bar">
+    <a class="viewer-bar__back" href="../index.html">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Concepts
+    </a>
+    <div class="viewer-bar__info">
+      <h1 class="viewer-bar__title">Keystone Agents &middot; Onboarding</h1>
+      <p class="viewer-bar__desc">First-time experience &mdash; agent roster + scripted intro conversation</p>
+    </div>
+    <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
+      <span class="material-symbols-outlined">download</span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <div class="screen-content-desktop screen-content-desktop--agents" id="screen-content">
+
+      <!-- Minimal app chrome -->
+      <div class="ka-chrome">
+        <span class="desktop-dots">
+          <i class="dot dot--r"></i>
+          <i class="dot dot--y"></i>
+          <i class="dot dot--g"></i>
+        </span>
+        <span class="ka-chrome__brand">
+          <span class="ka-logo">K</span>
+          Keystone
+        </span>
+        <span class="ka-chrome__spacer"></span>
+        <span class="ka-chrome__avatar">AM</span>
+      </div>
+
+      <div class="ka-app ka-app--onboarding">
+
+        <!-- ================= LEFT: AGENT ROSTER ================= -->
+        <aside class="ka-panel">
+          <div class="ka-panel__head">
+            <h2 class="ka-panel__title">Your Agent Team</h2>
+            <p class="ka-panel__sub">Specialists working 24/7 to keep you secure. One point of contact.</p>
+          </div>
+
+          <div class="ka-panel__body">
+
+            <!-- Primary: Keystone Prime -->
+            <div class="ka-keystone-card is-active">
+              <div class="ka-keystone-card__head">
+                <span class="ka-keystone-card__mark">K</span>
+                <div class="ka-keystone-card__text">
+                  <div class="ka-keystone-card__name">Keystone Prime</div>
+                  <div class="ka-keystone-card__role">Your agent manager</div>
+                </div>
+              </div>
+              <p class="ka-keystone-card__quote">I'm your agent manager. I delegate to the right specialist.</p>
+            </div>
+
+            <!-- Sub-agent stack -->
+            <div class="ka-agents-grid">
+
+              <article class="ka-agent-card">
+                <div class="ka-agent-card__head">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">shield</span></span>
+                  <div>
+                    <div class="ka-agent-card__name">Sentinel</div>
+                    <div class="ka-agent-card__role">Financial</div>
+                  </div>
+                </div>
+                <p class="ka-agent-card__expertise">Banks, cards, and transactions. Flags anything unusual.</p>
+                <div class="ka-agent-card__activity">
+                  <span class="ka-adot ka-adot--idle"></span>
+                  Waiting on bank connection
+                </div>
+              </article>
+
+              <article class="ka-agent-card">
+                <div class="ka-agent-card__head">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">inbox</span></span>
+                  <div>
+                    <div class="ka-agent-card__name">Sorter</div>
+                    <div class="ka-agent-card__role">Email</div>
+                  </div>
+                </div>
+                <p class="ka-agent-card__expertise">Phishing triage and signup tracking across your inbox.</p>
+                <div class="ka-agent-card__activity">
+                  <span class="ka-adot ka-adot--working"></span>
+                  Connecting to inbox&hellip;
+                </div>
+              </article>
+
+              <article class="ka-agent-card">
+                <div class="ka-agent-card__head">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">badge</span></span>
+                  <div>
+                    <div class="ka-agent-card__name">Shield</div>
+                    <div class="ka-agent-card__role">Identity</div>
+                  </div>
+                </div>
+                <p class="ka-agent-card__expertise">Credit inquiries, new accounts, and SSN misuse.</p>
+                <div class="ka-agent-card__activity">
+                  <span class="ka-adot ka-adot--live"></span>
+                  Monitoring &middot; all clear
+                </div>
+              </article>
+
+              <article class="ka-agent-card">
+                <div class="ka-agent-card__head">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">radar</span></span>
+                  <div>
+                    <div class="ka-agent-card__name">Ghost</div>
+                    <div class="ka-agent-card__role">Dark Web</div>
+                  </div>
+                </div>
+                <p class="ka-agent-card__expertise">Breach dumps and data leaks with your details in them.</p>
+                <div class="ka-agent-card__activity">
+                  <span class="ka-adot ka-adot--working"></span>
+                  Initial breach scan&hellip;
+                </div>
+              </article>
+
+              <article class="ka-agent-card">
+                <div class="ka-agent-card__head">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">lock</span></span>
+                  <div>
+                    <div class="ka-agent-card__name">Vault</div>
+                    <div class="ka-agent-card__role">Passwords</div>
+                  </div>
+                </div>
+                <p class="ka-agent-card__expertise">Reused, weak, or compromised credentials across your accounts.</p>
+                <div class="ka-agent-card__activity">
+                  <span class="ka-adot ka-adot--working"></span>
+                  Auditing saved passwords&hellip;
+                </div>
+              </article>
+
+            </div>
+
+          </div>
+
+          <!-- BOTTOM: New conversation (sticky) -->
+          <div class="ka-panel__actions">
+            <button class="ka-convos__new" type="button">
+              <span class="material-symbols-outlined">edit_square</span>
+              New conversation
+            </button>
+          </div>
+        </aside>
+
+        <!-- ================= RIGHT: CHAT ================= -->
+        <section class="ka-chat">
+          <div class="ka-chat__head">
+            <span class="ka-chat__avatar">K</span>
+            <div class="ka-chat__head-text">
+              <span class="ka-chat__head-name">Keystone Prime</span>
+              <span class="ka-chat__head-status">
+                <span class="dot-live"></span> Online
+              </span>
+            </div>
+          </div>
+
+          <div class="ka-chat__body">
+
+            <!-- Phase 1: intro -->
+            <div class="ka-msg ka-msg--assistant">
+              <span class="ka-msg__avatar">K</span>
+              <div class="ka-msg__bubble">
+                <p>Hey, I'm Keystone Prime. Meet your team on the left &mdash; they're already pulling your security picture together.</p>
+              </div>
+            </div>
+
+            <!-- Phase 2: first action -->
+            <div class="ka-msg ka-msg--assistant">
+              <span class="ka-msg__avatar">K</span>
+              <div class="ka-msg__bubble">
+                <p>Here's what I'd suggest we do first.</p>
+              </div>
+            </div>
+
+            <!-- Action cards row -->
+            <div class="ka-action-cards">
+              <a class="ka-action-card" href="#">
+                <span class="ka-action-card__icon"><span class="material-symbols-outlined">radar</span></span>
+                <span class="ka-action-card__title">Run a full security scan</span>
+                <span class="ka-action-card__desc">Every agent runs their checks and reports back. Takes about 2 minutes.</span>
+              </a>
+              <a class="ka-action-card" href="#">
+                <span class="ka-action-card__icon"><span class="material-symbols-outlined">key</span></span>
+                <span class="ka-action-card__title">Check my passwords</span>
+                <span class="ka-action-card__desc">Vault scans your saved passwords for reused, weak, or compromised entries.</span>
+              </a>
+              <a class="ka-action-card" href="#">
+                <span class="ka-action-card__icon"><span class="material-symbols-outlined">visibility</span></span>
+                <span class="ka-action-card__title">What do you already know about me?</span>
+                <span class="ka-action-card__desc">See what your agents have found so far. Full transparency.</span>
+              </a>
+            </div>
+
+            <!-- User selects scan -->
+            <div class="ka-msg ka-msg--user">
+              <span class="ka-msg__avatar">AM</span>
+              <div class="ka-msg__bubble">
+                <p>Run a full security scan</p>
+              </div>
+            </div>
+
+            <!-- Keystone acknowledges -->
+            <div class="ka-msg ka-msg--assistant">
+              <span class="ka-msg__avatar">K</span>
+              <div class="ka-msg__bubble">
+                <p>On it.</p>
+              </div>
+            </div>
+
+            <!-- Activity panel component -->
+            <div class="ka-component">
+              <div class="ka-component__head">
+                <span class="ka-component__head-title">Agent Activity</span>
+                <span class="ka-component__head-meta">3 working &middot; 1 done &middot; 1 waiting</span>
+              </div>
+              <div class="ka-activity__list">
+                <div class="ka-activity__row">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">lock</span></span>
+                  <span class="ka-activity__agent">Vault</span>
+                  <span class="ka-activity__task">Scanning saved passwords for reuse and weak entries</span>
+                  <span class="ka-activity__status ka-activity__status--working">Working</span>
+                </div>
+                <div class="ka-activity__row">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">inbox</span></span>
+                  <span class="ka-activity__agent">Sorter</span>
+                  <span class="ka-activity__task">Connecting to inbox to identify account signup patterns</span>
+                  <span class="ka-activity__status ka-activity__status--working">Working</span>
+                </div>
+                <div class="ka-activity__row">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">badge</span></span>
+                  <span class="ka-activity__agent">Shield</span>
+                  <span class="ka-activity__task">Setting up monitoring for name, SSN, and phone number</span>
+                  <span class="ka-activity__status ka-activity__status--done">Done</span>
+                </div>
+                <div class="ka-activity__row">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">radar</span></span>
+                  <span class="ka-activity__agent">Ghost</span>
+                  <span class="ka-activity__task">Running initial scan of known breach databases</span>
+                  <span class="ka-activity__status ka-activity__status--working">Working</span>
+                </div>
+                <div class="ka-activity__row">
+                  <span class="ka-agent-chip"><span class="material-symbols-outlined">shield</span></span>
+                  <span class="ka-activity__agent">Sentinel</span>
+                  <span class="ka-activity__task">Waiting for bank connection to begin transaction monitoring</span>
+                  <span class="ka-activity__status ka-activity__status--waiting">Waiting</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ka-chat__input">
+            <div class="ka-input">
+              <span class="ka-input__field">Ask Keystone anything&hellip;</span>
+              <button class="ka-input__send" type="button" aria-label="Send">
+                <span class="material-symbols-outlined">arrow_upward</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

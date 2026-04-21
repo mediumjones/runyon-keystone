@@ -208,6 +208,12 @@
   background: #f3f4f6;
   border-color: #e5e7eb;
 }
+/* Returning variant — soft green for established / has-history state */
+.toc-pill--returning {
+  color: #15803d;
+  background: #f0fdf4;
+  border-color: #dcfce7;
+}
 
 /* ---- Side Navigation ----------------------------------------- */
 .sn {
@@ -368,6 +374,12 @@
   color: #374151;
   background: #f3f4f6;
   border-color: #e5e7eb;
+}
+/* Returning variant — soft green for established / has-history state */
+.sn-pill--returning {
+  color: #15803d;
+  background: #f0fdf4;
+  border-color: #dcfce7;
 }
 
 /* Push page content right when nav is open */
