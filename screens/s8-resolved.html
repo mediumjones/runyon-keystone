@@ -15,6 +15,369 @@
   <script src="../scripts/gate.js"></script>
   <script src="../scripts/nav.js?v=14" defer></script>
   <script src="../scripts/viewer.js?v=2" defer></script>
+  <script>
+    window.addEventListener('load', () => {
+      const s = document.querySelector('.chat-scroll');
+      if (s) s.scrollTop = 0;
+    });
+  </script>
+  <style>
+    /* Reset status-bar negative margins since parent has no padding */
+    #screen-content .status-bar {
+      margin: 0;
+      padding: 0 var(--sp-5);
+    }
+
+    /* ===== Background strip (hint of the underlying s8-action screen) ===== */
+    .s8r-stage {
+      position: relative;
+      flex: 1 1 auto;
+      background: var(--c-surface-alt);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .s8r-backdrop {
+      position: absolute;
+      inset: 0;
+      padding: var(--sp-4) var(--sp-5) 0;
+      opacity: 0.55;
+      pointer-events: none;
+      filter: saturate(0.7);
+    }
+    .s8r-backdrop .severity-pill {
+      margin-bottom: var(--sp-3);
+    }
+    .s8r-backdrop .alert-hero {
+      transform: scale(0.98);
+      transform-origin: top center;
+    }
+    .s8r-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.32) 30%,
+        rgba(0, 0, 0, 0.42) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* ===== Chat sheet (modal overlay) ===== */
+    .chat-sheet {
+      position: relative;
+      margin-top: auto;
+      background: var(--c-surface);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      box-shadow: var(--elev-sheet);
+      display: flex;
+      flex-direction: column;
+      height: 94%;
+      overflow: hidden;
+      z-index: 2;
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .chat-grabber {
+      width: 36px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--c-ink-300);
+      opacity: 0.5;
+      margin: 8px auto 0;
+    }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--c-divider);
+    }
+    .chat-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--r-pill);
+      background: var(--c-ink-900);
+      color: var(--c-white);
+      display: grid;
+      place-items: center;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .chat-avatar .material-symbols-outlined {
+      font-size: 18px;
+    }
+    .chat-avatar::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #3fb37f;
+      border: 2px solid var(--c-surface);
+    }
+    .chat-header__info {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .chat-header__name {
+      font: var(--fw-bold) var(--fs-base) / 1.2 var(--font-hand);
+      color: var(--c-ink-900);
+    }
+    .chat-header__status {
+      font: var(--fw-regular) 11px / 1.2 var(--font-hand);
+      color: var(--c-ink-600);
+    }
+    .chat-secure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 6px var(--sp-4);
+      background: var(--c-surface-muted);
+      border-bottom: 1px solid var(--c-divider);
+      font: var(--fw-bold) 10px / 1 var(--font-hand);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--c-ink-700);
+    }
+    .chat-secure .material-symbols-outlined { font-size: 12px; }
+    .chat-close {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--r-pill);
+      border: none;
+      background: var(--c-surface-muted);
+      color: var(--c-ink-800);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .chat-close .material-symbols-outlined {
+      font-size: 18px;
+    }
+
+    /* ===== Scrollable chat area ===== */
+    .chat-scroll {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: var(--sp-4) var(--sp-4) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      background: var(--c-surface-alt);
+    }
+
+    /* ===== Messages ===== */
+    .msg {
+      display: flex;
+      gap: var(--sp-2);
+      max-width: 100%;
+    }
+    .msg--agent { align-self: flex-start; }
+    .msg--user  { align-self: flex-end; flex-direction: row-reverse; }
+
+    .msg__avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--r-pill);
+      background: var(--c-ink-900);
+      color: var(--c-white);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .msg__avatar .material-symbols-outlined { font-size: 14px; }
+    .msg--user .msg__avatar { display: none; }
+
+    .bubble {
+      padding: 10px 14px;
+      border-radius: 16px;
+      font: var(--fw-regular) var(--fs-base) / 1.45 var(--font-hand);
+      max-width: 240px;
+    }
+    .bubble--agent {
+      background: var(--c-surface);
+      border: 1px solid var(--c-divider);
+      color: var(--c-ink-900);
+      border-top-left-radius: 4px;
+    }
+    .bubble--user {
+      background: var(--c-ink-900);
+      color: var(--c-white);
+      border-top-right-radius: 4px;
+    }
+    .bubble strong { font-weight: var(--fw-bold); }
+
+    /* ===== Quick-reply chip rows ===== */
+    .qr-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-left: 32px;
+      max-width: 260px;
+    }
+    .qr-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-ink-900);
+      border-radius: var(--r-pill);
+      font: var(--fw-bold) 12px / 1 var(--font-hand);
+      color: var(--c-ink-900);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .qr-chip .material-symbols-outlined { font-size: 14px; }
+    .qr-chip--picked {
+      background: var(--c-ink-900);
+      color: var(--c-white);
+    }
+
+    /* ===== Guide card (structured recovery plan inside a bubble) ===== */
+    .guide-card {
+      padding: 14px;
+      border-radius: 16px;
+      border-top-left-radius: 4px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-divider);
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .guide-card__head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .guide-card__head .material-symbols-outlined {
+      font-size: 18px;
+      color: var(--c-ink-900);
+    }
+    .guide-card__title {
+      font: var(--fw-bold) 14px / 1.2 var(--font-hand);
+      color: var(--c-ink-900);
+    }
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .guide-step {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .guide-step__num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--c-ink-900);
+      color: var(--c-white);
+      display: grid;
+      place-items: center;
+      font: var(--fw-bold) 11px / 1 var(--font-hand);
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .guide-step__body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .guide-step__label {
+      font: var(--fw-bold) 13px / 1.3 var(--font-hand);
+      color: var(--c-ink-900);
+    }
+    .guide-step__sub {
+      font: var(--fw-regular) 12px / 1.35 var(--font-hand);
+      color: var(--c-ink-600);
+    }
+    .guide-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background: var(--c-surface-muted);
+      border-radius: var(--r-md);
+      font: var(--fw-bold) 12px / 1 var(--font-hand);
+      color: var(--c-ink-900);
+      text-decoration: none;
+      align-self: flex-start;
+      margin-top: 2px;
+      cursor: pointer;
+      border: none;
+    }
+    .guide-action .material-symbols-outlined { font-size: 14px; }
+    .guide-action--primary {
+      background: var(--c-ink-900);
+      color: var(--c-white);
+    }
+
+    /* ===== Composer ===== */
+    .chat-composer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px calc(var(--sp-home-ind) + 8px);
+      background: var(--c-surface);
+      border-top: 1px solid var(--c-divider);
+    }
+    .chat-composer__input {
+      flex: 1 1 auto;
+      height: 36px;
+      padding: 0 14px;
+      background: var(--c-surface-muted);
+      border: 1px solid var(--c-divider);
+      border-radius: var(--r-pill);
+      font: var(--fw-regular) var(--fs-base) / 1 var(--font-hand);
+      color: var(--c-ink-900);
+      outline: none;
+    }
+    .chat-composer__input::placeholder { color: var(--c-ink-300); }
+    .chat-composer__send {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: var(--c-ink-900);
+      color: var(--c-white);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .chat-composer__send .material-symbols-outlined { font-size: 18px; }
+
+    /* Tag on first agent message to announce the AI assistant */
+    .agent-intro-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      background: var(--c-surface-muted);
+      border-radius: var(--r-pill);
+      font: var(--fw-bold) 10px / 1 var(--font-hand);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--c-ink-700);
+      margin-bottom: 6px;
+      width: fit-content;
+    }
+    .agent-intro-tag .material-symbols-outlined { font-size: 11px; }
+  </style>
 </head>
 <body class="screen-page">
 
@@ -25,7 +388,7 @@
     </a>
     <div class="viewer-bar__info">
       <h1 class="viewer-bar__title">Financial Alert &middot; 4 of 4</h1>
-      <p class="viewer-bar__desc">Placeholder — populate with the resolved / follow-up state</p>
+      <p class="viewer-bar__desc">Keystone Agent &mdash; guided recovery chat</p>
     </div>
     <button class="viewer-bar__copy" type="button" data-copy-target="screen-content" aria-label="Download as PNG">
       <span class="material-symbols-outlined">download</span>
@@ -33,8 +396,9 @@
   </header>
 
   <div class="viewer-stage">
-    <div class="screen-content s7" id="screen-content">
+    <div class="screen-content s7" id="screen-content" style="display:flex;flex-direction:column;height:var(--phone-h);overflow:hidden;padding:0;">
 
+      <!-- iOS status bar -->
       <div class="status-bar">
         <span class="sb-time t-status">9:41</span>
         <div class="sb-icons">
@@ -44,17 +408,203 @@
         </div>
       </div>
 
-      <div class="nav-bar">
-        <a class="nav-icon-btn" aria-label="Back" href="s8-action.html" style="text-decoration:none">
-          <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h1 class="t-title nav-title">Financial Alert · 4 of 4</h1>
-      </div>
+      <div class="s8r-stage">
+        <!-- Dimmed peek of the s8-action screen underneath -->
+        <div class="s8r-backdrop">
+          <span class="severity-pill">
+            <span class="material-symbols-outlined">gavel</span>
+            Dispute opened &middot; Action needed
+          </span>
+          <div class="alert-hero">
+            <div class="alert-hero__chip">
+              <span class="material-symbols-outlined">paid</span>
+            </div>
+            <h2 class="alert-hero__title">You disputed a $2,400 transaction at tbonest8ks4dogs.com</h2>
+          </div>
+        </div>
+        <div class="s8r-scrim"></div>
 
-      <div class="s7-content" style="padding:var(--sp-6) var(--sp-5);">
-        <p style="font: var(--fw-regular) var(--fs-base) / 1.5 var(--font-hand); color: var(--c-ink-600);">
-          Placeholder for Financial Alert step 4 of 4.
-        </p>
+        <!-- Chat sheet -->
+        <div class="chat-sheet">
+          <div class="chat-grabber"></div>
+          <div class="chat-header">
+            <div class="chat-avatar">
+              <span class="material-symbols-outlined">auto_awesome</span>
+            </div>
+            <div class="chat-header__info">
+              <span class="chat-header__name">Keystone Agent</span>
+              <span class="chat-header__status">Online &middot; Typically replies instantly</span>
+            </div>
+            <button class="chat-close" aria-label="Close chat" type="button">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+
+          <div class="chat-secure">
+            <span class="material-symbols-outlined">lock</span>
+            Secure encrypted chat
+          </div>
+
+          <div class="chat-scroll">
+            <!-- 1. Greeting -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="bubble bubble--agent">
+                <span class="agent-intro-tag">
+                  <span class="material-symbols-outlined">bolt</span>
+                  AI Assistant
+                </span>
+                Hi Alex &mdash; I&rsquo;m <strong>Keystone Agent</strong>. I&rsquo;ll walk you through freezing your card and opening a dispute for the <strong>$2,400</strong> charge at <strong>tbonest8ks4dogs.com</strong>.
+              </div>
+            </div>
+
+            <!-- 2. Q1 -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="bubble bubble--agent">Quick check &mdash; is your Fidelity card <strong>•••• 0052</strong> still in your possession?</div>
+            </div>
+            <div class="qr-row">
+              <button class="qr-chip qr-chip--picked" type="button">
+                <span class="material-symbols-outlined">check</span>
+                Yes, I have it
+              </button>
+              <button class="qr-chip" type="button">No, it&rsquo;s missing</button>
+            </div>
+            <div class="msg msg--user">
+              <div class="bubble bubble--user">Yes, I have it</div>
+            </div>
+
+            <!-- 3. Q2 -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="bubble bubble--agent">Got it. Have you ever shopped at <strong>tbonest8ks4dogs.com</strong> before?</div>
+            </div>
+            <div class="qr-row">
+              <button class="qr-chip qr-chip--picked" type="button">
+                <span class="material-symbols-outlined">block</span>
+                Never heard of it
+              </button>
+              <button class="qr-chip" type="button">Maybe, not sure</button>
+              <button class="qr-chip" type="button">Yes, I have</button>
+            </div>
+            <div class="msg msg--user">
+              <div class="bubble bubble--user">Never heard of it</div>
+            </div>
+
+            <!-- 4. Summary -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="bubble bubble--agent">Thanks &mdash; that&rsquo;s a clear fraud pattern (card in hand, unknown merchant). Here&rsquo;s your two-part recovery plan. Tap through each step.</div>
+            </div>
+
+            <!-- 5. Guide Card: Freeze the card -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="guide-card">
+                <div class="guide-card__head">
+                  <span class="material-symbols-outlined">ac_unit</span>
+                  <span class="guide-card__title">1. Freeze the card</span>
+                </div>
+                <div class="guide-steps">
+                  <div class="guide-step">
+                    <span class="guide-step__num">1</span>
+                    <div class="guide-step__body">
+                      <span class="guide-step__label">Freeze in the Fidelity app</span>
+                      <span class="guide-step__sub">Cards &rsaquo; &bull;&bull;&bull;&bull;&nbsp;0052 &rsaquo; Freeze</span>
+                      <a class="guide-action guide-action--primary" href="#">
+                        <span class="material-symbols-outlined">open_in_new</span>
+                        Open fidelity.com/cards
+                      </a>
+                    </div>
+                  </div>
+                  <div class="guide-step">
+                    <span class="guide-step__num">2</span>
+                    <div class="guide-step__body">
+                      <span class="guide-step__label">Or call card services</span>
+                      <span class="guide-step__sub">24/7 &middot; average wait &lt; 2 min</span>
+                      <a class="guide-action" href="tel:18005446666">
+                        <span class="material-symbols-outlined">call</span>
+                        1-800-544-6666
+                      </a>
+                    </div>
+                  </div>
+                  <div class="guide-step">
+                    <span class="guide-step__num">3</span>
+                    <div class="guide-step__body">
+                      <span class="guide-step__label">Have this ready</span>
+                      <span class="guide-step__sub">Last 4: <strong>0052</strong> &middot; DOB &middot; last legit charge (Whole Foods, Apr 9)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Guide Card: Open dispute -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="guide-card">
+                <div class="guide-card__head">
+                  <span class="material-symbols-outlined">gavel</span>
+                  <span class="guide-card__title">2. Open the dispute case</span>
+                </div>
+                <div class="guide-steps">
+                  <div class="guide-step">
+                    <span class="guide-step__num">1</span>
+                    <div class="guide-step__body">
+                      <span class="guide-step__label">File the written dispute</span>
+                      <span class="guide-step__sub">I&rsquo;ve pre-filled the form with the transaction details.</span>
+                      <a class="guide-action guide-action--primary" href="#">
+                        <span class="material-symbols-outlined">edit_document</span>
+                        Open pre-filled form
+                      </a>
+                    </div>
+                  </div>
+                  <div class="guide-step">
+                    <span class="guide-step__num">2</span>
+                    <div class="guide-step__body">
+                      <span class="guide-step__label">Reference this transaction ID</span>
+                      <span class="guide-step__sub">Needed if you call the bank.</span>
+                      <button class="guide-action" type="button">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        TXN&#8209;20260411&#8209;2400
+                      </button>
+                    </div>
+                  </div>
+                  <div class="guide-step">
+                    <span class="guide-step__num">3</span>
+                    <div class="guide-step__body">
+                      <span class="guide-step__label">Follow-up window</span>
+                      <span class="guide-step__sub">Fidelity has up to <strong>10 business days</strong> to provisionally credit. I&rsquo;ll ping you if nothing lands by <strong>Apr 25</strong>.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Closer -->
+            <div class="msg msg--agent">
+              <span class="msg__avatar"><span class="material-symbols-outlined">auto_awesome</span></span>
+              <div class="bubble bubble--agent">I&rsquo;ll stay here while you work through it. Ping me if anything feels off.</div>
+            </div>
+            <div class="qr-row">
+              <button class="qr-chip" type="button">
+                <span class="material-symbols-outlined">task_alt</span>
+                Mark recovery complete
+              </button>
+              <button class="qr-chip" type="button">
+                <span class="material-symbols-outlined">help</span>
+                Ask a question
+              </button>
+            </div>
+          </div>
+
+          <div class="chat-composer">
+            <input class="chat-composer__input" type="text" placeholder="Ask Keystone Agent a question…" />
+            <button class="chat-composer__send" aria-label="Send" type="button">
+              <span class="material-symbols-outlined">arrow_upward</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
