@@ -183,23 +183,23 @@
   vertical-align: 1px;
   margin-left: 4px;
 }
-/* Email variant — light blue accent for email-format screens */
+/* Email variant — light sky blue */
 .toc-pill--email {
-  color: #2c5282;
-  background: #e0edfb;
-  border-color: #c6dcf5;
+  color: #2563eb;
+  background: #eff6ff;
+  border-color: #dbeafe;
 }
-/* Lockscreen variant — dark blue (filled) */
+/* Lockscreen variant — light indigo */
 .toc-pill--lockscreen {
-  color: #ffffff;
-  background: #1e40af;
-  border-color: #1e40af;
+  color: #4338ca;
+  background: #eef2ff;
+  border-color: #e0e7ff;
 }
-/* In-app variant — dark grey (filled) */
+/* In-app variant — light neutral grey */
 .toc-pill--in-app {
-  color: #ffffff;
-  background: var(--c-ink-700);
-  border-color: var(--c-ink-700);
+  color: #374151;
+  background: #f3f4f6;
+  border-color: #e5e7eb;
 }
 
 /* ---- Side Navigation ----------------------------------------- */
@@ -335,23 +335,23 @@
   vertical-align: 1px;
   margin-left: 4px;
 }
-/* Email variant — light blue accent for email-format screens */
+/* Email variant — light sky blue */
 .sn-pill--email {
-  color: #2c5282;
-  background: #e0edfb;
-  border-color: #c6dcf5;
+  color: #2563eb;
+  background: #eff6ff;
+  border-color: #dbeafe;
 }
-/* Lockscreen variant — dark blue (filled) */
+/* Lockscreen variant — light indigo */
 .sn-pill--lockscreen {
-  color: #ffffff;
-  background: #1e40af;
-  border-color: #1e40af;
+  color: #4338ca;
+  background: #eef2ff;
+  border-color: #e0e7ff;
 }
-/* In-app variant — dark grey (filled) */
+/* In-app variant — light neutral grey */
 .sn-pill--in-app {
-  color: #ffffff;
-  background: var(--c-ink-700);
-  border-color: var(--c-ink-700);
+  color: #374151;
+  background: #f3f4f6;
+  border-color: #e5e7eb;
 }
 
 /* Push page content right when nav is open */
