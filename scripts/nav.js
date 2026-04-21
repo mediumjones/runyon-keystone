@@ -60,22 +60,15 @@
       ]
     },
     {
-      title: 'Masked Identity',
+      title: 'Virtual Card',
       num: '04',
       topItems: [
-        { file: 'masked-identity-home.html', title: 'Masked Identity Home' },
+        { file: 'masked-identity-home.html', title: 'Virtual Card Explainer' },
+        { file: 'payment-dropdown.html',     title: 'Payment Dropdown' },
+        { file: 'extension-popover.html',    title: 'Extension Popover' },
+        { file: 'card-populated.html',       title: 'Card Populated' },
       ],
-      groups: [
-        {
-          label: 'Virtual Card',
-          open: true,
-          items: [
-            { file: 'payment-dropdown.html',  title: 'Payment Dropdown' },
-            { file: 'extension-popover.html',  title: 'Extension Popover' },
-            { file: 'card-populated.html', title: 'Card Populated' },
-          ]
-        }
-      ]
+      groups: []
     }
   ];
 

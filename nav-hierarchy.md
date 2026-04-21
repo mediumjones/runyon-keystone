@@ -47,12 +47,9 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ---
 
-## 4 · Masked Identity
+## 4 · Virtual Card
 
-- 4.1 **Masked Identity Home** — `masked-identity-home.html`
-
-### Virtual Card (3)
-
+- 4.1 **Virtual Card Explainer** — `masked-identity-home.html`
 - 4.2 **Payment Dropdown** — `payment-dropdown.html`
 - 4.3 **Extension Popover** — `extension-popover.html`
 - 4.4 **Card Populated** — `card-populated.html`
