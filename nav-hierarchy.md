@@ -31,12 +31,12 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ### Dark Web Alert (6)
 
-- 3.2 **SSN Alert Auto** `in app` — `ssn-alert-auto-in-app.html`
-- 3.3 **SSN Alert Auto** `email` — `ssn-alert-auto-email.html`
-- 3.4 **SSN Alert Auto** `lockscreen` — `ssn-alert-auto-lockscreen.html`
-- 3.5 **SSN Alert Manual** `in app` — `ssn-alert-manual-in-app.html`
-- 3.6 **SSN Alert Manual** `email` — `ssn-alert-manual-email.html`
-- 3.7 **SSN Alert Manual** `lockscreen` — `ssn-alert-manual-lockscreen.html`
+- 3.2 **SSN Alert Manual** `in app` — `ssn-alert-auto-in-app.html`
+- 3.3 **SSN Alert Manual** `email` — `ssn-alert-auto-email.html`
+- 3.4 **SSN Alert Manual** `lockscreen` — `ssn-alert-auto-lockscreen.html`
+- 3.5 **SSN Alert Auto** `in app` — `ssn-alert-manual-in-app.html`
+- 3.6 **SSN Alert Auto** `email` — `ssn-alert-manual-email.html`
+- 3.7 **SSN Alert Auto** `lockscreen` — `ssn-alert-manual-lockscreen.html`
 
 ### Financial Alert (4)
 

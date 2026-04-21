@@ -39,12 +39,12 @@
           label: 'Dark Web Alert',
           open: true,
           items: [
-            { file: 'ssn-alert-auto-in-app.html',        title: 'SSN Alert Auto',      pills: ['in app']     },
-            { file: 'ssn-alert-auto-email.html',  title: 'SSN Alert Auto',      pills: ['email']      },
-            { file: 'ssn-alert-auto-lockscreen.html',   title: 'SSN Alert Auto',      pills: ['lockscreen'] },
-            { file: 'ssn-alert-manual-in-app.html',       title: 'SSN Alert Manual',  pills: ['in app']     },
-            { file: 'ssn-alert-manual-email.html', title: 'SSN Alert Manual',  pills: ['email']      },
-            { file: 'ssn-alert-manual-lockscreen.html',  title: 'SSN Alert Manual',  pills: ['lockscreen'] },
+            { file: 'ssn-alert-auto-in-app.html',        title: 'SSN Alert Manual',      pills: ['in app']     },
+            { file: 'ssn-alert-auto-email.html',  title: 'SSN Alert Manual',      pills: ['email']      },
+            { file: 'ssn-alert-auto-lockscreen.html',   title: 'SSN Alert Manual',      pills: ['lockscreen'] },
+            { file: 'ssn-alert-manual-in-app.html',       title: 'SSN Alert Auto',  pills: ['in app']     },
+            { file: 'ssn-alert-manual-email.html', title: 'SSN Alert Auto',  pills: ['email']      },
+            { file: 'ssn-alert-manual-lockscreen.html',  title: 'SSN Alert Auto',  pills: ['lockscreen'] },
           ]
         },
         {
