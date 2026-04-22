@@ -50,8 +50,8 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 ## 4 · Keystone Agents
 
 - 4.1 **Intro** `new user` — `keystone-agents-intro.html`
-- 4.2 **Onboarding** `new user` — `keystone-agents-onboarding.html`
-- 4.3 **Populated** `returning` — `keystone-agents-populated.html`
+- 4.2 **Populated** `returning` — `keystone-agents-populated.html`
+- 4.3 **Intro (Legacy)** `new user` — `keystone-agents-onboarding.html`
 
 ---
 
