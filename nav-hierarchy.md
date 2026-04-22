@@ -2,7 +2,7 @@
 
 Current sidebar structure (source of truth: `scripts/nav.js`).
 
-**Totals:** 5 sections · 3 groups · 5 top-level items · 25 screens
+**Totals:** 5 sections · 3 groups · 5 top-level items · 26 screens
 
 ---
 
@@ -49,8 +49,9 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 
 ## 4 · Keystone Agents
 
-- 4.1 **Onboarding** `new user` — `keystone-agents-onboarding.html`
-- 4.2 **Populated** `returning` — `keystone-agents-populated.html`
+- 4.1 **Intro** `new user` — `keystone-agents-intro.html`
+- 4.2 **Onboarding** `new user` — `keystone-agents-onboarding.html`
+- 4.3 **Populated** `returning` — `keystone-agents-populated.html`
 
 ---
 

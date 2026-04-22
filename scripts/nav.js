@@ -63,8 +63,9 @@
       title: 'Keystone Agents',
       num: '04',
       topItems: [
-        { file: 'keystone-agents-onboarding.html', title: 'Onboarding',  pill: 'new user' },
-        { file: 'keystone-agents-populated.html',  title: 'Populated', pill: 'returning' },
+        { file: 'keystone-agents-intro.html',      title: 'Intro',      pill: 'new user' },
+        { file: 'keystone-agents-onboarding.html', title: 'Onboarding', pill: 'new user' },
+        { file: 'keystone-agents-populated.html',  title: 'Populated',  pill: 'returning' },
       ],
       groups: []
     },

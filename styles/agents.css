@@ -4,6 +4,13 @@
    Uses tokens.css; system font for chat/data, Kalam for brand.
    ============================================================= */
 
+/* Symmetric padding so the agents shell can center vertically in
+   the viewer stage. */
+.viewer-stage:has(.screen-content-desktop--agents) {
+  padding: var(--sp-5) var(--sp-5);
+  align-items: center;
+}
+
 /* ---- Desktop shell (wider than default 780) ------------------ */
 .screen-content-desktop.screen-content-desktop--agents {
   width: 1080px;
@@ -14,9 +21,11 @@
   min-height: 820px;
   /* Shell grows to fit content; outer page scrolls. Internal scrolls
      on panel + chat are disabled; sticky footers keep the input + actions
-     pinned to the viewport bottom while the page scrolls. */
-  overflow: visible;
-  border-radius: 14px;
+     pinned to the viewport bottom while the page scrolls. overflow: clip
+     clips children to the rounded corners without creating a scroll
+     container (which would break sticky). */
+  overflow: clip;
+  border-radius: 18px;
 }
 
 /* Minimal app-chrome bar (no URL — this is a native app window) */
@@ -28,8 +37,8 @@
   padding: 0 var(--sp-4);
   background: #ececec;
   border-bottom: 1px solid rgba(17, 17, 17, 0.12);
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
   flex-shrink: 0;
 }
 .ka-chrome .desktop-dots { margin-right: var(--sp-2); }
@@ -75,6 +84,11 @@
 }
 .ka-app--onboarding { grid-template-columns: 270px 1fr; }
 .ka-app--dashboard  { grid-template-columns: 270px 1fr; }
+.ka-app--intro      { grid-template-columns: 1fr; }
+/* In intro mode the chat is the only column, so it owns both
+   bottom corners of the shell. */
+.ka-app--intro .ka-chat { border-bottom-left-radius: 18px; }
+.ka-app--intro .ka-chat__input { border-bottom-left-radius: 18px; }
 
 /* Shared panel */
 .ka-panel {
@@ -82,7 +96,7 @@
   border-right: 1px solid rgba(17, 17, 17, 0.08);
   display: flex;
   flex-direction: column;
-  border-bottom-left-radius: 14px;
+  border-bottom-left-radius: 18px;
 }
 .ka-panel__head {
   padding: var(--sp-4) var(--sp-3) var(--sp-3);
@@ -103,7 +117,7 @@
   padding: var(--sp-3);
   background: #f6f3ee;
   border-top: 1px solid rgba(17, 17, 17, 0.08);
-  border-bottom-left-radius: 14px;
+  border-bottom-left-radius: 18px;
 }
 /* Match the chat-input footer height (63px) so both sit flush. */
 .ka-panel__actions {
@@ -147,7 +161,7 @@
   margin-bottom: var(--sp-3);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 6px 14px -8px rgba(17, 17, 17, 0.18),
+    0 6px 18px -8px rgba(17, 17, 17, 0.18),
     0 1px 2px rgba(17, 17, 17, 0.05);
 }
 .ka-keystone-card__head {
@@ -313,7 +327,7 @@
   display: flex;
   flex-direction: column;
   background: #f6f3ee;
-  border-bottom-right-radius: 14px;
+  border-bottom-right-radius: 18px;
 }
 .ka-chat__head {
   display: flex;
@@ -375,12 +389,14 @@
   color: var(--c-ink-300);
 }
 
-/* Message list */
+/* Message list — messages accumulate from the bottom, just above
+   the input bar, like a chat app. */
 .ka-chat__body {
   flex: 1 1 auto;
   padding: var(--sp-5) var(--sp-6);
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: var(--sp-4);
 }
 
@@ -394,7 +410,7 @@
   padding: var(--sp-3) var(--sp-6) var(--sp-4);
   background: #f6f3ee;
   border-top: 1px solid rgba(17, 17, 17, 0.05);
-  border-bottom-right-radius: 14px;
+  border-bottom-right-radius: 18px;
 }
 .ka-input {
   display: flex;
@@ -404,7 +420,7 @@
   background: var(--c-white);
   border: 1px solid rgba(17, 17, 17, 0.14);
   border-radius: var(--r-pill);
-  padding: 0 4px 0 14px;
+  padding: 0 4px 0 18px;
   box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
 }
 .ka-input__field {
@@ -427,13 +443,14 @@
   flex-shrink: 0;
 }
 .ka-input__send .material-symbols-outlined {
-  font-size: 14px;
+  font-size: 18px;
   font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
 }
 
 /* Message bubbles */
 .ka-msg {
   display: flex;
+  align-items: flex-end;
   gap: var(--sp-3);
   max-width: 720px;
 }
@@ -461,17 +478,17 @@
 .ka-msg__bubble {
   background: var(--c-white);
   border: 1px solid var(--c-card-border);
-  border-radius: 14px 14px 14px 4px;
+  border-radius: 18px 18px 18px 4px;
   padding: var(--sp-3) var(--sp-4);
   box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
-  font: var(--fw-regular) 14px / var(--lh-normal) var(--font-hand);
+  font: var(--fw-regular) 18px / var(--lh-normal) var(--font-hand);
   color: var(--c-ink-800);
 }
 .ka-msg--user .ka-msg__bubble {
   background: var(--c-black);
   color: var(--c-white);
   border-color: var(--c-black);
-  border-radius: 14px 14px 4px 14px;
+  border-radius: 18px 18px 4px 18px;
 }
 .ka-msg__bubble p { margin: 0; }
 .ka-msg__bubble p + p { margin-top: var(--sp-2); }
@@ -505,7 +522,7 @@
   margin: 0 0 var(--sp-2);
   padding-left: var(--sp-3);
   border-left: 2px solid var(--c-divider);
-  font: var(--fw-regular) 14px / var(--lh-snug) var(--font-hand);
+  font: var(--fw-regular) 18px / var(--lh-snug) var(--font-hand);
   color: var(--c-ink-600);
   font-style: italic;
 }
@@ -545,6 +562,117 @@
   text-transform: uppercase;
   color: var(--c-ink-300);
 }
+
+/* ---- Inline team grid (intro variant) ------------------------ */
+.ka-team-grid {
+  align-self: stretch;
+  max-width: 820px;
+  margin-left: 44px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--sp-2);
+}
+.ka-team-grid__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--sp-3) var(--sp-2);
+  background: var(--c-white);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-card);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  min-width: 0;
+}
+.ka-team-grid__card .ka-agent-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+.ka-team-grid__card .ka-agent-chip .material-symbols-outlined { font-size: 16px; }
+.ka-team-grid__name {
+  font: var(--fw-bold) 13px / 1.1 var(--font-hand);
+  color: var(--c-ink-900);
+}
+.ka-team-grid__role {
+  font: var(--fw-regular) 9px / 1.2 var(--font-hand);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-ink-300);
+  margin-top: 2px;
+}
+.ka-team-grid__desc {
+  font: var(--fw-regular) 11px / 1.4 var(--font-hand);
+  color: var(--c-ink-600);
+  margin: 0;
+}
+.ka-team-grid__foot {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px dashed var(--c-divider);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+}
+.ka-team-grid__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: var(--fw-regular) 10px / 1 var(--font-hand);
+  letter-spacing: 0.2px;
+  color: var(--c-ink-600);
+}
+.ka-team-grid__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+  padding: 0 8px;
+  background: var(--c-black);
+  color: var(--c-white);
+  border: 0;
+  border-radius: var(--r-pill);
+  font: var(--fw-bold) 10px / 1 var(--font-hand);
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 2px rgba(17, 17, 17, 0.2);
+  transition: transform 0.15s ease;
+}
+.ka-team-grid__cta:hover { transform: translateY(-1px); }
+
+/* ---- Suggested next-step pills (intro variant) ---------------- */
+.ka-suggestions {
+  align-self: stretch;
+  max-width: 820px;
+  margin-left: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ka-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 12px;
+  background: var(--c-white);
+  color: var(--c-ink-900);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--r-pill);
+  font: var(--fw-regular) 12px / 1 var(--font-hand);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.ka-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(17, 17, 17, 0.3);
+  background: var(--c-surface-muted);
+}
+.ka-chip .material-symbols-outlined { font-size: 18px; color: var(--c-ink-600); }
 
 /* ---- Action cards row ---------------------------------------- */
 .ka-action-cards {
@@ -751,7 +879,7 @@
   font: var(--fw-regular) 11px / 1 var(--font-hand);
   color: var(--c-ink-300);
 }
-.ka-convos__search .material-symbols-outlined { font-size: 14px; color: var(--c-ink-300); }
+.ka-convos__search .material-symbols-outlined { font-size: 18px; color: var(--c-ink-300); }
 
 .ka-convos__section-head {
   display: flex;
@@ -969,7 +1097,7 @@
    not loaded on the agents pages. */
 @keyframes live-breathe {
   0%, 100% { transform: scale(1); box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 8px var(--c-live-glow); }
-  50%      { transform: scale(1.12); box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 14px var(--c-live-glow); }
+  50%      { transform: scale(1.12); box-shadow: 0 0 0 1px rgba(64, 64, 64, 0.25), 0 0 18px var(--c-live-glow); }
 }
 @keyframes live-ping {
   0%   { transform: scale(1);   opacity: 0.55; }
