@@ -2,7 +2,7 @@
 
 Current sidebar structure (source of truth: `scripts/nav.js`).
 
-**Totals:** 5 sections · 3 groups · 5 top-level items · 26 screens
+**Totals:** 5 sections · 3 groups · 6 top-level items · 27 screens
 
 ---
 
@@ -28,6 +28,7 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 ## 3 · Activity and Alerts
 
 - 3.1 **Activity Feed** — `activity-feed.html`
+- 3.2 **Auto-handled Alerts** `lockscreen` — `lockscreen-alerts-auto.html`
 
 ### Dark Web Alert (6)
 

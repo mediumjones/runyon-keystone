@@ -33,6 +33,7 @@
       num: '03',
       topItems: [
         { file: 'activity-feed.html', title: 'Activity Feed' },
+        { file: 'lockscreen-alerts-auto.html', title: 'Auto-handled Alerts', pill: 'lockscreen' },
       ],
       groups: [
         {
