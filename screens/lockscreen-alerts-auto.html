@@ -16,6 +16,17 @@
   <script src="../scripts/nav.js?v=19" defer></script>
   <script src="../scripts/viewer.js?v=2" defer></script>
   <style>
+    /* Four phones is ~1572px of content. On narrower viewports the
+       stage scrolls horizontally. safe-center keeps the row centered
+       when it fits and flush-start when it overflows, so the first
+       phone is never hidden behind the side-nav. */
+    .viewer-stage:has(.lockset) {
+      overflow-x: auto;
+      justify-content: safe center;
+      padding-left: var(--sp-5);
+      padding-right: var(--sp-5);
+    }
+
     /* Multi-phone row: lines up several .screen-content.s7-lock phones
        side-by-side. Each phone is the exact same component used on the
        individual lockscreen pages. */
@@ -24,6 +35,8 @@
       flex-wrap: nowrap;
       gap: var(--sp-5);
       padding: var(--sp-2);
+      /* hold natural width so scroll kicks in rather than shrinking phones */
+      min-width: min-content;
       /* stretch columns vertically, matching the single-phone stage */
       align-items: stretch;
     }
