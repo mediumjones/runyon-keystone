@@ -23,7 +23,7 @@
         { file: 'solo.html',              title: 'Solo', pill: 'returning' },
         { file: 'family-new-user.html',       title: 'Family',     pill: 'new user' },
         { file: 'family.html',       title: 'Family', pill: 'returning' },
-        { file: 'mom-in-law.html',       title: 'Mom-in-law' },
+        { file: 'mom.html',       title: 'Mom' },
         { file: 'kid-email.html', title: 'Kid',        pill: 'email' },
       ],
       groups: []

@@ -20,7 +20,7 @@ Current sidebar structure (source of truth: `scripts/nav.js`).
 - 2.2 **Solo** `returning` — `solo.html`
 - 2.3 **Family** `new user` — `family-new-user.html`
 - 2.4 **Family** `returning` — `family.html`
-- 2.5 **Mom-in-law** — `mom-in-law.html`
+- 2.5 **Mom** — `mom.html`
 - 2.6 **Kid** `email` — `kid-email.html`
 
 ---
